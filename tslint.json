@@ -13,7 +13,8 @@
     "no-empty-interface": false,
     "curly": false,
     "variable-name": false,
-    "no-namespace": false
+    "no-namespace": false,
+    "max-line-length": false
   },
   "rulesDirectory": []
 }

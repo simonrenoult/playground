@@ -5,12 +5,14 @@ import {
   IdSessionDeFormation,
   SessionDeFormation
 } from '../src/sessions-de-formation/write/domain/entite/session-de-formation'
+import { SessionDeFormationCreee } from '../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 
 export const DEFAUT = {
   CODE_FORMATION: 'DDD01',
   DUREE_FORMATION: 14,
   DATE_SESSION: '2021-02-01',
-  MAINTENANT: '2021-01-01'
+  MAINTENANT: '2021-01-01',
+  ID_SESSION_FORMATION: 'DDD01_1234'
 }
 
 export namespace Fixtures {
@@ -28,7 +30,7 @@ export namespace Fixtures {
     )
   }
 
-  export function uneSessionDeFormationAPlanifier(idSessionDeFormation: string): SessionDeFormationACreer {
+  export function uneSessionDeFormationACreer(idSessionDeFormation: string): SessionDeFormationACreer {
     return new SessionDeFormationACreer(
       idSessionDeFormation,
       DEFAUT.CODE_FORMATION
@@ -39,6 +41,13 @@ export namespace Fixtures {
     return new SessionDeFormation(
       new IdSessionDeFormation(idSessionDeSessionDeFormation),
       new CodeDeFormation(DEFAUT.CODE_FORMATION)
+    )
+  }
+
+  export function uneSessionDeFormationCreee(): SessionDeFormationCreee {
+    return new SessionDeFormationCreee(
+      DEFAUT.ID_SESSION_FORMATION,
+      DEFAUT.CODE_FORMATION
     )
   }
 }

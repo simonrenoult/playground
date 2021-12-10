@@ -13,7 +13,7 @@ describe('CreerUneSessionDeFormation', () => {
     const sessionsDeFormation = new SessionsDeFormationEnMemoire()
     const creerUneSessionDeFormation = new CreerUneSessionDeFormation(sessionsDeFormation)
     const idSessionDeFormation = ulid()
-    const sessionDeFormationAPlanifier = Fixtures.uneSessionDeFormationAPlanifier(idSessionDeFormation)
+    const sessionDeFormationAPlanifier = Fixtures.uneSessionDeFormationACreer(idSessionDeFormation)
 
     // When
     creerUneSessionDeFormation.executer(sessionDeFormationAPlanifier)
@@ -31,7 +31,7 @@ describe('CreerUneSessionDeFormation', () => {
       sessionsDeFormation,
     )
     const idSessionDeFormation = ulid()
-    const sessionDeFormationAPlanifier = Fixtures.uneSessionDeFormationAPlanifier(idSessionDeFormation)
+    const sessionDeFormationAPlanifier = Fixtures.uneSessionDeFormationACreer(idSessionDeFormation)
 
     // When
     const evenement = planifierUneSessionDeFormation.executer(sessionDeFormationAPlanifier)
