@@ -3,10 +3,10 @@ import Commande from './commande'
 import EvenementDuDomaine from './evenement'
 import GestionnaireDeCommande from './gestionnaire-de-commande'
 
-export default class BusDeCommandes implements Bus {
+export default class BusDeCommandes implements Bus<Commande> {
   constructor(
     private readonly commandHandlers: Array<GestionnaireDeCommande<Commande, EvenementDuDomaine>> = [],
-    private readonly busDEvenementsDuDomaine: Bus
+    private readonly busDEvenementsDuDomaine: Bus<EvenementDuDomaine>
   ) {
   }
 
