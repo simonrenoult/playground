@@ -1,4 +1,4 @@
 import Message from './message'
 
-export interface Question extends Message {
+export default interface Question extends Message {
 }

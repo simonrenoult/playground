@@ -15,36 +15,36 @@ export const DEFAUT = {
   ID_SESSION_FORMATION: 'DDD01_1234'
 }
 
-export namespace Fixtures {
-  export function uneFormationACreer(): FormationACreer {
+export class Fixtures {
+  public static uneFormationACreer(): FormationACreer {
     return new FormationACreer(
       DEFAUT.CODE_FORMATION,
       DEFAUT.DUREE_FORMATION
     )
   }
 
-  export function uneFormation(): Formation {
+  public static uneFormation(): Formation {
     return new Formation(
       new CodeDeFormation(DEFAUT.CODE_FORMATION),
       new DureeDeFormation(DEFAUT.DUREE_FORMATION)
     )
   }
 
-  export function uneSessionDeFormationACreer(idSessionDeFormation: string): SessionDeFormationACreer {
+  public static uneSessionDeFormationACreer(idSessionDeFormation: string): SessionDeFormationACreer {
     return new SessionDeFormationACreer(
       idSessionDeFormation,
       DEFAUT.CODE_FORMATION
     )
   }
 
-  export function uneSessionDeFormation(idSessionDeSessionDeFormation: string): SessionDeFormation {
+  public static uneSessionDeFormation(idSessionDeSessionDeFormation: string): SessionDeFormation {
     return new SessionDeFormation(
       new IdSessionDeFormation(idSessionDeSessionDeFormation),
       new CodeDeFormation(DEFAUT.CODE_FORMATION)
     )
   }
 
-  export function uneSessionDeFormationCreee(): SessionDeFormationCreee {
+  public static uneSessionDeFormationCreee(): SessionDeFormationCreee {
     return new SessionDeFormationCreee(
       DEFAUT.ID_SESSION_FORMATION,
       DEFAUT.CODE_FORMATION

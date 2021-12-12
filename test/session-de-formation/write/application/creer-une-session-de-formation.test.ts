@@ -1,11 +1,14 @@
 import { ulid } from 'ulid'
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
 import {
   CreerUneSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/application/creer-une-session-de-formation'
-import { SessionDeFormationCreee } from '../../../../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
-import { DEFAUT, Fixtures } from '../../../fixtures'
-import { HorlogeEnMemoire } from '../../../horloge-en-memoire'
-import { SessionsDeFormationEnMemoire } from '../../../session-de-formation/sessions-de-formation-en-memoire'
+import {
+  SessionDeFormationCreee
+} from '../../../../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
+import { Fixtures } from '../../../fixtures'
+import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
 
 describe('CreerUneSessionDeFormation', () => {
   it('persiste une nouvelle session de formation', () => {
@@ -20,8 +23,8 @@ describe('CreerUneSessionDeFormation', () => {
 
     // Then
     const [sessionDeFormation] = sessionsDeFormation.lister()
-    expect(sessionDeFormation.id).toEqual(idSessionDeFormation)
-    expect(sessionDeFormation.codeFormation).toEqual('DDD01')
+    expect(sessionDeFormation.id).to.equal(idSessionDeFormation)
+    expect(sessionDeFormation.codeFormation).to.equal('DDD01')
   })
 
   it('retourne un évènement de creation de la session', () => {
@@ -37,6 +40,6 @@ describe('CreerUneSessionDeFormation', () => {
     const evenement = planifierUneSessionDeFormation.executer(sessionDeFormationAPlanifier)
 
     // Then
-    expect(evenement).toBeInstanceOf(SessionDeFormationCreee)
+    expect(evenement).to.be.an.instanceOf(SessionDeFormationCreee)
   })
 })

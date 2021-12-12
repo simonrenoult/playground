@@ -1,3 +1,5 @@
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
 import {
   GestionnaireDeQuellesSontLesFormationsAuCatalogue,
   QuellesSontLesFormationsAuCatalogue
@@ -15,6 +17,6 @@ describe('QuellesSontLesFormationsAuCatalogue', () => {
     const formations = gestionnaire.executer(quellesSontLesFormationsAuCatalogue)
 
     // Then
-    expect(formations).toHaveLength(1)
+    expect(formations).to.have.length(1)
   })
 })

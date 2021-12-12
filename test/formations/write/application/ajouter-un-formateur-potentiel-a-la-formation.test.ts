@@ -1,3 +1,5 @@
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
 import {
   AjouterUnFormateurPotentielALaFormation,
   FormateurPotentielAAjouterALaFormation
@@ -23,7 +25,7 @@ describe('AjouterUnFormateurPotentielALaFormation', () => {
 
     // Then
     const [formation] = formations.lister()
-    expect(formation.formateursPotentiels).toEqual([new FormateurPotentiel(new Email('foo@example.com'))])
+    expect(formation.formateursPotentiels).to.deep.equal([new FormateurPotentiel(new Email('foo@example.com'))])
   })
 
   it('retourne un évènement d\'ajout d\'un formateur principal', () => {
@@ -37,6 +39,6 @@ describe('AjouterUnFormateurPotentielALaFormation', () => {
     const evenement = ajouterUnFormateurPotentielALaFormation.executer(commande)
 
     // Then
-    expect(evenement).toEqual(new FormateurPotentielAjouteALaFormation('foo@example.com', 'DDD01'))
+    expect(evenement).to.deep.equal(new FormateurPotentielAjouteALaFormation('foo@example.com', 'DDD01'))
   })
 })

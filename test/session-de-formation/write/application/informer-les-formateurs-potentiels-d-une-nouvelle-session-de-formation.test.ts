@@ -1,3 +1,5 @@
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
 import {
   InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation'
@@ -19,6 +21,6 @@ describe('GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeForm
     informerLesFormateursPotentielsDUneNouvelleSessionDeFormation.execute(Fixtures.uneSessionDeFormationCreee())
 
     // Then
-    expect(notifieurEnMemoire.emailsNotifies).toEqual(['foo@example.com'])
+    expect(notifieurEnMemoire.emailsNotifies).to.deep.equal(['foo@example.com'])
   })
 })

@@ -1,5 +1,5 @@
 import { GestionnaireDeQuestion } from '../../../building-blocks/gestionnaire-de-question'
-import { Question } from '../../../building-blocks/question'
+import Question from '../../../building-blocks/question'
 import { FormationsAuCatalogue } from '../domain/modele-de-lecture/formations-au-catalogue'
 import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
 
@@ -15,7 +15,11 @@ export class GestionnaireDeQuellesSontLesFormationsAuCatalogue
   ) {
   }
 
-  public executer(q: QuellesSontLesFormationsAuCatalogue): FormationsAuCatalogue {
+  public executer(_q: QuellesSontLesFormationsAuCatalogue): FormationsAuCatalogue {
     return this.catalogue.lister()
+  }
+
+  ecoute(q: Question): boolean {
+    return q instanceof QuellesSontLesFormationsAuCatalogue
   }
 }

@@ -9,11 +9,11 @@
     "sourceMap": true,
     "target": "ES6",
     "lib": ["es6"],
-    "outDir": "lib",
+    "outDir": "dist",
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

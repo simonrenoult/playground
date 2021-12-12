@@ -1,4 +1,4 @@
-import { FormationsAuCatalogue } from '../../../../test/read/application/quelles-sont-les-formations-au-catalogue.test'
+import { FormationsAuCatalogue } from '../modele-de-lecture/formations-au-catalogue'
 
 export interface CatalogueDeFormations {
   lister(): FormationsAuCatalogue

@@ -1,11 +1,6 @@
 import Commande from '../../../building-blocks/commande'
 import GestionnaireDeCommande from '../../../building-blocks/gestionnaire-de-commande'
-import { Horloge } from '../../../shared-kernel/horloge'
-import {
-  CodeDeFormation,
-  IdSessionDeFormation,
-  SessionDeFormation
-} from '../domain/entite/session-de-formation'
+import { CodeDeFormation, IdSessionDeFormation, SessionDeFormation } from '../domain/entite/session-de-formation'
 import { SessionDeFormationCreee } from '../domain/evenement/session-de-formation-creee'
 import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'
 

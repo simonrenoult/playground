@@ -1,7 +1,7 @@
 import Commande from '../commande'
 import EvenementDuDomaine from '../evenement'
 
-export default interface ResultatDeLIntercepteur {
+export default interface ResultatDeLIntercepteurDeCommande {
   commande: Commande
   evenementDuDomaine: EvenementDuDomaine
 }

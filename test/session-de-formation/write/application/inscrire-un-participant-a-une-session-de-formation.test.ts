@@ -1,4 +1,6 @@
 import { ulid } from 'ulid'
+import { describe, it } from 'mocha'
+import { expect } from 'chai'
 import {
   InscriptionALaSessionDeFormation,
   InscrireUnParticipantAUneSessionDeFormation
@@ -7,7 +9,7 @@ import {
   ParticipantInscritALaSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/domain/evenement/participant-inscrit-a-la-session-de-formation'
 import { Fixtures } from '../../../fixtures'
-import { SessionsDeFormationEnMemoire } from '../../../session-de-formation/sessions-de-formation-en-memoire'
+import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
 
 describe('SInscrireAUneSessionDeFormation', () => {
   it('ajoute un participant à la session de formation', () => {
@@ -31,7 +33,7 @@ describe('SInscrireAUneSessionDeFormation', () => {
 
     // Then
     const [sessionDeFormation] = sessionsDeFormationEnMemoire.lister()
-    expect(sessionDeFormation.participants).toHaveLength(1)
+    expect(sessionDeFormation.participants).to.have.length(1)
   })
 
   it('retourne un évènement d\'inscription à la session', () => {
@@ -54,6 +56,6 @@ describe('SInscrireAUneSessionDeFormation', () => {
     const evenement = sInscrireAUneSessionDeFormation.executer(inscriptionALaSessionDeFormation)
 
     // Then
-    expect(evenement).toBeInstanceOf(ParticipantInscritALaSessionDeFormation)
+    expect(evenement).to.be.an.instanceOf(ParticipantInscritALaSessionDeFormation)
   })
 })
