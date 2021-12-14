@@ -1,6 +1,6 @@
 import EvenementDuDomaine from '../../../building-blocks/evenement'
-import { GestionnaireDEvenementDuDomaine } from '../../../building-blocks/gestionnaire-d-evenement-du-domaine'
-import { Email } from '../../../shared-kernel/email'
+import GestionnaireDEvenementDuDomaine from '../../../building-blocks/gestionnaire-d-evenement-du-domaine'
+import Email from '../../../shared-kernel/email'
 import { SessionDeFormationCreee } from '../domain/evenement/session-de-formation-creee'
 import { PortailVersLeCatalogueDeFormations } from '../domain/gateway/formation'
 import { Notifieur } from '../domain/gateway/notifieur'

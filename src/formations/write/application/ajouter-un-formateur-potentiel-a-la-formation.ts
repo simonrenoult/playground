@@ -1,6 +1,6 @@
 import Commande from '../../../building-blocks/write/commande'
 import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
-import { Email } from '../../../shared-kernel/email'
+import Email from '../../../shared-kernel/email'
 import { CodeDeFormation, FormateurPotentiel } from '../domain/entite/formation'
 import { FormateurPotentielAjouteALaFormation } from '../domain/evenement/formateur-potentiel-ajoute-a-la.formation'
 import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'

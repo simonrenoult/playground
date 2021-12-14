@@ -1,4 +1,4 @@
-import { Email } from '../../src/shared-kernel/email'
+import Email from '../../src/shared-kernel/email'
 import { Notifieur } from '../../src/sessions-de-formation/write/domain/gateway/notifieur'
 
 export class NotifieurEnMemoire implements Notifieur {

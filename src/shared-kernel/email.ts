@@ -1,4 +1,4 @@
-export class Email {
+export default class Email {
   public readonly valeur: string
 
   constructor(

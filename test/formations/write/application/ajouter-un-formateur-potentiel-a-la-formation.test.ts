@@ -8,7 +8,8 @@ import { FormateurPotentiel } from '../../../../src/formations/write/domain/enti
 import {
   FormateurPotentielAjouteALaFormation
 } from '../../../../src/formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation'
-import { Email } from '../../../../src/shared-kernel/email'
+// @ts-ignore
+import Email from '../../../../src/shared-kernel/email'
 import { Fixtures } from '../../../fixtures'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
 

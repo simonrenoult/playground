@@ -1,4 +1,4 @@
-import { Email } from '../../../../shared-kernel/email'
+import Email from '../../../../shared-kernel/email'
 
 export class Formation {
   public readonly formateursPotentiels: FormateurPotentiel[] = []

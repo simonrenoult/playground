@@ -1,6 +1,6 @@
 import EvenementDuDomaine from './evenement'
 
-export interface GestionnaireDEvenementDuDomaine<E extends EvenementDuDomaine> {
+export default interface GestionnaireDEvenementDuDomaine<E extends EvenementDuDomaine> {
   execute(e: E): void
 
   ecoute(e: EvenementDuDomaine): boolean
