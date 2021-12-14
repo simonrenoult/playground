@@ -1,5 +1,5 @@
-import { GestionnaireDeQuestion } from '../../../building-blocks/gestionnaire-de-question'
-import Question from '../../../building-blocks/question'
+import { GestionnaireDeQuestion } from '../../../building-blocks/read/gestionnaire-de-question'
+import Question from '../../../building-blocks/read/question'
 import { FormationsAuCatalogue } from '../domain/modele-de-lecture/formations-au-catalogue'
 import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
 

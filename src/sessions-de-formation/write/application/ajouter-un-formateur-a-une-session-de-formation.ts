@@ -1,5 +1,5 @@
-import Commande from '../../../building-blocks/commande'
-import GestionnaireDeCommande from '../../../building-blocks/gestionnaire-de-commande'
+import Commande from '../../../building-blocks/write/commande'
+import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
 import { Email } from '../../../shared-kernel/email'
 import { Formateur } from '../domain/entite/formateur'
 import { IdSessionDeFormation } from '../domain/entite/session-de-formation'

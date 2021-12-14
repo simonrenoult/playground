@@ -1,5 +1,5 @@
-import Bus from './bus'
-import Commande from '../commande'
+import Bus from '../bus'
+import Commande from './commande'
 import IntercepteurDeCommande from './intercepteur-de-commande'
 import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-commande'
 import EvenementDuDomaine from '../evenement'

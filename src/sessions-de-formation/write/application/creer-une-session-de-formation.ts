@@ -1,5 +1,5 @@
-import Commande from '../../../building-blocks/commande'
-import GestionnaireDeCommande from '../../../building-blocks/gestionnaire-de-commande'
+import Commande from '../../../building-blocks/write/commande'
+import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
 import { CodeDeFormation, IdSessionDeFormation, SessionDeFormation } from '../domain/entite/session-de-formation'
 import { SessionDeFormationCreee } from '../domain/evenement/session-de-formation-creee'
 import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'

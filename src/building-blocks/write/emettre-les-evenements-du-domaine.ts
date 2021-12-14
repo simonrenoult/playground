@@ -1,4 +1,4 @@
-import Bus from './bus'
+import Bus from '../bus'
 import EvenementDuDomaine from '../evenement'
 import IntercepteurDeCommande from './intercepteur-de-commande'
 import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-commande'

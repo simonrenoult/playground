@@ -1,5 +1,5 @@
 import Commande from './commande'
-import EvenementDuDomaine from './evenement'
+import EvenementDuDomaine from '../evenement'
 
 export default interface GestionnaireDeCommande<C extends Commande, E extends EvenementDuDomaine> {
   executer(c: C): E

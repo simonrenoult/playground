@@ -1,7 +1,7 @@
 import IntercepteurDeQuestion from './intercepteur-de-question'
-import { GestionnaireDeQuestion } from '../gestionnaire-de-question'
-import Question from '../question'
-import ModeleDeLecture from '../modele-de-lecture'
+import { GestionnaireDeQuestion } from './gestionnaire-de-question'
+import Question from './question'
+import ModeleDeLecture from './modele-de-lecture'
 import ResultatDeLIntercepteurDeQuestion from './resultat-de-l-intercepteur-de-question'
 
 export default class ExecuterLeGestionnaireDeQuestion implements IntercepteurDeQuestion {

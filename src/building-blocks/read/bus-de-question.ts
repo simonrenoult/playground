@@ -1,8 +1,8 @@
-import Question from '../question'
+import Question from './question'
 import IntercepteurDeQuestion from './intercepteur-de-question'
 import ResultatDeLIntercepteurDeQuestion from './resultat-de-l-intercepteur-de-question'
-import ModeleDeLecture from '../modele-de-lecture'
-import Bus from './bus'
+import ModeleDeLecture from './modele-de-lecture'
+import Bus from '../bus'
 
 export default class BusDeQuestion implements Bus<Question, ModeleDeLecture> {
   constructor(

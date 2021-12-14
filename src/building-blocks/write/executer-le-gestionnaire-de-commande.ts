@@ -1,6 +1,6 @@
-import Commande from '../commande'
+import Commande from './commande'
 import EvenementDuDomaine from '../evenement'
-import GestionnaireDeCommande from '../gestionnaire-de-commande'
+import GestionnaireDeCommande from './gestionnaire-de-commande'
 import IntercepteurDeCommande from './intercepteur-de-commande'
 import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-commande'
 
