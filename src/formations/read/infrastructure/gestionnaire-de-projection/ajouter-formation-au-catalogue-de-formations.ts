@@ -1,9 +1,9 @@
 import { Redis } from 'ioredis'
 import GestionnaireDEvenementDuDomaine from '../../../../building-blocks/gestionnaire-d-evenement-du-domaine'
-import FormationCreee from '../../../write/domain/evenement/formation-creee'
 import EvenementDuDomaine from '../../../../building-blocks/evenement'
+import FormationCreee from '../../../write/domain/evenement/formation-creee'
 
-export class AjouterFormationAuCatalogueDeFormation implements GestionnaireDEvenementDuDomaine<FormationCreee> {
+export class AjouterFormationAuCatalogueDeFormations implements GestionnaireDEvenementDuDomaine<FormationCreee> {
   private readonly CLE_REDIS = 'formations'
 
   constructor(

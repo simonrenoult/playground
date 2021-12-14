@@ -9,6 +9,7 @@ export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
     private sessionsDeFormation: SessionDeFormation[] = []
   ) {
   }
+
   public lister(): SessionDeFormation[] {
     return this.sessionsDeFormation
   }
@@ -18,6 +19,6 @@ export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
   }
 
   public parId(idSessionDeSessionDeFormation: IdSessionDeFormation): SessionDeFormation {
-    return this.sessionsDeFormation.find((s) => s.id === idSessionDeSessionDeFormation.valeur)
+    return this.sessionsDeFormation.find((s) => s.id === idSessionDeSessionDeFormation)
   }
 }

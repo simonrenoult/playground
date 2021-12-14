@@ -1,9 +1,9 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  AjouterUnFormateurPotentielALaFormation,
-  FormateurPotentielAAjouterALaFormation
-} from '../../../../src/formations/write/application/ajouter-un-formateur-potentiel-a-la-formation'
+  GestionnaireDeAjouterUnFormateurPotentielALaFormation,
+  AjouterUnFormateurPotentielALaFormation
+} from '../../../../src/formations/write/application/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation'
 import { FormateurPotentiel } from '../../../../src/formations/write/domain/entite/formation'
 import {
   FormateurPotentielAjouteALaFormation
@@ -18,8 +18,8 @@ describe('AjouterUnFormateurPotentielALaFormation', () => {
     // Given
     const formations = new CatalogueDeFormationsEnMemoire()
     formations.persister(Fixtures.uneFormation())
-    const ajouterUnFormateurPotentielALaFormation = new AjouterUnFormateurPotentielALaFormation(formations)
-    const commande = new FormateurPotentielAAjouterALaFormation('foo@example.com', 'DDD01')
+    const ajouterUnFormateurPotentielALaFormation = new GestionnaireDeAjouterUnFormateurPotentielALaFormation(formations)
+    const commande = new AjouterUnFormateurPotentielALaFormation('foo@example.com', 'DDD01')
 
     // When
     ajouterUnFormateurPotentielALaFormation.executer(commande)
@@ -33,8 +33,8 @@ describe('AjouterUnFormateurPotentielALaFormation', () => {
     // Given
     const formations = new CatalogueDeFormationsEnMemoire()
     formations.persister(Fixtures.uneFormation())
-    const ajouterUnFormateurPotentielALaFormation = new AjouterUnFormateurPotentielALaFormation(formations)
-    const commande = new FormateurPotentielAAjouterALaFormation('foo@example.com', 'DDD01')
+    const ajouterUnFormateurPotentielALaFormation = new GestionnaireDeAjouterUnFormateurPotentielALaFormation(formations)
+    const commande = new AjouterUnFormateurPotentielALaFormation('foo@example.com', 'DDD01')
 
     // When
     const evenement = ajouterUnFormateurPotentielALaFormation.executer(commande)

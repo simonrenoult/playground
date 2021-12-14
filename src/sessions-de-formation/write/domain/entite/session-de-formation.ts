@@ -1,8 +1,9 @@
 import { Formateur } from './formateur'
 import { Participant } from './participant'
 import { Agregat } from '../../../../building-blocks/write/agregat'
+import { Entite } from '../../../../building-blocks/write/entite'
 
-export class SessionDeFormation implements Agregat {
+export class SessionDeFormation implements Agregat, Entite<IdSessionDeFormation> {
   public readonly participants: Participant[] = []
   public readonly formateurs: Formateur[] = []
 
@@ -12,8 +13,8 @@ export class SessionDeFormation implements Agregat {
   ) {
   }
 
-  get id(): string {
-    return this._idSessionDeFormation.valeur
+  get id(): IdSessionDeFormation {
+    return this._idSessionDeFormation
   }
 
   get codeFormation(): string {

@@ -5,8 +5,8 @@ import { CodeDeFormation, FormateurPotentiel } from '../domain/entite/formation'
 import { FormateurPotentielAjouteALaFormation } from '../domain/evenement/formateur-potentiel-ajoute-a-la.formation'
 import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
 
-export class FormateurPotentielAAjouterALaFormation implements Commande {
-  public readonly nom = 'FORMATEUR_POTENTIEL_A_AJOUTER_A_LA_FORMATION'
+export class AjouterUnFormateurPotentielALaFormation implements Commande {
+  public readonly nom = 'AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION'
 
   constructor(
     public readonly emailFormateurPotentiel: string,
@@ -15,21 +15,21 @@ export class FormateurPotentielAAjouterALaFormation implements Commande {
   }
 }
 
-export class AjouterUnFormateurPotentielALaFormation
-  implements GestionnaireDeCommande<FormateurPotentielAAjouterALaFormation, FormateurPotentielAjouteALaFormation> {
+export class GestionnaireDeAjouterUnFormateurPotentielALaFormation
+  implements GestionnaireDeCommande<AjouterUnFormateurPotentielALaFormation, FormateurPotentielAjouteALaFormation> {
 
   constructor(private readonly formations: CatalogueDeFormations) {
   }
 
-  public executer(c: FormateurPotentielAAjouterALaFormation): FormateurPotentielAjouteALaFormation {
-    const formation = this.formations.parCode(new CodeDeFormation(c.codeFormation))
+  public executer(c: AjouterUnFormateurPotentielALaFormation): FormateurPotentielAjouteALaFormation {
+    const formation = this.formations.parId(new CodeDeFormation(c.codeFormation))
     const formateurPotentiel = new FormateurPotentiel(new Email(c.emailFormateurPotentiel))
     formation.ajouterFormateurPotentiel(formateurPotentiel)
     this.formations.persister(formation)
-    return new FormateurPotentielAjouteALaFormation(formateurPotentiel.id, formation.code)
+    return new FormateurPotentielAjouteALaFormation(formateurPotentiel.id, formation.id.valeur)
   }
 
   public ecoute(c: Commande): boolean {
-    return c instanceof FormateurPotentielAAjouterALaFormation
+    return c instanceof AjouterUnFormateurPotentielALaFormation
   }
 }

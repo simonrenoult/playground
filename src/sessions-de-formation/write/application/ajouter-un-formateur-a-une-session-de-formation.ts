@@ -37,7 +37,7 @@ export class AjouterUnFormateurAUneSessionDeFormation
     return new FormateurAjouteALaSessionDeFormation(
       formateur.id.valeur,
       sessionDeFormation.codeFormation,
-      sessionDeFormation.id
+      sessionDeFormation.id.valeur
     )
   }
 

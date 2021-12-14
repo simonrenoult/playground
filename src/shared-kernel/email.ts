@@ -1,4 +1,6 @@
-export default class Email {
+import { ValueObject } from '../building-blocks/value-objet'
+
+export default class Email implements ValueObject {
   public readonly valeur: string
 
   constructor(

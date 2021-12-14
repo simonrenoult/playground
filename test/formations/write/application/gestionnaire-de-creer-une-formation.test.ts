@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { CreerUneFormation } from '../../../../src/formations/write/application/creer-une-formation'
+import { GestionnaireDeCreerUneFormation } from '../../../../src/formations/write/application/gestionnaire-de-creer-une-formation'
 import { Fixtures } from '../../../fixtures'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
 
@@ -9,14 +9,14 @@ describe('CreerUneFormation', () => {
     // Given
     const formationACreer = Fixtures.uneFormationACreer()
     const formations = new CatalogueDeFormationsEnMemoire()
-    const creerUneFormation = new CreerUneFormation(formations)
+    const creerUneFormation = new GestionnaireDeCreerUneFormation(formations)
 
     // When
     creerUneFormation.executer(formationACreer)
 
     // Then
     const [formation] = formations.lister()
-    expect(formation.code).to.deep.equal('DDD01')
+    expect(formation.id).to.deep.equal('DDD01')
     expect(formation.dureeEnHeures).to.deep.equal(14)
   })
 
@@ -24,7 +24,7 @@ describe('CreerUneFormation', () => {
     // Given
     const formationACreer = Fixtures.uneFormationACreer()
     const formations = new CatalogueDeFormationsEnMemoire()
-    const creerUneFormation = new CreerUneFormation(formations)
+    const creerUneFormation = new GestionnaireDeCreerUneFormation(formations)
 
     // When
     const evenement = creerUneFormation.executer(formationACreer)

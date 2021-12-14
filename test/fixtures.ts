@@ -1,4 +1,4 @@
-import { FormationACreer } from '../src/formations/write/application/creer-une-formation'
+import { CreerUneFormation } from '../src/formations/write/application/gestionnaire-de-creer-une-formation'
 import { CodeDeFormation, DureeDeFormation, Formation } from '../src/formations/write/domain/entite/formation'
 import { SessionDeFormationACreer } from '../src/sessions-de-formation/write/application/creer-une-session-de-formation'
 import {
@@ -16,8 +16,8 @@ export const DEFAUT = {
 }
 
 export class Fixtures {
-  public static uneFormationACreer(): FormationACreer {
-    return new FormationACreer(
+  public static uneFormationACreer(): CreerUneFormation {
+    return new CreerUneFormation(
       DEFAUT.CODE_FORMATION,
       DEFAUT.DUREE_FORMATION
     )

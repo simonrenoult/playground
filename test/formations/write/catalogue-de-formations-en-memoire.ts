@@ -7,8 +7,8 @@ export class CatalogueDeFormationsEnMemoire implements CatalogueDeFormations {
   ) {
   }
 
-  public parCode(code: CodeDeFormation): Formation {
-    return this.formations.find((f) => f.code === code.valeur)
+  public parId(code: CodeDeFormation): Formation {
+    return this.formations.find((f) => f.id === code)
   }
 
   public lister(): Formation[] {

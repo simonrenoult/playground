@@ -5,6 +5,6 @@ export interface Formation {
   formateurs: Array<{ email: string }>
 }
 
-export interface PortailVersLeCatalogueDeFormations extends Gateway {
+export interface CatalogueDeFormations extends Gateway {
   chercherFormationParCode(code: string): Formation
 }

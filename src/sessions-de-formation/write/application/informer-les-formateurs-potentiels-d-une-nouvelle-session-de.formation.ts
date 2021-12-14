@@ -2,12 +2,12 @@ import EvenementDuDomaine from '../../../building-blocks/evenement'
 import GestionnaireDEvenementDuDomaine from '../../../building-blocks/gestionnaire-d-evenement-du-domaine'
 import Email from '../../../shared-kernel/email'
 import { SessionDeFormationCreee } from '../domain/evenement/session-de-formation-creee'
-import { PortailVersLeCatalogueDeFormations } from '../domain/gateway/formation'
+import { CatalogueDeFormations } from '../domain/gateway/formation'
 import { Notifieur } from '../domain/gateway/notifieur'
 
 export class InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation implements GestionnaireDEvenementDuDomaine<SessionDeFormationCreee> {
   constructor(
-    private readonly portailVersLeCatalogueDeFormations: PortailVersLeCatalogueDeFormations,
+    private readonly portailVersLeCatalogueDeFormations: CatalogueDeFormations,
     private readonly notifieur: Notifieur
   ) {
   }

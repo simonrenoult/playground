@@ -1,7 +1,8 @@
 import Email from '../../../../shared-kernel/email'
 import { Agregat } from '../../../../building-blocks/write/agregat'
+import { Entite } from '../../../../building-blocks/write/entite'
 
-export class Formation implements Agregat {
+export class Formation implements Agregat, Entite<CodeDeFormation> {
   public readonly formateursPotentiels: FormateurPotentiel[] = []
 
   constructor(
@@ -10,8 +11,8 @@ export class Formation implements Agregat {
   ) {
   }
 
-  get code(): string {
-    return this._code.valeur
+  get id(): CodeDeFormation {
+    return this._code
   }
 
   get dureeEnHeures(): number {

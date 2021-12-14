@@ -4,8 +4,8 @@ import { CodeDeFormation, DureeDeFormation, Formation } from '../domain/entite/f
 import FormationCreee from '../domain/evenement/formation-creee'
 import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
 
-export class FormationACreer implements Commande {
-  public readonly nom: string = 'FORMATION_A_CREER'
+export class CreerUneFormation implements Commande {
+  public readonly nom: string = 'CREER_UNE_FORMATION'
 
   constructor(
     public readonly code: string,
@@ -14,22 +14,22 @@ export class FormationACreer implements Commande {
   }
 }
 
-export class CreerUneFormation implements GestionnaireDeCommande<FormationACreer, FormationCreee> {
+export class GestionnaireDeCreerUneFormation implements GestionnaireDeCommande<CreerUneFormation, FormationCreee> {
   constructor(
     private readonly formations: CatalogueDeFormations
   ) {
   }
 
-  public executer(formationACreer: FormationACreer): FormationCreee {
+  public executer(formationACreer: CreerUneFormation): FormationCreee {
     const formation = new Formation(
       new CodeDeFormation(formationACreer.code),
       new DureeDeFormation(formationACreer.dureeEnHeures)
     )
     this.formations.persister(formation)
-    return new FormationCreee(formation.code, formation.dureeEnHeures)
+    return new FormationCreee(formation.id.valeur, formation.dureeEnHeures)
   }
 
   public ecoute(c: Commande): boolean {
-    return c instanceof FormationACreer
+    return c instanceof CreerUneFormation
   }
 }
