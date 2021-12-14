@@ -1,7 +1,8 @@
 import { Formateur } from './formateur'
 import { Participant } from './participant'
+import { Agregat } from '../../../../building-blocks/write/agregat'
 
-export class SessionDeFormation {
+export class SessionDeFormation implements Agregat {
   public readonly participants: Participant[] = []
   public readonly formateurs: Formateur[] = []
 

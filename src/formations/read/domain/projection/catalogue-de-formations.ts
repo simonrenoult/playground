@@ -1,5 +1,6 @@
 import FormationsAuCatalogue from '../modele-de-lecture/formations-au-catalogue'
+import { Projection } from '../../../../building-blocks/read/projection'
 
-export default interface CatalogueDeFormations {
+export default interface CatalogueDeFormations extends Projection {
   lister(): FormationsAuCatalogue
 }

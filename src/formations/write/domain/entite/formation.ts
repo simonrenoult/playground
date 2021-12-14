@@ -1,6 +1,7 @@
 import Email from '../../../../shared-kernel/email'
+import { Agregat } from '../../../../building-blocks/write/agregat'
 
-export class Formation {
+export class Formation implements Agregat {
   public readonly formateursPotentiels: FormateurPotentiel[] = []
 
   constructor(
