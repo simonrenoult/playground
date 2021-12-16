@@ -1,5 +1,5 @@
-import { CreerUneFormation } from '../src/formations/write/application/gestionnaire-de-creer-une-formation'
-import { CodeDeFormation, DureeDeFormation, Formation } from '../src/formations/write/domain/entite/formation'
+import { CreerUneFormation } from '../src/catalogue-de-formations/write/application/gestionnaire-de-creer-une-formation'
+import { CodeDeFormation, DureeDeFormation, Formation } from '../src/catalogue-de-formations/write/domain/entite/formation'
 import { SessionDeFormationACreer } from '../src/sessions-de-formation/write/application/creer-une-session-de-formation'
 import {
   IdSessionDeFormation,

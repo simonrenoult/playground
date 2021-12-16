@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import {
   GestionnaireDeQuellesSontLesFormationsAuCatalogue,
   QuellesSontLesFormationsAuCatalogue
-} from '../../../../src/formations/read/application/quelles-sont-les-formations-au-catalogue'
+} from '../../../../src/catalogue-de-formations/read/application/quelles-sont-les-formations-au-catalogue'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
 
 describe('QuellesSontLesFormationsAuCatalogue', () => {

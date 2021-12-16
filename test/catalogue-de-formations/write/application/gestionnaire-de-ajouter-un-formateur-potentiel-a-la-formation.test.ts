@@ -3,11 +3,11 @@ import { expect } from 'chai'
 import {
   GestionnaireDeAjouterUnFormateurPotentielALaFormation,
   AjouterUnFormateurPotentielALaFormation
-} from '../../../../src/formations/write/application/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation'
-import { FormateurPotentiel } from '../../../../src/formations/write/domain/entite/formation'
+} from '../../../../src/catalogue-de-formations/write/application/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation'
+import { FormateurPotentiel } from '../../../../src/catalogue-de-formations/write/domain/entite/formation'
 import {
   FormateurPotentielAjouteALaFormation
-} from '../../../../src/formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation'
+} from '../../../../src/catalogue-de-formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation'
 // @ts-ignore
 import Email from '../../../../src/shared-kernel/email'
 import { Fixtures } from '../../../fixtures'

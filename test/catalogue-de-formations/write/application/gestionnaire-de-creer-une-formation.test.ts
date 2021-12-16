@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { GestionnaireDeCreerUneFormation } from '../../../../src/formations/write/application/gestionnaire-de-creer-une-formation'
+import { GestionnaireDeCreerUneFormation } from '../../../../src/catalogue-de-formations/write/application/gestionnaire-de-creer-une-formation'
 import { Fixtures } from '../../../fixtures'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
 
