@@ -30,7 +30,7 @@ export class CreerUneSessionDeFormation
     this.sessionsDeFormation.persister(sessionDeFormation)
 
     return new SessionDeFormationCreee(
-      sessionDeFormation.id,
+      sessionDeFormation.id.valeur,
       sessionDeFormation.codeFormation
     )
   }

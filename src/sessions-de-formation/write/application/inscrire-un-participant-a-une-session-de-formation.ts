@@ -38,7 +38,7 @@ export class InscrireUnParticipantAUneSessionDeFormation
 
     return new ParticipantInscritALaSessionDeFormation(
       sessionDeFormation.codeFormation,
-      sessionDeFormation.id,
+      sessionDeFormation.id.valeur,
       participant.id.valeur
     )
   }
