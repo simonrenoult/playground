@@ -2,6 +2,7 @@ import { Formateur } from './formateur'
 import { Participant } from './participant'
 import { Agregat } from '../../../../building-blocks/write/agregat'
 import { Entite } from '../../../../building-blocks/write/entite'
+import { ValueObject } from '../../../../building-blocks/value-objet'
 
 export class SessionDeFormation implements Agregat, Entite<IdSessionDeFormation> {
   public readonly participants: Participant[] = []
@@ -30,14 +31,14 @@ export class SessionDeFormation implements Agregat, Entite<IdSessionDeFormation>
   }
 }
 
-export class CodeDeFormation {
+export class CodeDeFormation implements ValueObject {
   constructor(
     public readonly valeur: string
   ) {
   }
 }
 
-export class IdSessionDeFormation {
+export class IdSessionDeFormation implements ValueObject {
   public readonly valeur: string
 
   constructor(

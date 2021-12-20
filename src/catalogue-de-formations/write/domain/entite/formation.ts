@@ -1,6 +1,7 @@
 import Email from '../../../../shared-kernel/email'
 import { Agregat } from '../../../../building-blocks/write/agregat'
 import { Entite } from '../../../../building-blocks/write/entite'
+import { ValueObject } from '../../../../building-blocks/value-objet'
 
 export class Formation implements Agregat, Entite<CodeDeFormation> {
   public readonly formateursPotentiels: FormateurPotentiel[] = []
@@ -24,7 +25,7 @@ export class Formation implements Agregat, Entite<CodeDeFormation> {
   }
 }
 
-export class DureeDeFormation {
+export class DureeDeFormation implements ValueObject {
   public readonly valeur: number
 
   constructor(dureeEnHeure: number) {
@@ -33,7 +34,7 @@ export class DureeDeFormation {
   }
 }
 
-export class CodeDeFormation {
+export class CodeDeFormation implements ValueObject {
   public readonly valeur: string
 
   constructor(code: string) {
@@ -42,7 +43,7 @@ export class CodeDeFormation {
   }
 }
 
-export class FormateurPotentiel {
+export class FormateurPotentiel implements ValueObject {
   public readonly id: string
   constructor(
     public readonly email: Email
