@@ -2,8 +2,8 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  CreerUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/creer-une-session-de-formation'
+  GestionnaireDeCreerUneSessionDeFormation
+} from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-creer-une-session-de-formation'
 import {
   SessionDeFormationCreee
 } from '../../../../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
@@ -14,7 +14,7 @@ describe('CreerUneSessionDeFormation', () => {
   it('persiste une nouvelle session de formation', () => {
     // Given
     const sessionsDeFormation = new SessionsDeFormationEnMemoire()
-    const creerUneSessionDeFormation = new CreerUneSessionDeFormation(sessionsDeFormation)
+    const creerUneSessionDeFormation = new GestionnaireDeCreerUneSessionDeFormation(sessionsDeFormation)
     const idSessionDeFormation = ulid()
     const sessionDeFormationAPlanifier = Fixtures.uneSessionDeFormationACreer(idSessionDeFormation)
 
@@ -30,7 +30,7 @@ describe('CreerUneSessionDeFormation', () => {
   it('retourne un évènement de creation de la session', () => {
     // Given
     const sessionsDeFormation = new SessionsDeFormationEnMemoire()
-    const planifierUneSessionDeFormation = new CreerUneSessionDeFormation(
+    const planifierUneSessionDeFormation = new GestionnaireDeCreerUneSessionDeFormation(
       sessionsDeFormation,
     )
     const idSessionDeFormation = ulid()

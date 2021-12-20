@@ -2,9 +2,9 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  InscriptionALaSessionDeFormation,
-  InscrireUnParticipantAUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/inscrire-un-participant-a-une-session-de-formation'
+  InscrireUnParticipantAUneSessionDeFormation,
+  GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+} from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
 import {
   ParticipantInscritALaSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/domain/evenement/participant-inscrit-a-la-session-de-formation'
@@ -15,7 +15,7 @@ describe('SInscrireAUneSessionDeFormation', () => {
   it('ajoute un participant à la session de formation', () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire()
-    const sInscrireAUneSessionDeFormation = new InscrireUnParticipantAUneSessionDeFormation(
+    const sInscrireAUneSessionDeFormation = new GestionnaireDeInscrireUnParticipantAUneSessionDeFormation(
       sessionsDeFormationEnMemoire
     )
     const emailParticipant = 'foo@bar.com'
@@ -23,7 +23,7 @@ describe('SInscrireAUneSessionDeFormation', () => {
     sessionsDeFormationEnMemoire.persister(
       Fixtures.uneSessionDeFormation(idSessionDeSessionDeFormation)
     )
-    const inscriptionALaSessionDeFormation = new InscriptionALaSessionDeFormation(
+    const inscriptionALaSessionDeFormation = new InscrireUnParticipantAUneSessionDeFormation(
       emailParticipant,
       idSessionDeSessionDeFormation
     )
@@ -39,7 +39,7 @@ describe('SInscrireAUneSessionDeFormation', () => {
   it('retourne un évènement d\'inscription à la session', () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire()
-    const sInscrireAUneSessionDeFormation = new InscrireUnParticipantAUneSessionDeFormation(
+    const sInscrireAUneSessionDeFormation = new GestionnaireDeInscrireUnParticipantAUneSessionDeFormation(
       sessionsDeFormationEnMemoire
     )
     const emailParticipant = 'foo@bar.com'
@@ -47,7 +47,7 @@ describe('SInscrireAUneSessionDeFormation', () => {
     sessionsDeFormationEnMemoire.persister(
       Fixtures.uneSessionDeFormation(idSessionDeSessionDeFormation)
     )
-    const inscriptionALaSessionDeFormation = new InscriptionALaSessionDeFormation(
+    const inscriptionALaSessionDeFormation = new InscrireUnParticipantAUneSessionDeFormation(
       emailParticipant,
       idSessionDeSessionDeFormation
     )

@@ -6,8 +6,8 @@ import { IdSessionDeFormation } from '../domain/entite/session-de-formation'
 import { FormateurAjouteALaSessionDeFormation } from '../domain/evenement/formateur-ajoute-a-la-session-de-formation'
 import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'
 
-export class FormateurAAjouterAUneSessionDeFormation implements Commande {
-  public readonly nom = 'FORMATEUR_A_AJOUTER_A_UNE_SESSION_DE_FORMATION'
+export class AjouterUnFormateurAUneSessionDeFormation implements Commande {
+  public readonly nom = 'AJOUTER_UN_FORMATEUR_A_UNE_SESSION_DE_FORMATION'
 
   constructor(
     public readonly emailFormateur: string,
@@ -16,8 +16,8 @@ export class FormateurAAjouterAUneSessionDeFormation implements Commande {
   }
 }
 
-export class AjouterUnFormateurAUneSessionDeFormation
-  implements GestionnaireDeCommande<FormateurAAjouterAUneSessionDeFormation, FormateurAjouteALaSessionDeFormation> {
+export class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
+  implements GestionnaireDeCommande<AjouterUnFormateurAUneSessionDeFormation, FormateurAjouteALaSessionDeFormation> {
 
   constructor(
     private readonly sessionsDeFormation: SessionsDeFormation
@@ -25,7 +25,7 @@ export class AjouterUnFormateurAUneSessionDeFormation
   }
 
   public executer(
-    sessionDeFormationAStaffer: FormateurAAjouterAUneSessionDeFormation
+    sessionDeFormationAStaffer: AjouterUnFormateurAUneSessionDeFormation
   ): FormateurAjouteALaSessionDeFormation {
     const sessionDeFormation = this.sessionsDeFormation.parId(
       new IdSessionDeFormation(sessionDeFormationAStaffer.idSessionDeSessionDeFormation)
@@ -42,6 +42,6 @@ export class AjouterUnFormateurAUneSessionDeFormation
   }
 
   public ecoute(c: Commande): boolean {
-    return c instanceof FormateurAAjouterAUneSessionDeFormation
+    return c instanceof AjouterUnFormateurAUneSessionDeFormation
   }
 }

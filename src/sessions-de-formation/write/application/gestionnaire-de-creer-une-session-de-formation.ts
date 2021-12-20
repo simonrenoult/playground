@@ -4,8 +4,8 @@ import { CodeDeFormation, IdSessionDeFormation, SessionDeFormation } from '../do
 import { SessionDeFormationCreee } from '../domain/evenement/session-de-formation-creee'
 import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'
 
-export class SessionDeFormationACreer implements Commande {
-  public readonly nom = 'SESSION_DE_FORMATION_A_PLANIFIER'
+export class CreerUneSessionDeFormation implements Commande {
+  public readonly nom = 'CREER_UNE_SESSION_DE_FORMATION'
 
   constructor(
     public readonly idSessionDeFormation: string,
@@ -14,15 +14,15 @@ export class SessionDeFormationACreer implements Commande {
   }
 }
 
-export class CreerUneSessionDeFormation
-  implements GestionnaireDeCommande<SessionDeFormationACreer, SessionDeFormationCreee> {
+export class GestionnaireDeCreerUneSessionDeFormation
+  implements GestionnaireDeCommande<CreerUneSessionDeFormation, SessionDeFormationCreee> {
 
   constructor(
     private readonly sessionsDeFormation: SessionsDeFormation,
   ) {
   }
 
-  public executer(sessionDeFormationAPlanifier: SessionDeFormationACreer): SessionDeFormationCreee {
+  public executer(sessionDeFormationAPlanifier: CreerUneSessionDeFormation): SessionDeFormationCreee {
     const sessionDeFormation = new SessionDeFormation(
       new IdSessionDeFormation(sessionDeFormationAPlanifier.idSessionDeFormation),
       new CodeDeFormation(sessionDeFormationAPlanifier.codeFormation),

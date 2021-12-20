@@ -2,9 +2,9 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  AjouterUnFormateurAUneSessionDeFormation,
-  FormateurAAjouterAUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/ajouter-un-formateur-a-une-session-de-formation'
+  GestionnaireDeAjouterUnFormateurAUneSessionDeFormation,
+  AjouterUnFormateurAUneSessionDeFormation
+} from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation'
 import {
   FormateurAjouteALaSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/domain/evenement/formateur-ajoute-a-la-session-de-formation'
@@ -15,7 +15,7 @@ describe('AjouterUnFormateurAUneSessionDeFormation', () => {
   it('ajoute un formateur à la session de formation', () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire()
-    const stafferUneSessionDeFormation = new AjouterUnFormateurAUneSessionDeFormation(
+    const stafferUneSessionDeFormation = new GestionnaireDeAjouterUnFormateurAUneSessionDeFormation(
       sessionsDeFormationEnMemoire
     )
     const emailFormateur = 'qux@example.com'
@@ -23,7 +23,7 @@ describe('AjouterUnFormateurAUneSessionDeFormation', () => {
     sessionsDeFormationEnMemoire.persister(
       Fixtures.uneSessionDeFormation(idSessionDeSessionDeFormation)
     )
-    const sessionDeFormationAStaffer = new FormateurAAjouterAUneSessionDeFormation(
+    const sessionDeFormationAStaffer = new AjouterUnFormateurAUneSessionDeFormation(
       emailFormateur,
       idSessionDeSessionDeFormation
     )
@@ -39,7 +39,7 @@ describe('AjouterUnFormateurAUneSessionDeFormation', () => {
   it('retourne un évènement de staffing d\'un formateur à la session de formation', () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire()
-    const stafferUneSessionDeFormation = new AjouterUnFormateurAUneSessionDeFormation(
+    const stafferUneSessionDeFormation = new GestionnaireDeAjouterUnFormateurAUneSessionDeFormation(
       sessionsDeFormationEnMemoire
     )
     const emailFormateur = 'qux@example.com'
@@ -47,7 +47,7 @@ describe('AjouterUnFormateurAUneSessionDeFormation', () => {
     sessionsDeFormationEnMemoire.persister(
       Fixtures.uneSessionDeFormation(idSessionDeSessionDeFormation)
     )
-    const sessionDeFormationAStaffer = new FormateurAAjouterAUneSessionDeFormation(
+    const sessionDeFormationAStaffer = new AjouterUnFormateurAUneSessionDeFormation(
       emailFormateur,
       idSessionDeSessionDeFormation
     )

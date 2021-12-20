@@ -8,8 +8,8 @@ import {
 } from '../domain/evenement/participant-inscrit-a-la-session-de-formation'
 import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'
 
-export class InscriptionALaSessionDeFormation implements Commande {
-  public readonly nom = 'INSCRIPTION_A_LA_SESSION_DE_FORMATION'
+export class InscrireUnParticipantAUneSessionDeFormation implements Commande {
+  public readonly nom = 'INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION'
 
   constructor(
     public readonly emailParticipant: string,
@@ -18,8 +18,8 @@ export class InscriptionALaSessionDeFormation implements Commande {
   }
 }
 
-export class InscrireUnParticipantAUneSessionDeFormation
-  implements GestionnaireDeCommande<InscriptionALaSessionDeFormation, ParticipantInscritALaSessionDeFormation> {
+export class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+  implements GestionnaireDeCommande<InscrireUnParticipantAUneSessionDeFormation, ParticipantInscritALaSessionDeFormation> {
 
   constructor(
     private readonly sessionsDeFormation: SessionsDeFormation
@@ -27,7 +27,7 @@ export class InscrireUnParticipantAUneSessionDeFormation
   }
 
   public executer(
-    inscriptionALaSessionDeFormation: InscriptionALaSessionDeFormation
+    inscriptionALaSessionDeFormation: InscrireUnParticipantAUneSessionDeFormation
   ): ParticipantInscritALaSessionDeFormation {
     const sessionDeFormation = this.sessionsDeFormation.parId(
       new IdSessionDeFormation(inscriptionALaSessionDeFormation.idSessionDeSessionDeFormation)
@@ -44,6 +44,6 @@ export class InscrireUnParticipantAUneSessionDeFormation
   }
 
   public ecoute(c: Commande): boolean {
-    return c instanceof InscriptionALaSessionDeFormation
+    return c instanceof InscrireUnParticipantAUneSessionDeFormation
   }
 }

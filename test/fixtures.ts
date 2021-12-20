@@ -1,6 +1,6 @@
 import { CreerUneFormation } from '../src/catalogue-de-formations/write/application/gestionnaire-de-creer-une-formation'
 import { CodeDeFormation, DureeDeFormation, Formation } from '../src/catalogue-de-formations/write/domain/entite/formation'
-import { SessionDeFormationACreer } from '../src/sessions-de-formation/write/application/creer-une-session-de-formation'
+import { CreerUneSessionDeFormation } from '../src/sessions-de-formation/write/application/gestionnaire-de-creer-une-session-de-formation'
 import {
   IdSessionDeFormation,
   SessionDeFormation
@@ -30,8 +30,8 @@ export class Fixtures {
     )
   }
 
-  public static uneSessionDeFormationACreer(idSessionDeFormation: string): SessionDeFormationACreer {
-    return new SessionDeFormationACreer(
+  public static uneSessionDeFormationACreer(idSessionDeFormation: string): CreerUneSessionDeFormation {
+    return new CreerUneSessionDeFormation(
       idSessionDeFormation,
       DEFAUT.CODE_FORMATION
     )
