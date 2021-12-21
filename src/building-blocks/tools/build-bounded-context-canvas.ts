@@ -1,7 +1,8 @@
 import { resolve } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
 import { ClassDeclaration, Project } from 'ts-morph'
-import { IBoundedContext } from '../bounded-context'
+import { IBoundedContext, Message } from '../bounded-context'
+import { EOL } from 'os'
 
 // FIXME: dynamiser la récupération des bounded contexts
 const NOM_DES_BOUNDED_CONTEXTS = [
@@ -53,6 +54,7 @@ function listerLesClassesDuBoundedContext(cheminVersLeBoundedContext: string): C
 
 function creerLeBoundedContextCanvas(boundedContext: IBoundedContext): string {
   const templateDeBoundedContextCanvas = readFileSync(CHEMIN_VERS_LE_TEMPLATE, { encoding: 'utf8' })
+
   return templateDeBoundedContextCanvas
     .replace('{{ nom }}', boundedContext.nom)
     .replace('{{ description }}', boundedContext.description)
@@ -60,10 +62,25 @@ function creerLeBoundedContextCanvas(boundedContext: IBoundedContext): string {
     .replace('{{ businessModel }}', boundedContext.classificationStrategique.businessModel)
     .replace('{{ evolution }}', boundedContext.classificationStrategique.evolution)
     .replace('{{ rolesDuDomaine }}', boundedContext.rolesDuDomaine.join(', '))
-    .replace('{{ questions }}', boundedContext.questions.map(q => `- ${q}`).join('\n'))
-    .replace('{{ commandes }}', boundedContext.commandes.map(c => `- ${c}`).join('\n'))
-    .replace('{{ evenementsDuDomaine }}', boundedContext.evenementsDuDomaine.map(e => `- ${e}`).join('\n'))
-    .replace('{{ ubiquitousLanguage }}', boundedContext.ubiquitousLanguage.map(item => `- ${item}`).join('\n'))
+    .replace('{{ questions }}', boundedContext.questions.map(versDetails).join(EOL))
+    .replace('{{ commandes }}', boundedContext.commandes.map(versDetails).join(EOL))
+    .replace('{{ evenementsDuDomaine }}', boundedContext.evenementsDuDomaine.map(versDetails).join(EOL))
+    .replace('{{ ubiquitousLanguage }}', boundedContext.ubiquitousLanguage.map(item => `- ${item}`).join(EOL))
+
+  function versDetails(m: Message): string {
+    const MARQUEUR_DE_CODE = '```'
+    const LANGAGE = `ts`
+    return [
+      '<details>',
+      `<summary>${m.nom}</summary>`,
+      EOL,
+      `${MARQUEUR_DE_CODE}${LANGAGE}`,
+      m.contenu,
+      `${MARQUEUR_DE_CODE}${EOL}`,
+      EOL,
+      '</details>',
+    ].join(EOL)
+  }
 }
 
 function ecrireBoundedContextCanvasSurLeSystemeDeFichier(cheminVersLeBoundedContext: string, boundedContextCanvas: string) {
@@ -71,9 +88,7 @@ function ecrireBoundedContextCanvasSurLeSystemeDeFichier(cheminVersLeBoundedCont
   writeFileSync(cheminVersLeCanvasDuBoundedContext, boundedContextCanvas, { encoding: 'utf8' })
 }
 
-type Messages = { commandes: string[]; questions: string[]; evenementsDuDomaine: string[] }
-
-async function listerLesMessagesDuBoundedContext(classes: ClassDeclaration[]): Promise<Messages> {
+async function listerLesMessagesDuBoundedContext(classes: ClassDeclaration[]): Promise<{ commandes: Array<DetailsDeLaClasse>; evenementsDuDomaine: Array<DetailsDeLaClasse>; questions: Array<DetailsDeLaClasse> }> {
   return {
     commandes: recupererLeNomDeLaClassePourLeType(classes, 'Commande'),
     questions: recupererLeNomDeLaClassePourLeType(classes, 'Question'),
@@ -82,16 +97,18 @@ async function listerLesMessagesDuBoundedContext(classes: ClassDeclaration[]): P
 }
 
 async function identifierLUbiquitousLanguage(classes: ClassDeclaration[]): Promise<string[]> {
-  const agregats: string[] = recupererLeNomDeLaClassePourLeType(classes, 'Agregat')
-  const entites: string[] = recupererLeNomDeLaClassePourLeType(classes, 'Entite')
-  const valueObjects: string[] = recupererLeNomDeLaClassePourLeType(classes, 'ValueObject')
+  const agregats: string[] = recupererLeNomDeLaClassePourLeType(classes, 'Agregat').map(c => c.nom)
+  const entites: string[] = recupererLeNomDeLaClassePourLeType(classes, 'Entite').map(c => c.nom)
+  const valueObjects: string[] = recupererLeNomDeLaClassePourLeType(classes, 'ValueObject').map(c => c.nom)
   return [...new Set([...agregats, ...entites, ...valueObjects])]
 }
 
 type Interfaces = 'ValueObject' | 'Agregat' | 'Entite' | 'Commande' | 'EvenementDuDomaine' | 'Question'
 
-function recupererLeNomDeLaClassePourLeType(classes: ClassDeclaration[], interfaceImplementee: Interfaces): string[] {
+type DetailsDeLaClasse = { nom: string, contenu: string }
+
+function recupererLeNomDeLaClassePourLeType(classes: ClassDeclaration[], interfaceImplementee: Interfaces): Array<DetailsDeLaClasse> {
   return classes
     .filter(c => c.getImplements().some(i => i.getText().startsWith(interfaceImplementee)))
-    .map(c => c.getName())
+    .map(c => ({ nom: c.getName(), contenu: c.getText() }))
 }

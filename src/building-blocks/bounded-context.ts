@@ -1,7 +1,7 @@
 export default class BoundedContext implements IBoundedContext {
-  public readonly questions: string[] = []
-  public readonly commandes: string[] = []
-  public readonly evenementsDuDomaine: string[] = []
+  public readonly questions: Message[] = []
+  public readonly commandes: Message[] = []
+  public readonly evenementsDuDomaine: Message[] = []
   public readonly ubiquitousLanguage: string[] = []
 
   constructor(
@@ -12,15 +12,15 @@ export default class BoundedContext implements IBoundedContext {
   ) {
   }
 
-  ajouterQuestions(questions: string[]): void {
+  ajouterQuestions(questions: Message[]): void {
     this.questions.push(...questions)
   }
 
-  ajouterCommandes(commandes: string[]): void {
+  ajouterCommandes(commandes: Message[]): void {
     this.commandes.push(...commandes)
   }
 
-  ajouterEvenementsDuDomaine(evenementsDuDomaine: string[]): void {
+  ajouterEvenementsDuDomaine(evenementsDuDomaine: Message[]): void {
     this.evenementsDuDomaine.push(...evenementsDuDomaine)
   }
 
@@ -34,14 +34,14 @@ export interface IBoundedContext {
   description: string
   classificationStrategique: ClassificationStrategique
   rolesDuDomaine: Array<RoleDuDomaine>
-  questions: string[]
-  commandes: string[]
-  evenementsDuDomaine: string[]
+  questions: Message[]
+  commandes: Message[]
+  evenementsDuDomaine: Message[]
   ubiquitousLanguage: string[]
 
-  ajouterQuestions(questions: string[]): void
-  ajouterCommandes(commandes: string[]): void
-  ajouterEvenementsDuDomaine(evenementsDuDomaine: string[]): void
+  ajouterQuestions(questions: Message[]): void
+  ajouterCommandes(commandes: Message[]): void
+  ajouterEvenementsDuDomaine(evenementsDuDomaine: Message[]): void
   ajouterLUbiquitousLanguage(elementsDeLangage: string[]): void
 }
 
@@ -50,6 +50,8 @@ type ClassificationStrategique = {
   businessModel: BusinessModel,
   evolution: Evolution
 }
+
+export type Message = { nom: string, contenu: string }
 
 export enum Domain {
   CORE = 'CORE',
