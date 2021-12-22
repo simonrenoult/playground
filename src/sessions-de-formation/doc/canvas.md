@@ -8,7 +8,19 @@
 
 ## Questions
 
+<details>
+<summary>QuellesSontLesSessionsDeFormationAVenir</summary>
 
+
+```ts
+export class QuellesSontLesSessionsDeFormationAVenir implements Question {
+  public readonly nom = 'QUELLES_SONT_LES_SESSIONS_DE_FORMATION_A_VENIR'
+}
+```
+
+
+
+</details>
 
 ## Commandes
 
@@ -134,8 +146,8 @@ export class SessionDeFormationCreee implements EvenementDuDomaine {
 
 ## Ubiquitous Language
 
-- SessionDeFormation
-- Formateur
-- Participant
 - CodeDeFormation
+- Formateur
 - IdSessionDeFormation
+- Participant
+- SessionDeFormation

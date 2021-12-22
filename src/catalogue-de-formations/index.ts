@@ -8,7 +8,8 @@ const catalogueDesFormations = new BoundedContext(
     businessModel: BusinessModel.COST_REDUCTION,
     evolution: Evolution.PRODUCT
   },
-  [RoleDuDomaine.DRAFT]
+  [RoleDuDomaine.DRAFT],
+  __dirname
 )
 
 export default catalogueDesFormations

@@ -9,7 +9,8 @@ const sessionsDeFormation = new BoundedContext(
     businessModel: BusinessModel.COST_REDUCTION,
     evolution: Evolution.PRODUCT
   },
-  [RoleDuDomaine.EXECUTION]
+  [RoleDuDomaine.EXECUTION],
+  __dirname
 )
 
 export default sessionsDeFormation
