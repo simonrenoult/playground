@@ -29,12 +29,19 @@ export class SessionDeFormation implements Agregat, Entite<IdSessionDeFormation>
   public ajouterFormateur(formateur: Formateur): void {
     this.formateurs.push(formateur)
   }
+
+  equals(e: Entite<IdSessionDeFormation>): boolean {
+    return this.id.valeur === e.id.valeur;
+  }
 }
 
 export class CodeDeFormation implements ValueObject {
   constructor(
     public readonly valeur: string
   ) {
+  }
+  equals(vo: ValueObject): boolean {
+    return vo instanceof CodeDeFormation && this.valeur === vo.valeur;
   }
 }
 
@@ -45,5 +52,9 @@ export class IdSessionDeFormation implements ValueObject {
     private readonly _idSessionDeFormation: string
   ) {
     this.valeur = _idSessionDeFormation
+  }
+
+  equals(vo: ValueObject): boolean {
+    return vo instanceof IdSessionDeFormation && this.valeur === vo.valeur
   }
 }

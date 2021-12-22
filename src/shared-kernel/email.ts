@@ -10,4 +10,8 @@ export default class Email implements ValueObject {
     if (!EMAIL_REGEX.test(_valeur.toLowerCase())) throw new Error('L\'email du participant n\'est pas valide')
     this.valeur = _valeur
   }
+
+  equals(vo: ValueObject): boolean {
+    return vo instanceof Email && this.valeur === vo.valeur;
+  }
 }

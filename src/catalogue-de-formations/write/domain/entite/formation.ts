@@ -23,6 +23,10 @@ export class Formation implements Agregat, Entite<CodeDeFormation> {
   public ajouterFormateurPotentiel(formateurPotentiel: FormateurPotentiel): void {
     this.formateursPotentiels.push(formateurPotentiel)
   }
+
+  equals(e: Entite<CodeDeFormation>): boolean {
+    return this._code.valeur === e.id.valeur;
+  }
 }
 
 export class DureeDeFormation implements ValueObject {
@@ -31,6 +35,10 @@ export class DureeDeFormation implements ValueObject {
   constructor(dureeEnHeure: number) {
     if (dureeEnHeure < 0) throw new Error('La durée de la formation ne peut être négative')
     this.valeur = dureeEnHeure
+  }
+
+  equals(vo: ValueObject): boolean {
+    return vo instanceof DureeDeFormation && this.valeur === vo.valeur;
   }
 }
 
@@ -41,6 +49,10 @@ export class CodeDeFormation implements ValueObject {
     if (code.length < 3) throw new Error('Le code de la formation doit faire plus de 3 caractères')
     this.valeur = code
   }
+
+  equals(vo: ValueObject): boolean {
+    return vo instanceof CodeDeFormation && this.valeur === vo.valeur
+  }
 }
 
 export class FormateurPotentiel implements ValueObject {
@@ -49,5 +61,9 @@ export class FormateurPotentiel implements ValueObject {
     public readonly email: Email
   ) {
     this.id = email.valeur
+  }
+
+  equals(vo: ValueObject): boolean {
+    return vo instanceof FormateurPotentiel && this.id === vo.id
   }
 }

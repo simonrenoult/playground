@@ -1,14 +1,13 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  GestionnaireDeAjouterUnFormateurPotentielALaFormation,
-  AjouterUnFormateurPotentielALaFormation
+  AjouterUnFormateurPotentielALaFormation,
+  GestionnaireDeAjouterUnFormateurPotentielALaFormation
 } from '../../../../src/catalogue-de-formations/write/application/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation'
 import { FormateurPotentiel } from '../../../../src/catalogue-de-formations/write/domain/entite/formation'
 import {
   FormateurPotentielAjouteALaFormation
 } from '../../../../src/catalogue-de-formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation'
-// @ts-ignore
 import Email from '../../../../src/shared-kernel/email'
 import { Fixtures } from '../../../fixtures'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'

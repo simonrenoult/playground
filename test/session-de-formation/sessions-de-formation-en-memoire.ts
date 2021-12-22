@@ -19,6 +19,6 @@ export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
   }
 
   public parId(idSessionDeSessionDeFormation: IdSessionDeFormation): SessionDeFormation {
-    return this.sessionsDeFormation.find((s) => s.id === idSessionDeSessionDeFormation)
+    return this.sessionsDeFormation.find((s) => s.id.equals(idSessionDeSessionDeFormation))
   }
 }

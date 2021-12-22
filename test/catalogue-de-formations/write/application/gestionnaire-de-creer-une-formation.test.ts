@@ -1,8 +1,11 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import { GestionnaireDeCreerUneFormation } from '../../../../src/catalogue-de-formations/write/application/gestionnaire-de-creer-une-formation'
+import {
+  GestionnaireDeCreerUneFormation
+} from '../../../../src/catalogue-de-formations/write/application/gestionnaire-de-creer-une-formation'
 import { Fixtures } from '../../../fixtures'
 import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
+import { CodeDeFormation } from '../../../../src/catalogue-de-formations/write/domain/entite/formation'
 
 describe('CreerUneFormation', () => {
   it('persiste une formation', () => {
@@ -16,7 +19,7 @@ describe('CreerUneFormation', () => {
 
     // Then
     const [formation] = formations.lister()
-    expect(formation.id).to.deep.equal('DDD01')
+    expect(formation.id).to.deep.equal(new CodeDeFormation('DDD01'))
     expect(formation.dureeEnHeures).to.deep.equal(14)
   })
 

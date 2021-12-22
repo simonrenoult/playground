@@ -6,4 +6,8 @@ export class Participant implements Entite<Email> {
     public readonly id: Email
   ) {
   }
+
+  equals(e: Entite<Email>): boolean {
+    return this.id.valeur === e.id.valeur;
+  }
 }

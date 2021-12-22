@@ -2,8 +2,8 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  InscrireUnParticipantAUneSessionDeFormation,
-  GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+  GestionnaireDeInscrireUnParticipantAUneSessionDeFormation,
+  InscrireUnParticipantAUneSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
 import {
   ParticipantInscritALaSessionDeFormation

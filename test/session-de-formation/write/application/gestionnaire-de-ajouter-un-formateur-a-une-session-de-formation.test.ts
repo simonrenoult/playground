@@ -2,8 +2,8 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  GestionnaireDeAjouterUnFormateurAUneSessionDeFormation,
-  AjouterUnFormateurAUneSessionDeFormation
+  AjouterUnFormateurAUneSessionDeFormation,
+  GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation'
 import {
   FormateurAjouteALaSessionDeFormation

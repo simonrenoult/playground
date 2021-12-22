@@ -9,6 +9,7 @@ import {
 } from '../../../../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 import { Fixtures } from '../../../fixtures'
 import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
+import { IdSessionDeFormation } from '../../../../src/sessions-de-formation/write/domain/entite/session-de-formation'
 
 describe('CreerUneSessionDeFormation', () => {
   it('persiste une nouvelle session de formation', () => {
@@ -23,7 +24,7 @@ describe('CreerUneSessionDeFormation', () => {
 
     // Then
     const [sessionDeFormation] = sessionsDeFormation.lister()
-    expect(sessionDeFormation.id).to.equal(idSessionDeFormation)
+    expect(sessionDeFormation.id).to.deep.equal(new IdSessionDeFormation(idSessionDeFormation))
     expect(sessionDeFormation.codeFormation).to.equal('DDD01')
   })
 
