@@ -5,37 +5,37 @@ import { EOL } from 'os'
 
 // FIXME: dynamiser la récupération des bounded contexts
 const NOM_DES_BOUNDED_CONTEXTS = [
-  // 'catalogue-de-formations',
+  'catalogue-de-formations',
   'sessions-de-formation'
 ]
 const CHEMIN_VERS_LA_RACINE = resolve(__dirname, '../..')
-const NOM_DU_TEMPLATE = 'bounded-context-canvas.template.md'
+const NOM_DU_TEMPLATE = 'bounded-context-summary.template.md'
 const CHEMIN_VERS_LE_TEMPLATE = resolve(CHEMIN_VERS_LA_RACINE, 'building-blocks/tools', NOM_DU_TEMPLATE)
-const LOCALISATION_DU_CANVAS_DANS_LE_BOUNDED_CONTEXT = 'doc/canvas.md'
+const LOCALISATION_DU_RESUME_DANS_LE_BOUNDED_CONTEXT = 'doc/summary.md'
 
 main()
 
 async function main(): Promise<void> {
   for (const nomDuBoundedContext of NOM_DES_BOUNDED_CONTEXTS) {
-    await genererLeBoundedContextCanvas(nomDuBoundedContext)
+    await genererLeBoundedContextSummary(nomDuBoundedContext)
   }
 }
 
-async function genererLeBoundedContextCanvas(nomDuBoundedContext: string): Promise<void> {
+async function genererLeBoundedContextSummary(nomDuBoundedContext: string): Promise<void> {
   const cheminVersLeBoundedContext = resolve(CHEMIN_VERS_LA_RACINE, nomDuBoundedContext)
   const boundedContext: IBoundedContext = await recupererBoundedContext(cheminVersLeBoundedContext)
-  const boundedContextCanvas: string = creerLeBoundedContextCanvas(boundedContext)
-  ecrireBoundedContextCanvasSurLeSystemeDeFichier(cheminVersLeBoundedContext, boundedContextCanvas)
+  const boundedContextSummary: string = creerLeBoundedContextSummary(boundedContext)
+  ecrireBoundedContextSummarySurLeSystemeDeFichier(cheminVersLeBoundedContext, boundedContextSummary)
 }
 
 async function recupererBoundedContext(cheminVersLeBoundedContext: string): Promise<IBoundedContext> {
   return (await import(cheminVersLeBoundedContext)).default
 }
 
-function creerLeBoundedContextCanvas(boundedContext: IBoundedContext): string {
-  const templateDeBoundedContextCanvas = readFileSync(CHEMIN_VERS_LE_TEMPLATE, { encoding: 'utf8' })
+function creerLeBoundedContextSummary(boundedContext: IBoundedContext): string {
+  const templateDeBoundedContextSummary = readFileSync(CHEMIN_VERS_LE_TEMPLATE, { encoding: 'utf8' })
 
-  return templateDeBoundedContextCanvas
+  return templateDeBoundedContextSummary
     .replace('{{ nom }}', boundedContext.nom)
     .replace('{{ description }}', boundedContext.description)
     .replace('{{ domain }}', boundedContext.classificationStrategique.domain)
@@ -63,7 +63,7 @@ function creerLeBoundedContextCanvas(boundedContext: IBoundedContext): string {
   }
 }
 
-function ecrireBoundedContextCanvasSurLeSystemeDeFichier(cheminVersLeBoundedContext: string, boundedContextCanvas: string) {
-  const cheminVersLeCanvasDuBoundedContext = resolve(cheminVersLeBoundedContext, LOCALISATION_DU_CANVAS_DANS_LE_BOUNDED_CONTEXT)
-  writeFileSync(cheminVersLeCanvasDuBoundedContext, boundedContextCanvas, { encoding: 'utf8' })
+function ecrireBoundedContextSummarySurLeSystemeDeFichier(cheminVersLeBoundedContext: string, boundedContextSummary: string) {
+  const cheminVersLeBoundedContextSummary = resolve(cheminVersLeBoundedContext, LOCALISATION_DU_RESUME_DANS_LE_BOUNDED_CONTEXT)
+  writeFileSync(cheminVersLeBoundedContextSummary, boundedContextSummary, { encoding: 'utf8' })
 }
