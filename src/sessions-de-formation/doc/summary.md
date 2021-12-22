@@ -22,6 +22,21 @@ export class QuellesSontLesSessionsDeFormationAVenir implements Question {
 
 </details>
 
+## Modèles de lecture
+
+<details>
+<summary>SessionsDeFormationsFutures</summary>
+
+
+```ts
+export interface SessionsDeFormationsFutures extends ModeleDeLecture, Array<string> {
+}
+```
+
+
+
+</details>
+
 ## Commandes
 
 <details>

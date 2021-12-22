@@ -1,7 +1,7 @@
-import { ClassDeclaration, Project } from 'ts-morph'
+import { ClassDeclaration, InterfaceDeclaration, Project } from 'ts-morph'
 import { resolve } from 'path'
 
-type Interfaces = 'ValueObject' | 'Agregat' | 'Entite' | 'Commande' | 'EvenementDuDomaine' | 'Question'
+type Interfaces = 'ValueObject' | 'Agregat' | 'Entite' | 'Commande' | 'EvenementDuDomaine' | 'Question' | 'ModeleDeLecture'
 
 export interface IBoundedContext {
   nom: string
@@ -10,6 +10,7 @@ export interface IBoundedContext {
   classificationStrategique: ClassificationStrategique
   rolesDuDomaine: Array<RoleDuDomaine>
   questions: Message[]
+  modelesDeLecture: Message[]
   commandes: Message[]
   evenementsDuDomaine: Message[]
   ubiquitousLanguage: string[]
@@ -18,6 +19,7 @@ export interface IBoundedContext {
 export default class BoundedContext implements IBoundedContext {
   public readonly ubiquitousLanguage: string[] = []
   public readonly questions: Message[] = []
+  public readonly modelesDeLecture: Message[] = []
   public readonly commandes: Message[] = []
   public readonly evenementsDuDomaine: Message[] = []
 
@@ -28,38 +30,43 @@ export default class BoundedContext implements IBoundedContext {
     public readonly rolesDuDomaine: Array<RoleDuDomaine>,
     public readonly localisation: string,
   ) {
-    const classes = BoundedContext.listerLesClassesDuBoundedContext(localisation)
-    this.ubiquitousLanguage = BoundedContext.recupererUbiquitousLanguage(classes)
-    this.questions = BoundedContext.recupererLesQuestions(classes)
-    this.commandes = BoundedContext.recupererLesCommandes(classes)
-    this.evenementsDuDomaine = BoundedContext.recupererLesEvenementsDuDomaine(classes)
+    const elements = BoundedContext.listerLesElementsDuBoundedContext(localisation)
+    this.ubiquitousLanguage = BoundedContext.recupererUbiquitousLanguage(elements)
+    this.questions = BoundedContext.recupererLesQuestions(elements)
+    this.modelesDeLecture = BoundedContext.recupererLesModelesDeLecture(elements)
+    this.commandes = BoundedContext.recupererLesCommandes(elements)
+    this.evenementsDuDomaine = BoundedContext.recupererLesEvenementsDuDomaine(elements)
   }
 
-  private static recupererUbiquitousLanguage(classes: ClassDeclaration[]): string[] {
-    const agregats = recupererLeDetailDeLaClassePourLeType(classes, 'Agregat')
-    const entites = recupererLeDetailDeLaClassePourLeType(classes, 'Entite')
-    const valueObjects = recupererLeDetailDeLaClassePourLeType(classes, 'ValueObject')
+  private static recupererUbiquitousLanguage(classes: Array<ClassDeclaration | InterfaceDeclaration>): string[] {
+    const agregats = recupererLeDetailDeLElementPourLeType(classes, 'Agregat')
+    const entites = recupererLeDetailDeLElementPourLeType(classes, 'Entite')
+    const valueObjects = recupererLeDetailDeLElementPourLeType(classes, 'ValueObject')
     const ubiquitousLanguage = [...agregats, ...entites, ...valueObjects].map(c => c.nom)
     return supprimerDoublons(ubiquitousLanguage)
   }
 
-  private static recupererLesEvenementsDuDomaine(classes: ClassDeclaration[]): DetailsDeLaClasse[] {
-    return recupererLeDetailDeLaClassePourLeType(classes, 'EvenementDuDomaine')
+  private static recupererLesEvenementsDuDomaine(classes: Array<ClassDeclaration | InterfaceDeclaration>): DetailsDeLaClasse[] {
+    return recupererLeDetailDeLElementPourLeType(classes, 'EvenementDuDomaine')
   }
 
-  private static recupererLesCommandes(classes: ClassDeclaration[]): DetailsDeLaClasse[] {
-    return recupererLeDetailDeLaClassePourLeType(classes, 'Commande')
+  private static recupererLesCommandes(classes: Array<ClassDeclaration | InterfaceDeclaration>): DetailsDeLaClasse[] {
+    return recupererLeDetailDeLElementPourLeType(classes, 'Commande')
   }
 
-  private static recupererLesQuestions(classes: ClassDeclaration[]): DetailsDeLaClasse[] {
-    return recupererLeDetailDeLaClassePourLeType(classes, 'Question')
+  private static recupererLesQuestions(classes: Array<ClassDeclaration | InterfaceDeclaration>): DetailsDeLaClasse[] {
+    return recupererLeDetailDeLElementPourLeType(classes, 'Question')
   }
 
-  private static listerLesClassesDuBoundedContext(cheminVersLeBoundedContext: string): ClassDeclaration[] {
-    const projet = new Project({ tsConfigFilePath: resolve(__dirname, '../..', 'tsconfig.json') });
+  private static recupererLesModelesDeLecture(elements: Array<ClassDeclaration | InterfaceDeclaration>) {
+    return recupererLeDetailDeLElementPourLeType(elements, 'ModeleDeLecture')
+  }
+
+  private static listerLesElementsDuBoundedContext(cheminVersLeBoundedContext: string): Array<ClassDeclaration | InterfaceDeclaration> {
+    const projet = new Project({ tsConfigFilePath: resolve(__dirname, '../..', 'tsconfig.json') })
     const fichiers = projet.getSourceFiles()
       .filter(sourceFile => sourceFile.getFilePath().includes(cheminVersLeBoundedContext))
-    return fichiers.flatMap(sf => sf.getClasses())
+    return fichiers.flatMap(sf => [...sf.getClasses(), ...sf.getInterfaces()])
   }
 }
 
@@ -101,9 +108,19 @@ export enum RoleDuDomaine {
 
 type DetailsDeLaClasse = { nom: string, contenu: string }
 
-function recupererLeDetailDeLaClassePourLeType(classes: ClassDeclaration[], interfaceImplementee: Interfaces): Array<DetailsDeLaClasse> {
-  return classes
-    .filter(c => c.getImplements().some(i => i.getText().startsWith(interfaceImplementee)))
+function recupererLeDetailDeLElementPourLeType(elements: Array<ClassDeclaration | InterfaceDeclaration>, interfaceImplementee: Interfaces): Array<DetailsDeLaClasse> {
+  return elements
+    .filter(c => {
+      if (c instanceof  ClassDeclaration) {
+        return c.getImplements().some(i => i.getText().startsWith(interfaceImplementee))
+      }
+
+      if (c instanceof InterfaceDeclaration) {
+        return c.getExtends().some(e => e.getText().startsWith(interfaceImplementee))
+      }
+
+      return false
+    })
     .map(c => ({ nom: c.getName(), contenu: c.getText() }))
 }
 

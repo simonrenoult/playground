@@ -22,6 +22,21 @@ export class QuellesSontLesFormationsAuCatalogue implements Question {
 
 </details>
 
+## Modèles de lecture
+
+<details>
+<summary>FormationsAuCatalogue</summary>
+
+
+```ts
+export default interface FormationsAuCatalogue extends ModeleDeLecture, Array<string> {
+}
+```
+
+
+
+</details>
+
 ## Commandes
 
 <details>

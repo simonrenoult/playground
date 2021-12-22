@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
-import { IBoundedContext, Message } from '../bounded-context'
+import { IBoundedContext, Message } from '../building-blocks/bounded-context'
 import { EOL } from 'os'
 
 // FIXME: dynamiser la récupération des bounded contexts
@@ -8,9 +8,9 @@ const NOM_DES_BOUNDED_CONTEXTS = [
   'catalogue-de-formations',
   'sessions-de-formation'
 ]
-const CHEMIN_VERS_LA_RACINE = resolve(__dirname, '../..')
+const CHEMIN_VERS_LA_RACINE = resolve(__dirname, '..')
 const NOM_DU_TEMPLATE = 'bounded-context-summary.template.md'
-const CHEMIN_VERS_LE_TEMPLATE = resolve(CHEMIN_VERS_LA_RACINE, 'building-blocks/tools', NOM_DU_TEMPLATE)
+const CHEMIN_VERS_LE_TEMPLATE = resolve(CHEMIN_VERS_LA_RACINE, 'tools', NOM_DU_TEMPLATE)
 const LOCALISATION_DU_RESUME_DANS_LE_BOUNDED_CONTEXT = 'doc/summary.md'
 
 main()
@@ -43,6 +43,7 @@ function creerLeBoundedContextSummary(boundedContext: IBoundedContext): string {
     .replace('{{ evolution }}', boundedContext.classificationStrategique.evolution)
     .replace('{{ rolesDuDomaine }}', boundedContext.rolesDuDomaine.join(', '))
     .replace('{{ questions }}', boundedContext.questions.map(versDetails).join(EOL))
+    .replace('{{ modelesDeLecture }}', boundedContext.modelesDeLecture.map(versDetails).join(EOL))
     .replace('{{ commandes }}', boundedContext.commandes.map(versDetails).join(EOL))
     .replace('{{ evenementsDuDomaine }}', boundedContext.evenementsDuDomaine.map(versDetails).join(EOL))
     .replace('{{ ubiquitousLanguage }}', boundedContext.ubiquitousLanguage.sort().map(item => `- ${item}`).join(EOL))
