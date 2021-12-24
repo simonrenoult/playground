@@ -20,3 +20,5 @@ $ npm test
 - Générer un BC Canva
 - Associer les commandes aux évènements émis
 - Associer les questions aux modèles de lecture
+- event sourcing
+- optimistic concurrency
