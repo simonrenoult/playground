@@ -18,6 +18,7 @@ $ npm test
 ### Infrastructure
 
 - Exposer sur une API
+- Hateoas
 - Implémenter la persistence
 - Générer la ci/cd
 
@@ -25,6 +26,7 @@ $ npm test
 
 - Implémenter de l'event sourcing
 - Optimistic concurrency
+- Script vérifiant la clean archi
 
 ### Living documentation
 
