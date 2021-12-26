@@ -1,6 +1,7 @@
 {
   "compileOnSave": true, // currently supported in Visual Studio 2015 with TypeScript 1.8.4 and above, and atom-typescript plugin.
   "compilerOptions": {
+    "experimentalDecorators": true,
     "allowJs": true,
     "module": "commonjs",
     "moduleResolution": "node",
