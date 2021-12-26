@@ -1,19 +1,10 @@
-import Commande from '../../../building-blocks/write/commande'
-import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
-import Email from '../../../shared-kernel/email'
-import { CodeDeFormation, FormateurPotentiel } from '../domain/entite/formation'
-import { FormateurPotentielAjouteALaFormation } from '../domain/evenement/formateur-potentiel-ajoute-a-la.formation'
-import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
-
-export class AjouterUnFormateurPotentielALaFormation implements Commande {
-  public readonly nom = 'AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION'
-
-  constructor(
-    public readonly emailFormateurPotentiel: string,
-    public readonly codeFormation: string
-  ) {
-  }
-}
+import Commande from '../../../../building-blocks/write/commande'
+import GestionnaireDeCommande from '../../../../building-blocks/write/gestionnaire-de-commande'
+import Email from '../../../../shared-kernel/email'
+import { CodeDeFormation, FormateurPotentiel } from '../../domain/entite/formation'
+import { FormateurPotentielAjouteALaFormation } from '../../domain/evenement/formateur-potentiel-ajoute-a-la.formation'
+import { CatalogueDeFormations } from '../../domain/repository/catalogue-de-formations'
+import { AjouterUnFormateurPotentielALaFormation } from '../ajouter-un-formateur-potentiel-a-la-formation'
 
 export class GestionnaireDeAjouterUnFormateurPotentielALaFormation
   implements GestionnaireDeCommande<AjouterUnFormateurPotentielALaFormation, FormateurPotentielAjouteALaFormation> {

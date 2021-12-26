@@ -1,22 +1,15 @@
-import Commande from '../../../building-blocks/write/commande'
-import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
-import Email from '../../../shared-kernel/email'
-import { Participant } from '../domain/entite/participant'
-import { IdSessionDeFormation } from '../domain/entite/session-de-formation'
+import GestionnaireDeCommande from '../../../../building-blocks/write/gestionnaire-de-commande'
 import {
   ParticipantInscritALaSessionDeFormation
-} from '../domain/evenement/participant-inscrit-a-la-session-de-formation'
-import { SessionsDeFormation } from '../domain/repository/sessions-de-formation'
-
-export class InscrireUnParticipantAUneSessionDeFormation implements Commande {
-  public readonly nom = 'INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION'
-
-  constructor(
-    public readonly emailParticipant: string,
-    public readonly idSessionDeSessionDeFormation: string
-  ) {
-  }
-}
+} from '../../domain/evenement/participant-inscrit-a-la-session-de-formation'
+import { SessionsDeFormation } from '../../domain/repository/sessions-de-formation'
+import { IdSessionDeFormation } from '../../domain/entite/session-de-formation'
+import { Participant } from '../../domain/entite/participant'
+import Email from '../../../../shared-kernel/email'
+import Commande from '../../../../building-blocks/write/commande'
+import {
+  InscrireUnParticipantAUneSessionDeFormation
+} from '../inscrire-un-participant-a-une-session-de-formation'
 
 export class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
   implements GestionnaireDeCommande<InscrireUnParticipantAUneSessionDeFormation, ParticipantInscritALaSessionDeFormation> {

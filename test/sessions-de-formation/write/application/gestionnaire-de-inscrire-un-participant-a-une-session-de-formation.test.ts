@@ -2,14 +2,16 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  GestionnaireDeInscrireUnParticipantAUneSessionDeFormation,
   InscrireUnParticipantAUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
+} from '../../../../src/sessions-de-formation/write/application/inscrire-un-participant-a-une-session-de-formation'
 import {
   ParticipantInscritALaSessionDeFormation
 } from '../../../../src/sessions-de-formation/write/domain/evenement/participant-inscrit-a-la-session-de-formation'
 import { Fixtures } from '../../../fixtures'
 import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
+import {
+  GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+} from '../../../../src/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
 
 describe('SInscrireAUneSessionDeFormation', () => {
   it('ajoute un participant à la session de formation', () => {

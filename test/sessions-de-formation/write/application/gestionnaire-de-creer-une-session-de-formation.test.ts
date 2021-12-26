@@ -2,14 +2,14 @@ import { ulid } from 'ulid'
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
 import {
-  GestionnaireDeCreerUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/gestionnaire-de-creer-une-session-de-formation'
-import {
   SessionDeFormationCreee
 } from '../../../../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 import { Fixtures } from '../../../fixtures'
 import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
 import { IdSessionDeFormation } from '../../../../src/sessions-de-formation/write/domain/entite/session-de-formation'
+import {
+  GestionnaireDeCreerUneSessionDeFormation
+} from '../../../../src/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation'
 
 describe('CreerUneSessionDeFormation', () => {
   it('persiste une nouvelle session de formation', () => {

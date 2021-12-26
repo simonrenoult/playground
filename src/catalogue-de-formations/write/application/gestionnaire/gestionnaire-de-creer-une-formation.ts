@@ -1,18 +1,9 @@
-import Commande from '../../../building-blocks/write/commande'
-import GestionnaireDeCommande from '../../../building-blocks/write/gestionnaire-de-commande'
-import { CodeDeFormation, DureeDeFormation, Formation } from '../domain/entite/formation'
-import FormationCreee from '../domain/evenement/formation-creee'
-import { CatalogueDeFormations } from '../domain/repository/catalogue-de-formations'
-
-export class CreerUneFormation implements Commande {
-  public readonly nom: string = 'CREER_UNE_FORMATION'
-
-  constructor(
-    public readonly code: string,
-    public readonly dureeEnHeures: number
-  ) {
-  }
-}
+import Commande from '../../../../building-blocks/write/commande'
+import GestionnaireDeCommande from '../../../../building-blocks/write/gestionnaire-de-commande'
+import { CodeDeFormation, DureeDeFormation, Formation } from '../../domain/entite/formation'
+import FormationCreee from '../../domain/evenement/formation-creee'
+import { CatalogueDeFormations } from '../../domain/repository/catalogue-de-formations'
+import { CreerUneFormation } from '../creer-une-formation'
 
 export class GestionnaireDeCreerUneFormation implements GestionnaireDeCommande<CreerUneFormation, FormationCreee> {
   constructor(
