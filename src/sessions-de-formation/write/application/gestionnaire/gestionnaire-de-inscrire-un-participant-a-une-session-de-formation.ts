@@ -7,11 +7,9 @@ import { IdSessionDeFormation } from '../../domain/entite/session-de-formation'
 import { Participant } from '../../domain/entite/participant'
 import Email from '../../../../shared-kernel/email'
 import Commande from '../../../../building-blocks/write/commande'
-import {
-  InscrireUnParticipantAUneSessionDeFormation
-} from '../inscrire-un-participant-a-une-session-de-formation'
+import InscrireUnParticipantAUneSessionDeFormation from '../inscrire-un-participant-a-une-session-de-formation'
 
-export class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
   implements GestionnaireDeCommande<InscrireUnParticipantAUneSessionDeFormation, ParticipantInscritALaSessionDeFormation> {
 
   constructor(

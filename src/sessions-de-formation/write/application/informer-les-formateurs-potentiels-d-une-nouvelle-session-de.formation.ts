@@ -5,7 +5,7 @@ import { SessionDeFormationCreee } from '../domain/evenement/session-de-formatio
 import { CatalogueDeFormations } from '../domain/gateway/formation'
 import { Notifieur } from '../domain/gateway/notifieur'
 
-export class InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation implements GestionnaireDEvenementDuDomaine<SessionDeFormationCreee> {
+export default class InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation implements GestionnaireDEvenementDuDomaine<SessionDeFormationCreee> {
   constructor(
     private readonly portailVersLeCatalogueDeFormations: CatalogueDeFormations,
     private readonly notifieur: Notifieur

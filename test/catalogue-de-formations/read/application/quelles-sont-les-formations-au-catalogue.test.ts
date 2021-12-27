@@ -1,12 +1,8 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import {
-  QuellesSontLesFormationsAuCatalogue
-} from '../../../../src/catalogue-de-formations/read/application/quelles-sont-les-formations-au-catalogue'
-import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
-import {
-  GestionnaireDeQuellesSontLesFormationsAuCatalogue
-} from '../../../../src/catalogue-de-formations/read/application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue'
+import QuellesSontLesFormationsAuCatalogue from '../../../../src/catalogue-de-formations/read/application/quelles-sont-les-formations-au-catalogue'
+import CatalogueDeFormationsEnMemoire from '../catalogue-de-formations-en-memoire'
+import GestionnaireDeQuellesSontLesFormationsAuCatalogue from '../../../../src/catalogue-de-formations/read/application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue'
 
 describe('QuellesSontLesFormationsAuCatalogue', () => {
   it('liste les formations au catalogue', () => {

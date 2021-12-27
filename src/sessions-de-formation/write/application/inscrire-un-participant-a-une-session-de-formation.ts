@@ -1,6 +1,6 @@
 import Commande from '../../../building-blocks/write/commande'
 
-export class InscrireUnParticipantAUneSessionDeFormation implements Commande {
+export default class InscrireUnParticipantAUneSessionDeFormation implements Commande {
   public readonly nom = 'INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION'
 
   constructor(

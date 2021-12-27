@@ -3,9 +3,9 @@ import { SessionDeFormationCreee } from '../../domain/evenement/session-de-forma
 import { SessionsDeFormation } from '../../domain/repository/sessions-de-formation'
 import { CodeDeFormation, IdSessionDeFormation, SessionDeFormation } from '../../domain/entite/session-de-formation'
 import Commande from '../../../../building-blocks/write/commande'
-import { CreerUneSessionDeFormation } from '../creer-une-session-de-formation'
+import CreerUneSessionDeFormation from '../creer-une-session-de-formation'
 
-export class GestionnaireDeCreerUneSessionDeFormation
+export default class GestionnaireDeCreerUneSessionDeFormation
   implements GestionnaireDeCommande<CreerUneSessionDeFormation, SessionDeFormationCreee> {
 
   constructor(

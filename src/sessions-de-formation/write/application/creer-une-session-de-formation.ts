@@ -1,6 +1,6 @@
 import Commande from '../../../building-blocks/write/commande'
 
-export class CreerUneSessionDeFormation implements Commande {
+export default class CreerUneSessionDeFormation implements Commande {
   public readonly nom = 'CREER_UNE_SESSION_DE_FORMATION'
 
   constructor(

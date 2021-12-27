@@ -7,9 +7,7 @@ import {
 import { Fixtures } from '../../../fixtures'
 import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
 import { IdSessionDeFormation } from '../../../../src/sessions-de-formation/write/domain/entite/session-de-formation'
-import {
-  GestionnaireDeCreerUneSessionDeFormation
-} from '../../../../src/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation'
+import GestionnaireDeCreerUneSessionDeFormation from '../../../../src/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation'
 
 describe('CreerUneSessionDeFormation', () => {
   it('persiste une nouvelle session de formation', () => {

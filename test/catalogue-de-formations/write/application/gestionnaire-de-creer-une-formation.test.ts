@@ -4,7 +4,7 @@ import {
   GestionnaireDeCreerUneFormation
 } from '../../../../src/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation'
 import { Fixtures } from '../../../fixtures'
-import { CatalogueDeFormationsEnMemoire } from '../catalogue-de-formations-en-memoire'
+import CatalogueDeFormationsEnMemoire from '../catalogue-de-formations-en-memoire'
 import { CodeDeFormation } from '../../../../src/catalogue-de-formations/write/domain/entite/formation'
 
 describe('CreerUneFormation', () => {

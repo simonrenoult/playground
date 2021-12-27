@@ -5,11 +5,9 @@ import { IdSessionDeFormation } from '../../domain/entite/session-de-formation'
 import { Formateur } from '../../domain/entite/formateur'
 import Email from '../../../../shared-kernel/email'
 import Commande from '../../../../building-blocks/write/commande'
-import {
-  AjouterUnFormateurAUneSessionDeFormation
-} from '../ajouter-un-formateur-a-une-session-de-formation'
+import AjouterUnFormateurAUneSessionDeFormation from '../ajouter-un-formateur-a-une-session-de-formation'
 
-export class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
+export default class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
   implements GestionnaireDeCommande<AjouterUnFormateurAUneSessionDeFormation, FormateurAjouteALaSessionDeFormation> {
 
   constructor(

@@ -1,6 +1,6 @@
 import Commande from '../../../building-blocks/write/commande'
 
-export class AjouterUnFormateurPotentielALaFormation implements Commande {
+export default class AjouterUnFormateurPotentielALaFormation implements Commande {
   public readonly nom = 'AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION'
 
   constructor(

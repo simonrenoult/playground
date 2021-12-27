@@ -1,6 +1,6 @@
 import Commande from '../../../building-blocks/write/commande'
 
-export class AjouterUnFormateurAUneSessionDeFormation implements Commande {
+export default class AjouterUnFormateurAUneSessionDeFormation implements Commande {
   public readonly nom = 'AJOUTER_UN_FORMATEUR_A_UNE_SESSION_DE_FORMATION'
 
   constructor(
