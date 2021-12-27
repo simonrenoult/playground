@@ -28,11 +28,16 @@ $ npm test
 - Optimistic concurrency
 - Script vérifiant la clean archi
 
+### Pattern
+
+- Implémenter le pattern memento
+
 ### Living documentation
 
 - Générer un site statique de documentation
 - Générer un `sightseeing` path
-- Faire des lien dans le summary vers la doc des patterns
+- Faire des liens dans le summary vers la doc des patterns
 - Générer un BC Canva
 - Associer les commandes aux évènements émis
 - Associer les questions aux modèles de lecture
+- Identifier les communications entrantes et sortantes inbound/outbound (voir : https://github.com/ddd-crew/bounded-context-canvas#inbound-communication)

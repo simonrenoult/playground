@@ -1,12 +1,12 @@
 # Catalogue de formations
 
-> Liste de toutes les formations proposées par OCAC
+> Liste de toutes les formations proposées.
 
-| Domain       | Business model      | Evolution       | Rôles                |
-|--------------|---------------------|-----------------|----------------------|
-| SUPPORTING | COST_REDUCTION | PRODUCT | DRAFT |
+| [Domain][strategic_classification] | [Business model][strategic_classification] | [Evolution][strategic_classification] | [Rôles][domain_roles] |
+|------------------------------------|--------------------------------------------|---------------------------------------|-----------------------|
+| SUPPORTING                       | COST_REDUCTION                        | PRODUCT                       | DRAFT  |
 
-## Questions
+## [Questions][cqrs]
 
 <details>
 <summary>QuellesSontLesFormationsAuCatalogue</summary>
@@ -22,7 +22,7 @@ export default class QuellesSontLesFormationsAuCatalogue implements Question {
 
 </details>
 
-## Modèles de lecture
+## [Modèles de lecture][read_model]
 
 <details>
 <summary>FormationsAuCatalogue</summary>
@@ -37,7 +37,7 @@ export default interface FormationsAuCatalogue extends ModeleDeLecture, Array<st
 
 </details>
 
-## Commandes
+## [Commandes][command]
 
 <details>
 <summary>AjouterUnFormateurPotentielALaFormation</summary>
@@ -78,7 +78,7 @@ export default class CreerUneFormation implements Commande {
 
 </details>
 
-## Évènements du domaine
+## [Évènements du domaine][domain_event]
 
 <details>
 <summary>FormateurPotentielAjouteALaFormation</summary>
@@ -119,9 +119,18 @@ export default class FormationCreee implements EvenementDuDomaine {
 
 </details>
 
-## Ubiquitous Language
+## [Ubiquitous Language][ubiquitous_language]
 
+- CatalogueDeFormations
 - CodeDeFormation
 - DureeDeFormation
 - FormateurPotentiel
 - Formation
+
+[strategic_classification]: https://github.com/ddd-crew/bounded-context-canvas#strategic-classification
+[cqrs]: https://www.martinfowler.com/bliki/CQRS.html
+[read_model]: https://matthiasnoback.nl/2018/01/simple-cqrs-reduce-coupling-allow-the-model-to-evolve/
+[domain_roles]: https://github.com/ddd-crew/bounded-context-canvas#domain-roles
+[command]: https://refactoring.guru/design-patterns/command
+[domain_event]: https://www.martinfowler.com/eaaDev/DomainEvent.html
+[ubiquitous_language]: https://github.com/ddd-crew/bounded-context-canvas#ubiquitous-language
