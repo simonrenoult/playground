@@ -7,7 +7,7 @@ import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-c
 export default class ExecuterLeGestionnaireDeCommande implements IntercepteurDeCommande {
   constructor(
     private readonly gestionnairesDeCommande: Array<GestionnaireDeCommande<Commande, EvenementDuDomaine>> = [],
-    private readonly logger: Console
+    private readonly logger: any
   ) {
   }
 

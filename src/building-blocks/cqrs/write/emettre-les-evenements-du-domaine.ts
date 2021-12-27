@@ -6,7 +6,7 @@ import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-c
 export default class EmettreLesEvenementsDuDomaine implements IntercepteurDeCommande {
   constructor(
     private readonly busDEvenementsDuDomaine: Bus<EvenementDuDomaine, void>,
-    private readonly logger: Console
+    private readonly logger: any
   ) {
   }
 

@@ -1,5 +1,5 @@
 import IntercepteurDeQuestion from './intercepteur-de-question'
-import { GestionnaireDeQuestion } from './gestionnaire-de-question'
+import GestionnaireDeQuestion from './gestionnaire-de-question'
 import Question from './question'
 import ModeleDeLecture from './modele-de-lecture'
 import ResultatDeLIntercepteurDeQuestion from './resultat-de-l-intercepteur-de-question'
@@ -7,7 +7,7 @@ import ResultatDeLIntercepteurDeQuestion from './resultat-de-l-intercepteur-de-q
 export default class ExecuterLeGestionnaireDeQuestion implements IntercepteurDeQuestion {
   constructor(
     private readonly gestionnairesDeQuestion: Array<GestionnaireDeQuestion<Question, ModeleDeLecture>> = [],
-    private readonly logger: Console
+    private readonly logger: any
   ) {
   }
 

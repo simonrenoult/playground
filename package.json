@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .ts",
+    "start": "ts-node src/infrastructure/start.ts",
     "test": "mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "coverage": "nyc --all mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "summary": "ts-node src/tools/build-bounded-context-summary.ts"
@@ -14,7 +15,9 @@
     "node": "^16.0.0"
   },
   "dependencies": {
+    "fastify": "^3.25.2",
     "luxon": "^2.1.1",
+    "pino-pretty": "^7.3.0",
     "redis": "^4.0.1",
     "ulid": "^2.3.0"
   },

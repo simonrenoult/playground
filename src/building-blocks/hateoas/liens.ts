@@ -14,14 +14,14 @@ export default class Liens {
   }
 
   public creer(messageInitial: Message): Lien[] {
-    const mappingHttpDuMessageInitial = this.mappingHttpDesMessages.find(m => m.message.name === messageInitial.constructor.name)
+    const mappingHttpDuMessageInitial = this.mappingHttpDesMessages.find(mappingHttpDUnMessage => mappingHttpDUnMessage.message.name === messageInitial.constructor.name)
     const self: Lien = Liens.versLien(mappingHttpDuMessageInitial, 'self')
 
     const liensSuivants = this.arborescencesDeMessages
       .find((arborescenceDeMessages: ArborescenceDeMessages) => arborescenceDeMessages.messageInitial.name === messageInitial.constructor.name)
       .messagesSuivants
       .map((message: Constructor<Message>) => {
-        const mappingHttpDuMessage = this.mappingHttpDesMessages.find(mappingHttpDUnMessage => mappingHttpDUnMessage.message.name === message.constructor.name)
+        const mappingHttpDuMessage = this.mappingHttpDesMessages.find(mappingHttpDUnMessage => mappingHttpDUnMessage.message.name === message.name)
         return Liens.versLien(mappingHttpDuMessage)
       })
 
