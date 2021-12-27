@@ -5,7 +5,7 @@ import AjouterUnFormateurPotentielALaFormation from './write/application/ajouter
 
 export default new BoundedContext(
   "Catalogue de formations",
-  "Liste de toutes les formations proposées par OCAC",
+  "Liste de toutes les formations proposées.",
   {
     domain: Domain.SUPPORTING,
     businessModel: BusinessModel.COST_REDUCTION,

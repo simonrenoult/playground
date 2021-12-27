@@ -1,4 +1,4 @@
-# OCAC Formations
+# Formations
 
 ## Getting started
 

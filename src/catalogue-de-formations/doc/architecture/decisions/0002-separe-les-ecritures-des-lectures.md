@@ -8,7 +8,7 @@ Accepté
 
 ## Contexte
 
-Le projet `ocac-formations` a été créé avant tout comme un terrain d'apprentissage.
+Le projet `formations` a été créé avant tout comme un terrain d'apprentissage.
 La distinction des écritures et des lectures, telles que décrites par le pattern d'architecture CQRS,
 est un domaine dans lequel je souhaite progresser.
 
