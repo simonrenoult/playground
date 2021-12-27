@@ -1,11 +1,11 @@
-import { CodeDeFormation, DureeDeFormation, Formation } from '../src/catalogue-de-formations/write/domain/entite/formation'
-import CreerUneSessionDeFormation from '../src/sessions-de-formation/write/application/creer-une-session-de-formation'
+import { CodeDeFormation, DureeDeFormation, Formation } from '../src/modules/catalogue-de-formations/write/domain/entite/formation'
+import CreerUneSessionDeFormation from '../src/modules/sessions-de-formation/write/application/creer-une-session-de-formation'
 import {
   IdSessionDeFormation,
   SessionDeFormation
-} from '../src/sessions-de-formation/write/domain/entite/session-de-formation'
-import { SessionDeFormationCreee } from '../src/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
-import CreerUneFormation from '../src/catalogue-de-formations/write/application/creer-une-formation'
+} from '../src/modules/sessions-de-formation/write/domain/entite/session-de-formation'
+import { SessionDeFormationCreee } from '../src/modules/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
+import CreerUneFormation from '../src/modules/catalogue-de-formations/write/application/creer-une-formation'
 
 export const DEFAUT = {
   CODE_FORMATION: 'DDD01',

@@ -1,8 +1,8 @@
 import {
   IdSessionDeFormation,
   SessionDeFormation
-} from '../../src/sessions-de-formation/write/domain/entite/session-de-formation'
-import { SessionsDeFormation } from '../../src/sessions-de-formation/write/domain/repository/sessions-de-formation'
+} from '../../src/modules/sessions-de-formation/write/domain/entite/session-de-formation'
+import { SessionsDeFormation } from '../../src/modules/sessions-de-formation/write/domain/repository/sessions-de-formation'
 
 export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
   constructor(
