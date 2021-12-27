@@ -1,4 +1,4 @@
-import BoundedContext, { BusinessModel, Domain, Evolution, RoleDuDomaine } from '../building-blocks/bounded-context'
+import BoundedContext, { BusinessModel, Domain, Evolution, RoleDuDomaine } from '../building-blocks/ddd/bounded-context'
 import QuellesSontLesFormationsAuCatalogue from './read/application/quelles-sont-les-formations-au-catalogue'
 import CreerUneFormation from './write/application/creer-une-formation'
 import AjouterUnFormateurPotentielALaFormation from './write/application/ajouter-un-formateur-potentiel-a-la-formation'

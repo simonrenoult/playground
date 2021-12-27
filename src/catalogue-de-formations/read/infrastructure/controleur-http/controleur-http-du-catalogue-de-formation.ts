@@ -1,8 +1,8 @@
 import { IncomingMessage, Server, ServerResponse } from 'http'
-import BusDeCommandes from '../../../../building-blocks/write/bus-de-commandes'
+import BusDeCommandes from '../../../../building-blocks/cqrs/write/bus-de-commandes'
 import QuellesSontLesFormationsAuCatalogue from '../../application/quelles-sont-les-formations-au-catalogue'
-import Message from '../../../../building-blocks/message'
-import BusDeQuestions from '../../../../building-blocks/read/bus-de-question'
+import Message from '../../../../building-blocks/ddd/message'
+import BusDeQuestions from '../../../../building-blocks/cqrs/read/bus-de-question'
 import Liens from '../../../../building-blocks/hateoas/liens'
 
 export default class ControleurHttpDuCatalogueDeFormation {

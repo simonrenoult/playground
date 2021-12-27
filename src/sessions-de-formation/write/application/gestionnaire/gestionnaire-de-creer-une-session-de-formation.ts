@@ -1,8 +1,8 @@
-import GestionnaireDeCommande from '../../../../building-blocks/write/gestionnaire-de-commande'
+import GestionnaireDeCommande from '../../../../building-blocks/cqrs/write/gestionnaire-de-commande'
 import { SessionDeFormationCreee } from '../../domain/evenement/session-de-formation-creee'
 import { SessionsDeFormation } from '../../domain/repository/sessions-de-formation'
 import { CodeDeFormation, IdSessionDeFormation, SessionDeFormation } from '../../domain/entite/session-de-formation'
-import Commande from '../../../../building-blocks/write/commande'
+import Commande from '../../../../building-blocks/cqrs/write/commande'
 import CreerUneSessionDeFormation from '../creer-une-session-de-formation'
 
 export default class GestionnaireDeCreerUneSessionDeFormation

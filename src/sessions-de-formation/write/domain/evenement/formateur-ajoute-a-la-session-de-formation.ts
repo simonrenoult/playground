@@ -1,4 +1,4 @@
-import EvenementDuDomaine from '../../../../building-blocks/evenement'
+import EvenementDuDomaine from '../../../../building-blocks/cqrs/evenement'
 
 export class FormateurAjouteALaSessionDeFormation implements EvenementDuDomaine {
   public readonly nom = 'FORMATEUR_AJOUTE_A_LA_SESSION_DE_FORMATION'

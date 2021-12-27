@@ -1,4 +1,4 @@
-import GestionnaireDeCommande from '../../../../building-blocks/write/gestionnaire-de-commande'
+import GestionnaireDeCommande from '../../../../building-blocks/cqrs/write/gestionnaire-de-commande'
 import {
   ParticipantInscritALaSessionDeFormation
 } from '../../domain/evenement/participant-inscrit-a-la-session-de-formation'
@@ -6,7 +6,7 @@ import { SessionsDeFormation } from '../../domain/repository/sessions-de-formati
 import { IdSessionDeFormation } from '../../domain/entite/session-de-formation'
 import { Participant } from '../../domain/entite/participant'
 import Email from '../../../../shared-kernel/email'
-import Commande from '../../../../building-blocks/write/commande'
+import Commande from '../../../../building-blocks/cqrs/write/commande'
 import InscrireUnParticipantAUneSessionDeFormation from '../inscrire-un-participant-a-une-session-de-formation'
 
 export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation

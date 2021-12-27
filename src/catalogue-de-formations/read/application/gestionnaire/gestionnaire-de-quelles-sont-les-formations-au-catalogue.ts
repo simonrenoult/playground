@@ -1,7 +1,7 @@
-import GestionnaireDeQuestion from '../../../../building-blocks/read/gestionnaire-de-question'
+import GestionnaireDeQuestion from '../../../../building-blocks/cqrs/read/gestionnaire-de-question'
 import FormationsAuCatalogue from '../../domain/modele-de-lecture/formations-au-catalogue'
 import CatalogueDeFormations from '../../domain/projection/catalogue-de-formations'
-import Question from '../../../../building-blocks/read/question'
+import Question from '../../../../building-blocks/cqrs/read/question'
 import QuellesSontLesFormationsAuCatalogue from '../quelles-sont-les-formations-au-catalogue'
 
 export default class GestionnaireDeQuellesSontLesFormationsAuCatalogue

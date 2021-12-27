@@ -1,4 +1,4 @@
-import BoundedContext, { BusinessModel, Domain, Evolution, RoleDuDomaine } from '../building-blocks/bounded-context'
+import BoundedContext, { BusinessModel, Domain, Evolution, RoleDuDomaine } from '../building-blocks/ddd/bounded-context'
 import QuellesSontLesSessionsDeFormationAVenir from './read/application/quelles-sont-les-sessions-de-formation-a-venir'
 import CreerUneSessionDeFormation from './write/application/creer-une-session-de-formation'
 import AjouterUnFormateurPotentielALaFormation

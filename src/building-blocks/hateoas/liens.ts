@@ -1,5 +1,5 @@
-import Message from '../message'
-import { ArborescenceDeMessages } from '../bounded-context'
+import Message from '../ddd/message'
+import { ArborescenceDeMessages } from '../ddd/bounded-context'
 import { Constructor } from 'type-fest'
 import { AssociationMessageEtHttp } from './association-message-et-http'
 

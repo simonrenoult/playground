@@ -1,5 +1,5 @@
 import { Constructor } from 'type-fest'
-import Message from '../message'
+import Message from '../ddd/message'
 
 export type AssociationMessageEtHttp = {
   message: Constructor<Message>,

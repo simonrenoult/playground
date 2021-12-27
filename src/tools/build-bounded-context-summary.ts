@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
-import { IBoundedContext, NomDELElementEtSonContenu } from '../building-blocks/bounded-context'
+import { IBoundedContext, NomDELElementEtSonContenu } from '../building-blocks/ddd/bounded-context'
 import { EOL } from 'os'
 
 // TODO: dynamiser la récupération des bounded contexts

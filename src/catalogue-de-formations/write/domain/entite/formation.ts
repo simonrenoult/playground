@@ -1,7 +1,7 @@
 import Email from '../../../../shared-kernel/email'
-import { Agregat } from '../../../../building-blocks/write/agregat'
-import { Entite } from '../../../../building-blocks/write/entite'
-import { ValueObject } from '../../../../building-blocks/value-objet'
+import { Agregat } from '../../../../building-blocks/ddd/agregat'
+import { Entite } from '../../../../building-blocks/ddd/entite'
+import { ValueObject } from '../../../../building-blocks/ddd/value-objet'
 
 export class Formation implements Agregat, Entite<CodeDeFormation> {
   public readonly formateursPotentiels: FormateurPotentiel[] = []

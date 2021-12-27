@@ -1,8 +1,8 @@
 import { Formateur } from './formateur'
 import { Participant } from './participant'
-import { Agregat } from '../../../../building-blocks/write/agregat'
-import { Entite } from '../../../../building-blocks/write/entite'
-import { ValueObject } from '../../../../building-blocks/value-objet'
+import { Agregat } from '../../../../building-blocks/ddd/agregat'
+import { Entite } from '../../../../building-blocks/ddd/entite'
+import { ValueObject } from '../../../../building-blocks/ddd/value-objet'
 
 export class SessionDeFormation implements Agregat, Entite<IdSessionDeFormation> {
   public readonly participants: Participant[] = []

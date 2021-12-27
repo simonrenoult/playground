@@ -1,6 +1,6 @@
 import { Redis } from 'ioredis'
-import GestionnaireDEvenementDuDomaine from '../../../../building-blocks/gestionnaire-d-evenement-du-domaine'
-import EvenementDuDomaine from '../../../../building-blocks/evenement'
+import GestionnaireDEvenementDuDomaine from '../../../../building-blocks/cqrs/gestionnaire-d-evenement-du-domaine'
+import EvenementDuDomaine from '../../../../building-blocks/cqrs/evenement'
 import FormationCreee from '../../../write/domain/evenement/formation-creee'
 
 export class AjouterFormationAuCatalogueDeFormations implements GestionnaireDEvenementDuDomaine<FormationCreee> {

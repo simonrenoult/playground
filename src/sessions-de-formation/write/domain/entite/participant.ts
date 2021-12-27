@@ -1,5 +1,5 @@
 import Email from '../../../../shared-kernel/email'
-import { Entite } from '../../../../building-blocks/write/entite'
+import { Entite } from '../../../../building-blocks/ddd/entite'
 
 export class Participant implements Entite<Email> {
   constructor(

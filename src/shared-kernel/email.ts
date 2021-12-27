@@ -1,4 +1,4 @@
-import { ValueObject } from '../building-blocks/value-objet'
+import { ValueObject } from '../building-blocks/ddd/value-objet'
 
 export default class Email implements ValueObject {
   public readonly valeur: string
