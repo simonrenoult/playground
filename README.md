@@ -21,12 +21,14 @@ $ npm test
 - [x] Hateoas
 - Implémenter la persistence
 - Générer la ci/cd
+- Chemin absolus plutôt que relatif
 
 ### Architecture
 
 - Implémenter de l'event sourcing
 - Optimistic concurrency
 - Script vérifiant la clean archi
+- Générer le C4 context
 
 ### Pattern
 
