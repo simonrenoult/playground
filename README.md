@@ -18,7 +18,7 @@ $ npm test
 ### Infrastructure
 
 - Exposer sur une API
-- Hateoas
+- [x] Hateoas
 - Implémenter la persistence
 - Générer la ci/cd
 

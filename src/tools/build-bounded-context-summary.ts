@@ -1,9 +1,9 @@
 import { resolve } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
-import { IBoundedContext, Message } from '../building-blocks/bounded-context'
+import { IBoundedContext, NomDELElementEtSonContenu } from '../building-blocks/bounded-context'
 import { EOL } from 'os'
 
-// FIXME: dynamiser la récupération des bounded contexts
+// TODO: dynamiser la récupération des bounded contexts
 const NOM_DES_BOUNDED_CONTEXTS = [
   'catalogue-de-formations',
   'sessions-de-formation'
@@ -48,7 +48,7 @@ function creerLeBoundedContextSummary(boundedContext: IBoundedContext): string {
     .replace('{{ evenementsDuDomaine }}', boundedContext.evenementsDuDomaine.map(versDetails).join(EOL))
     .replace('{{ ubiquitousLanguage }}', boundedContext.ubiquitousLanguage.sort().map(item => `- ${item}`).join(EOL))
 
-  function versDetails(m: Message): string {
+  function versDetails(m: NomDELElementEtSonContenu): string {
     const MARQUEUR_DE_CODE = '```'
     const LANGAGE = `ts`
     return [

@@ -1,36 +1,42 @@
 import { ClassDeclaration, InterfaceDeclaration, Project } from 'ts-morph'
 import { resolve } from 'path'
+import { Constructor } from 'type-fest'
+import Message from './message'
 
 type Interfaces = 'ValueObject' | 'Agregat' | 'Entite' | 'Commande' | 'EvenementDuDomaine' | 'Question' | 'ModeleDeLecture'
 
 export interface IBoundedContext {
   nom: string
   description: string
-  localisation: string
+  cheminVersLaRacineDuBoundedContext: string
   classificationStrategique: ClassificationStrategique
   rolesDuDomaine: Array<RoleDuDomaine>
-  questions: Message[]
-  modelesDeLecture: Message[]
-  commandes: Message[]
-  evenementsDuDomaine: Message[]
-  ubiquitousLanguage: string[]
+  questions: NomDELElementEtSonContenu[]
+  modelesDeLecture: NomDELElementEtSonContenu[]
+  commandes: NomDELElementEtSonContenu[]
+  evenementsDuDomaine: NomDELElementEtSonContenu[]
+  ubiquitousLanguage: string[],
+  arborescenceDeMessages: ArborescenceDeMessages[]
 }
+
+export type ArborescenceDeMessages = { messageInitial: Constructor<Message>, messagesSuivants: Constructor<Message>[] }
 
 export default class BoundedContext implements IBoundedContext {
   public readonly ubiquitousLanguage: string[] = []
-  public readonly questions: Message[] = []
-  public readonly modelesDeLecture: Message[] = []
-  public readonly commandes: Message[] = []
-  public readonly evenementsDuDomaine: Message[] = []
+  public readonly questions: NomDELElementEtSonContenu[] = []
+  public readonly modelesDeLecture: NomDELElementEtSonContenu[] = []
+  public readonly commandes: NomDELElementEtSonContenu[] = []
+  public readonly evenementsDuDomaine: NomDELElementEtSonContenu[] = []
 
   public constructor(
     public readonly nom: string,
     public readonly description: string,
     public readonly classificationStrategique: ClassificationStrategique,
     public readonly rolesDuDomaine: Array<RoleDuDomaine>,
-    public readonly localisation: string,
+    public readonly arborescenceDeMessages: ArborescenceDeMessages[],
+    public readonly cheminVersLaRacineDuBoundedContext: string,
   ) {
-    const elements = BoundedContext.listerLesElementsDuBoundedContext(localisation)
+    const elements = BoundedContext.listerLesElementsDuBoundedContext(cheminVersLaRacineDuBoundedContext)
     this.ubiquitousLanguage = BoundedContext.recupererUbiquitousLanguage(elements)
     this.questions = BoundedContext.recupererLesQuestions(elements)
     this.modelesDeLecture = BoundedContext.recupererLesModelesDeLecture(elements)
@@ -76,7 +82,7 @@ type ClassificationStrategique = {
   evolution: Evolution
 }
 
-export type Message = { nom: string, contenu: string }
+export type NomDELElementEtSonContenu = { nom: string, contenu: string }
 
 export enum Domain {
   CORE = 'CORE',
