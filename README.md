@@ -13,7 +13,7 @@ $ npm test
 
 - Générer la context map
 - Ajouter le nom du bounded context à l'ubiquitous language
-- Ajouter contenu à l'ubiquitous language
+- [x] Ajouter les repositories à l'ubiquitous language
 
 ### Infrastructure
 

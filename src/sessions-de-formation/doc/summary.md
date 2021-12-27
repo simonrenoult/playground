@@ -13,7 +13,7 @@
 
 
 ```ts
-export class QuellesSontLesSessionsDeFormationAVenir implements Question {
+export default class QuellesSontLesSessionsDeFormationAVenir implements Question {
   public readonly nom = 'QUELLES_SONT_LES_SESSIONS_DE_FORMATION_A_VENIR'
 }
 ```
@@ -44,7 +44,7 @@ export interface SessionsDeFormationsFutures extends ModeleDeLecture, Array<stri
 
 
 ```ts
-export class AjouterUnFormateurAUneSessionDeFormation implements Commande {
+export default class AjouterUnFormateurAUneSessionDeFormation implements Commande {
   public readonly nom = 'AJOUTER_UN_FORMATEUR_A_UNE_SESSION_DE_FORMATION'
 
   constructor(
@@ -63,7 +63,7 @@ export class AjouterUnFormateurAUneSessionDeFormation implements Commande {
 
 
 ```ts
-export class CreerUneSessionDeFormation implements Commande {
+export default class CreerUneSessionDeFormation implements Commande {
   public readonly nom = 'CREER_UNE_SESSION_DE_FORMATION'
 
   constructor(
@@ -82,7 +82,7 @@ export class CreerUneSessionDeFormation implements Commande {
 
 
 ```ts
-export class InscrireUnParticipantAUneSessionDeFormation implements Commande {
+export default class InscrireUnParticipantAUneSessionDeFormation implements Commande {
   public readonly nom = 'INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION'
 
   constructor(

@@ -13,7 +13,7 @@
 
 
 ```ts
-export class QuellesSontLesFormationsAuCatalogue implements Question {
+export default class QuellesSontLesFormationsAuCatalogue implements Question {
   public readonly nom = 'QUELLES_SONT_LES_FORMATIONS_AU_CATALOGUE'
 }
 ```
@@ -44,7 +44,7 @@ export default interface FormationsAuCatalogue extends ModeleDeLecture, Array<st
 
 
 ```ts
-export class AjouterUnFormateurPotentielALaFormation implements Commande {
+export default class AjouterUnFormateurPotentielALaFormation implements Commande {
   public readonly nom = 'AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION'
 
   constructor(
@@ -63,7 +63,7 @@ export class AjouterUnFormateurPotentielALaFormation implements Commande {
 
 
 ```ts
-export class CreerUneFormation implements Commande {
+export default class CreerUneFormation implements Commande {
   public readonly nom: string = 'CREER_UNE_FORMATION'
 
   constructor(

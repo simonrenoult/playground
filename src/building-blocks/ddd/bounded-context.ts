@@ -3,7 +3,15 @@ import { resolve } from 'path'
 import { Constructor } from 'type-fest'
 import Message from './message'
 
-type Interfaces = 'ValueObject' | 'Agregat' | 'Entite' | 'Commande' | 'EvenementDuDomaine' | 'Question' | 'ModeleDeLecture'
+type Interfaces =
+  'ValueObject'
+  | 'Agregat'
+  | 'Entite'
+  | 'Commande'
+  | 'EvenementDuDomaine'
+  | 'Question'
+  | 'ModeleDeLecture'
+  | 'Repository'
 
 export interface IBoundedContext {
   nom: string
@@ -48,7 +56,8 @@ export default class BoundedContext implements IBoundedContext {
     const agregats = recupererLeDetailDeLElementPourLeType(classes, 'Agregat')
     const entites = recupererLeDetailDeLElementPourLeType(classes, 'Entite')
     const valueObjects = recupererLeDetailDeLElementPourLeType(classes, 'ValueObject')
-    const ubiquitousLanguage = [...agregats, ...entites, ...valueObjects].map(c => c.nom)
+    const repositories = recupererLeDetailDeLElementPourLeType(classes, 'Repository')
+    const ubiquitousLanguage = [...agregats, ...entites, ...valueObjects, ...repositories].map(c => c.nom)
     return supprimerDoublons(ubiquitousLanguage)
   }
 
@@ -69,7 +78,7 @@ export default class BoundedContext implements IBoundedContext {
   }
 
   private static listerLesElementsDuBoundedContext(cheminVersLeBoundedContext: string): Array<ClassDeclaration | InterfaceDeclaration> {
-    const projet = new Project({ tsConfigFilePath: resolve(__dirname, '../..', 'tsconfig.json') })
+    const projet = new Project({ tsConfigFilePath: resolve(__dirname, '../../..', 'tsconfig.json') })
     const fichiers = projet.getSourceFiles()
       .filter(sourceFile => sourceFile.getFilePath().includes(cheminVersLeBoundedContext))
     return fichiers.flatMap(sf => [...sf.getClasses(), ...sf.getInterfaces()])
