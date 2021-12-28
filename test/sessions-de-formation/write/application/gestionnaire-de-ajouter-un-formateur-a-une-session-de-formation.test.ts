@@ -6,7 +6,7 @@ import {
   FormateurAjouteALaSessionDeFormation
 } from '../../../../src/modules/sessions-de-formation/write/domain/evenement/formateur-ajoute-a-la-session-de-formation'
 import { Fixtures } from '../../../fixtures'
-import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
+import { SessionsDeFormationEnMemoire } from '../sessions-de-formation-en-memoire'
 import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation from '../../../../src/modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation'
 
 describe('AjouterUnFormateurAUneSessionDeFormation', () => {

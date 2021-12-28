@@ -6,7 +6,7 @@ import {
   ParticipantInscritALaSessionDeFormation
 } from '../../../../src/modules/sessions-de-formation/write/domain/evenement/participant-inscrit-a-la-session-de-formation'
 import { Fixtures } from '../../../fixtures'
-import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
+import { SessionsDeFormationEnMemoire } from '../sessions-de-formation-en-memoire'
 import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from '../../../../src/modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
 
 describe('SInscrireAUneSessionDeFormation', () => {

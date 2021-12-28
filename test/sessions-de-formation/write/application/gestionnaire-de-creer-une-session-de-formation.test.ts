@@ -5,7 +5,7 @@ import {
   SessionDeFormationCreee
 } from '../../../../src/modules/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 import { Fixtures } from '../../../fixtures'
-import { SessionsDeFormationEnMemoire } from '../../sessions-de-formation-en-memoire'
+import { SessionsDeFormationEnMemoire } from '../sessions-de-formation-en-memoire'
 import { IdSessionDeFormation } from '../../../../src/modules/sessions-de-formation/write/domain/entite/session-de-formation'
 import GestionnaireDeCreerUneSessionDeFormation from '../../../../src/modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation'
 

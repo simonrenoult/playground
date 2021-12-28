@@ -9,14 +9,14 @@ import AjouterUnFormateurPotentielALaFormation from '../ajouter-un-formateur-pot
 export class GestionnaireDeAjouterUnFormateurPotentielALaFormation
   implements GestionnaireDeCommande<AjouterUnFormateurPotentielALaFormation, FormateurPotentielAjouteALaFormation> {
 
-  constructor(private readonly formations: CatalogueDeFormations) {
+  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {
   }
 
   public executer(c: AjouterUnFormateurPotentielALaFormation): FormateurPotentielAjouteALaFormation {
-    const formation = this.formations.parId(new CodeDeFormation(c.codeFormation))
+    const formation = this.catalogueDeFormations.parId(new CodeDeFormation(c.codeFormation))
     const formateurPotentiel = new FormateurPotentiel(new Email(c.emailFormateurPotentiel))
     formation.ajouterFormateurPotentiel(formateurPotentiel)
-    this.formations.persister(formation)
+    this.catalogueDeFormations.persister(formation)
     return new FormateurPotentielAjouteALaFormation(formateurPotentiel.id, formation.id.valeur)
   }
 

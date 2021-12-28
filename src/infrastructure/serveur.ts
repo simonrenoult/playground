@@ -15,31 +15,35 @@ import ExecuterLeGestionnaireDeCommande from '../building-blocks/cqrs/write/exec
 import {
   GestionnaireDeCreerUneFormation
 } from '../modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation'
-import CatalogueDeFormationsReadSide
-  from '../modules/catalogue-de-formations/read/domain/projection/catalogue-de-formations'
-import CatalogueDeFormationsWriteSide
-  from '../modules/catalogue-de-formations/write/domain/repository/catalogue-de-formations'
-import FormationsAuCatalogue
-  from '../modules/catalogue-de-formations/read/domain/modele-de-lecture/formations-au-catalogue'
-import { CodeDeFormation, Formation } from '../modules/catalogue-de-formations/write/domain/entite/formation'
+import {
+  GestionnaireDeAjouterUnFormateurPotentielALaFormation
+} from '../modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation'
+import {
+  GestionnaireDeQuellesSontLesSessionsDeFormationAVenir
+} from '../modules/sessions-de-formation/read/application/gestionnaire/gestionnaire-de-quelles-sont-les-sessions-de-formation-a-venir'
+import { HorlogeEnMemoire } from '../../test/horloge-en-memoire'
+import { DateTime } from 'luxon'
+import CalendrierDesSessionsDeFormationEnMemoire
+  from '../../test/sessions-de-formation/read/calendrier-des-sessions-de-formation-en-memoire'
+import GestionnaireDeCreerUneSessionDeFormation
+  from '../modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation'
+import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
+  from '../modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation'
+import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
+  from '../modules/sessions-de-formation/write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation'
+import { SessionsDeFormationEnMemoire } from '../../test/sessions-de-formation/write/sessions-de-formation-en-memoire'
+import CatalogueDeFormationsDeLectureEnMemoire
+  from '../../test/catalogue-de-formations/read/catalogue-de-formations-en-memoire'
+import CatalogueDeFormationsDEcritureEnMemoire
+  from '../../test/catalogue-de-formations/write/catalogue-de-formations-en-memoire'
+import AjouterUnFormateurPotentielALaFormation
+  from '../modules/catalogue-de-formations/write/application/ajouter-un-formateur-potentiel-a-la-formation'
 
-class CatalogueDeFormationsEnMemoire implements CatalogueDeFormationsWriteSide, CatalogueDeFormationsReadSide {
-  private formations: Formation[]
-  lister(): FormationsAuCatalogue {
-    return this.formations.map(f => f.id.valeur)
-  }
-
-  parId(id: CodeDeFormation): Formation {
-    return this.formations.find(f => f.id.equals(id))
-  }
-
-  persister(a: Formation): void {
-    this.formations.push(a)
-  }
-
-}
-
-const catalogueDeFormationsEnMemoire = new CatalogueDeFormationsEnMemoire()
+const catalogueDeFormationsDeLectureEnMemoire = new CatalogueDeFormationsDeLectureEnMemoire()
+const catalogueDeFormationsDEcritureEnMemoire = new CatalogueDeFormationsDEcritureEnMemoire()
+const calendrierDesSessionsDeFormationFuturesEnMemoire = new CalendrierDesSessionsDeFormationEnMemoire()
+const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire()
+const horloge = new HorlogeEnMemoire(DateTime.now().toISODate())
 
 const fastify = Fastify({
   logger: {
@@ -47,17 +51,28 @@ const fastify = Fastify({
   }
 })
 
+fastify.register(require('fastify-swagger'), {
+  routePrefix: '/documentation',
+  exposeRoute: true
+})
+
 const busDeQuestions = new BusDeQuestion([
   new ExecuterLeGestionnaireDeQuestion([
-      new GestionnaireDeQuellesSontLesFormationsAuCatalogue(catalogueDeFormationsEnMemoire
-    )],
+      new GestionnaireDeQuellesSontLesFormationsAuCatalogue(catalogueDeFormationsDeLectureEnMemoire),
+      new GestionnaireDeQuellesSontLesSessionsDeFormationAVenir(horloge, calendrierDesSessionsDeFormationFuturesEnMemoire)
+    ],
     fastify.log
   )
 ])
 
 const busDeCommandes = new BusDeCommandes([
-  new ExecuterLeGestionnaireDeCommande([
-      new GestionnaireDeCreerUneFormation(catalogueDeFormationsEnMemoire)
+  new ExecuterLeGestionnaireDeCommande(
+    [
+      new GestionnaireDeCreerUneFormation(catalogueDeFormationsDEcritureEnMemoire),
+      new GestionnaireDeAjouterUnFormateurPotentielALaFormation(catalogueDeFormationsDEcritureEnMemoire),
+      new GestionnaireDeCreerUneSessionDeFormation(sessionsDeFormationEnMemoire),
+      new GestionnaireDeAjouterUnFormateurAUneSessionDeFormation(sessionsDeFormationEnMemoire),
+      new GestionnaireDeInscrireUnParticipantAUneSessionDeFormation(sessionsDeFormationEnMemoire)
     ],
     fastify.log
   )
@@ -68,17 +83,41 @@ const constructeurDeLiensDuCatalogueDeFormations = new Liens(
   catalogueDeFormationsAssociationMessageEtHttp
 )
 
-
-fastify.get('/formations', async (req, res) => {
-  const message = new QuellesSontLesFormationsAuCatalogue()
-  const data = busDeQuestions.publier(message)
-  return { data, liens: constructeurDeLiensDuCatalogueDeFormations.creer(message) }
+fastify.route({
+  method: 'GET',
+  url: '/formations',
+  handler: async () => {
+    const message = new QuellesSontLesFormationsAuCatalogue()
+    const data = busDeQuestions.publier(message)
+    return { data, liens: constructeurDeLiensDuCatalogueDeFormations.creer(message) }
+  }
 })
 
-fastify.post<{ Body: { code: string, dureeEnHeures: number } }>('/formations', async (req, res) => {
-  const message = new CreerUneFormation(req.body.code, req.body.dureeEnHeures)
-  const data = busDeCommandes.publier(message)
-  return { data, liens: constructeurDeLiensDuCatalogueDeFormations.creer(message) }
+fastify.route<{ Body: { code: string, dureeEnHeures: number } }>({
+  method: 'POST',
+  url: '/formations',
+  schema: {
+    body: { code: { type: 'string' }, dureeEnHeures: { type: 'number' } }
+  },
+  handler: async (req) => {
+    const message = new CreerUneFormation(req.body.code, req.body.dureeEnHeures)
+    const data = busDeCommandes.publier(message)
+    return { data, liens: constructeurDeLiensDuCatalogueDeFormations.creer(message) }
+  }
+})
+
+fastify.route<{ Params: { code: string }, Body: { email: string } }>({
+  method: 'POST',
+  url: '/formations/:code/formateurs-potentiels',
+  schema: {
+    params: { code: { type: 'string' } },
+    body: { email: { type: 'string' } }
+  },
+  handler: async (req) => {
+    const message = new AjouterUnFormateurPotentielALaFormation(req.body.email, req.params.code)
+    const data = busDeCommandes.publier(message)
+    return { data, liens: constructeurDeLiensDuCatalogueDeFormations.creer(message) }
+  }
 })
 
 export default fastify
