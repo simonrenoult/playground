@@ -3,7 +3,6 @@ import { SessionsDeFormationsFutures } from '../../domain/modele-de-lecture/sess
 import { Horloge } from '../../../../shared-kernel/horloge'
 import { CalendrierDesSessionsDeFormation } from '../../domain/projection/calendrier-des-sessions-de-formation'
 import Question from '../../../../../building-blocks/cqrs/read/question'
-import QuellesSontLesFormationsAuCatalogue from '../../../../catalogue-de-formations/read/application/quelles-sont-les-formations-au-catalogue'
 import QuellesSontLesSessionsDeFormationAVenir from '../quelles-sont-les-sessions-de-formation-a-venir'
 
 export class GestionnaireDeQuellesSontLesSessionsDeFormationAVenir implements GestionnaireDeQuestion<QuellesSontLesSessionsDeFormationAVenir, SessionsDeFormationsFutures> {
@@ -18,6 +17,6 @@ export class GestionnaireDeQuellesSontLesSessionsDeFormationAVenir implements Ge
   }
 
   public ecoute(q: Question): boolean {
-    return q instanceof QuellesSontLesFormationsAuCatalogue
+    return q instanceof QuellesSontLesSessionsDeFormationAVenir
   }
 }
