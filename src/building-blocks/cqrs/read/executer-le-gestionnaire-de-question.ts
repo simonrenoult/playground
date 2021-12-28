@@ -1,14 +1,19 @@
 import IntercepteurDeQuestion from './intercepteur-de-question'
 import GestionnaireDeQuestion from './gestionnaire-de-question'
-import Question from './question'
-import ModeleDeLecture from './modele-de-lecture'
 import ResultatDeLIntercepteurDeQuestion from './resultat-de-l-intercepteur-de-question'
+import { EnregistreurDeGestionnaire } from '../enregistreur-de-gestionnaire'
 
-export default class ExecuterLeGestionnaireDeQuestion implements IntercepteurDeQuestion {
+export default class ExecuterLeGestionnaireDeQuestion implements IntercepteurDeQuestion, EnregistreurDeGestionnaire<GestionnaireDeQuestion> {
+  private readonly gestionnairesDeQuestion: Array<GestionnaireDeQuestion> = []
+
   constructor(
-    private readonly gestionnairesDeQuestion: Array<GestionnaireDeQuestion<Question, ModeleDeLecture>> = [],
     private readonly logger: any
   ) {
+  }
+
+  enregister(g: GestionnaireDeQuestion): EnregistreurDeGestionnaire<GestionnaireDeQuestion> {
+    this.gestionnairesDeQuestion.push(g)
+    return this
   }
 
   public executer(r: ResultatDeLIntercepteurDeQuestion): ResultatDeLIntercepteurDeQuestion {

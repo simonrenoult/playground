@@ -3,12 +3,19 @@ import EvenementDuDomaine from '../evenement'
 import GestionnaireDeCommande from './gestionnaire-de-commande'
 import IntercepteurDeCommande from './intercepteur-de-commande'
 import ResultatDeLIntercepteurDeCommande from './resultat-de-l-intercepteur-de-commande'
+import { EnregistreurDeGestionnaire } from '../enregistreur-de-gestionnaire'
 
-export default class ExecuterLeGestionnaireDeCommande implements IntercepteurDeCommande {
+export default class ExecuterLeGestionnaireDeCommande implements IntercepteurDeCommande, EnregistreurDeGestionnaire<GestionnaireDeCommande> {
+  private readonly gestionnairesDeCommande: Array<GestionnaireDeCommande<Commande, EvenementDuDomaine>> = []
+
   constructor(
-    private readonly gestionnairesDeCommande: Array<GestionnaireDeCommande<Commande, EvenementDuDomaine>> = [],
     private readonly logger: any
   ) {
+  }
+
+  enregister(g: GestionnaireDeCommande): EnregistreurDeGestionnaire<GestionnaireDeCommande> {
+    this.gestionnairesDeCommande.push(g)
+    return this
   }
 
   public executer(r: ResultatDeLIntercepteurDeCommande): ResultatDeLIntercepteurDeCommande {

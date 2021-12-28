@@ -1,4 +1,4 @@
-import serveur from './serveur'
+import serveur from '../infrastructure/serveur'
 
 const PORT = process.env.PORT || 3000
 

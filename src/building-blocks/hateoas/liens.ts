@@ -15,6 +15,7 @@ export default class Liens {
 
   public creer(messageInitial: Message): Lien[] {
     const mappingHttpDuMessageInitial = this.mappingHttpDesMessages.find(mappingHttpDUnMessage => mappingHttpDUnMessage.message.name === messageInitial.constructor.name)
+    if (!mappingHttpDuMessageInitial) throw new Error('Pas de mapping http trouvé pour le message ' + messageInitial.nom)
     const self: Lien = Liens.versLien(mappingHttpDuMessageInitial, 'self')
 
     const liensSuivants = this.arborescencesDeMessages
