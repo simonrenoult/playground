@@ -33,6 +33,7 @@ $ npm test
 - [x] Déléguer aux modules/bounded-context l'enregistrement des apis, gestionnaires, etc.
 - Implémenter de l'event sourcing
 - Optimistic concurrency
+- Versionner les agrégats
 - Script vérifiant la clean archi
 - Script vérifiant l'indépendance read/write
 - Script vérifiant l'indépendance des bounded contexts
