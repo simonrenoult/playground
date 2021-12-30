@@ -1,4 +1,4 @@
-import Message from '../ddd/message'
+import Message from '../cqrs/message'
 import { ArborescenceDeMessages } from '../ddd/bounded-context'
 import { Constructor } from 'type-fest'
 import { AssociationMessageEtHttp } from './association-message-et-http'

@@ -19,13 +19,13 @@ include::../../modules/catalogue-de-formations/write/application/creer-une-forma
 ....
 ====
 
-À chaque `Commande` correspond un unique `GestionnaireDeCommande`.
+À chaque `Commande` correspond un unique `GestionnaireDeMessage`.
 Ce composant porte la responsabilité d'implémenter la logique associée à la `Commande` et émet un `EvenementDuDomaine` en sortie.
 Elle est créée à partir de l'interface suivante :
 
 [source,javascript]
 ....
-include::../../building-blocks/cqrs/write/gestionnaire-de-commande.ts[]
+include::../../building-blocks/cqrs/gestionnaire-de-message.ts[]
 ....
 
 .Exemple
@@ -38,10 +38,10 @@ include::../../modules/catalogue-de-formations/write/application/gestionnaire/ge
 ====
 
 
-Ces `GestionnaireDeCommande` ne sont pas immédiatement invocables.
-Un `BusDeCommande` encapsule leur invocation afin de s'assurer que certains traitements sont appliqués systématiquement : log, transaction, etc.
+Ces `GestionnaireDeMessage` ne sont pas immédiatement invocables.
+Un `Bus` encapsule leur invocation afin de s'assurer que certains traitements soient appliqués systématiquement : log, transaction, etc.
 
-Un `BusDeCommande` respecte l'interface suivante :
+Un `Bus` respecte l'interface suivante :
 
 [source,javascript]
 ....

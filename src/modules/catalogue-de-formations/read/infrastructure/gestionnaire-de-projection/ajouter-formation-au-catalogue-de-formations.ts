@@ -1,6 +1,7 @@
-import { Redis } from 'ioredis'
-import GestionnaireDEvenementDuDomaine from '../../../../../building-blocks/cqrs/gestionnaire-d-evenement-du-domaine'
-import EvenementDuDomaine from '../../../../../building-blocks/cqrs/evenement'
+import {Redis} from 'ioredis'
+import GestionnaireDEvenementDuDomaine
+  from '../../../../../building-blocks/cqrs/evenement-du-domaine/gestionnaire-d-evenement-du-domaine'
+import EvenementDuDomaine from '../../../../../building-blocks/cqrs/evenement-du-domaine/evenement'
 import FormationCreee from '../../../write/domain/evenement/formation-creee'
 
 export class AjouterFormationAuCatalogueDeFormations implements GestionnaireDEvenementDuDomaine<FormationCreee> {

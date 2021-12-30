@@ -16,7 +16,7 @@ describe('GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeForm
     )
 
     // When
-    informerLesFormateursPotentielsDUneNouvelleSessionDeFormation.execute(Fixtures.uneSessionDeFormationCreee())
+    informerLesFormateursPotentielsDUneNouvelleSessionDeFormation.executer(Fixtures.uneSessionDeFormationCreee())
 
     // Then
     expect(notifieurEnMemoire.emailsNotifies).to.deep.equal(['foo@example.com'])

@@ -1,4 +1,4 @@
-import Message from '../../ddd/message'
+import Message from '../message'
 
 export default interface Question extends Message {
 }

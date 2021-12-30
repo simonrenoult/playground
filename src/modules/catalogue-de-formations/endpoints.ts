@@ -1,20 +1,20 @@
-import { FastifyInstance } from 'fastify'
+import {FastifyInstance} from 'fastify'
 import Liens from '../../building-blocks/hateoas/liens'
 import associationMessageEtHttp from './configuration/association-message-et-http'
 import QuellesSontLesFormationsAuCatalogue from './read/application/quelles-sont-les-formations-au-catalogue'
 import CreerUneFormation from './write/application/creer-une-formation'
 import AjouterUnFormateurPotentielALaFormation from './write/application/ajouter-un-formateur-potentiel-a-la-formation'
 import boundedContext from './bounded-context'
-import BusDeQuestion from '../../building-blocks/cqrs/read/bus-de-question'
+import BusDeQuestions from '../../building-blocks/cqrs/read/bus-de-questions'
 import BusDeCommandes from '../../building-blocks/cqrs/write/bus-de-commandes'
-import { ListeDeEndpoints } from '../../building-blocks/liste-de-endpoints'
+import {ListeDeEndpoints} from '../../building-blocks/liste-de-endpoints'
 
 export default class CatalogueDeFormationEndpoints implements ListeDeEndpoints {
 
   private readonly constructeurDeLiens: Liens
 
   constructor(
-    private readonly busDeQuestions: BusDeQuestion,
+    private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes,
   ) {
     this.constructeurDeLiens = new Liens(

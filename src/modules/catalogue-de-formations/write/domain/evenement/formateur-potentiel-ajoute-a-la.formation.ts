@@ -1,4 +1,4 @@
-import EvenementDuDomaine from '../../../../../building-blocks/cqrs/evenement'
+import EvenementDuDomaine from '../../../../../building-blocks/cqrs/evenement-du-domaine/evenement'
 
 export class FormateurPotentielAjouteALaFormation implements EvenementDuDomaine {
   public readonly nom = 'FORMATEUR_POTENTIEL_AJOUTE_A_LA_FORMATION'

@@ -1,7 +1,7 @@
 import { ClassDeclaration, InterfaceDeclaration, Project } from 'ts-morph'
 import { resolve } from 'path'
 import { Constructor } from 'type-fest'
-import Message from './message'
+import Message from '../cqrs/message'
 
 type Interfaces =
   'ValueObject'

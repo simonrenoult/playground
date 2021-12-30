@@ -4,7 +4,7 @@
   "license": "MIT",
   "author": "Simon Renoult <simon.renoult@octo.com>",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.json",
     "lint": "eslint . --ext .ts",
     "start": "npm run watch",
     "watch": "nodemon src/bin/start.ts",

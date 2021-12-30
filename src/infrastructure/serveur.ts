@@ -1,11 +1,10 @@
 import Fastify from 'fastify'
 import FastifySwagger from 'fastify-swagger'
-import BusDeQuestion from '../building-blocks/cqrs/read/bus-de-question'
-import ExecuterLeGestionnaireDeQuestion from '../building-blocks/cqrs/read/executer-le-gestionnaire-de-question'
+import BusDeQuestions from '../building-blocks/cqrs/read/bus-de-questions'
 import BusDeCommandes from '../building-blocks/cqrs/write/bus-de-commandes'
-import ExecuterLeGestionnaireDeCommande from '../building-blocks/cqrs/write/executer-le-gestionnaire-de-commande'
-import { Module } from '../building-blocks/module'
-import CatalogueDeFormationsModule from '../modules/catalogue-de-formations'
+import {Module} from '../building-blocks/module'
+import BusDEvenementsDuDomaine from "../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
+import CatalogueDeFormationsModule from "../modules/catalogue-de-formations";
 import SessionsDeFormationModule from '../modules/sessions-de-formation'
 
 const fastify = Fastify({
@@ -19,15 +18,9 @@ fastify.register(FastifySwagger, {
   exposeRoute: true
 })
 
-const executerLeGestionnaireDeQuestion = new ExecuterLeGestionnaireDeQuestion(fastify.log)
-const busDeQuestions = new BusDeQuestion([
-  executerLeGestionnaireDeQuestion
-])
-
-const executerLeGestionnaireDeCommande = new ExecuterLeGestionnaireDeCommande(fastify.log)
-const busDeCommandes = new BusDeCommandes([
-  executerLeGestionnaireDeCommande
-])
+const busDeQuestions = new BusDeQuestions(fastify.log)
+const busDEvenements = new BusDEvenementsDuDomaine(fastify.log)
+const busDeCommandes = new BusDeCommandes(busDEvenements, fastify.log)
 
 const modules: Module[] = [
   new CatalogueDeFormationsModule(busDeQuestions, busDeCommandes),
@@ -36,8 +29,9 @@ const modules: Module[] = [
 
 modules.forEach(m => {
   m.ajouterLesEndpoints(fastify)
-  m.ajouterLesGestionnairesDeQuestion(executerLeGestionnaireDeQuestion)
-  m.ajouterLesGestionnairesDeCommande(executerLeGestionnaireDeCommande)
+  m.ajouterLesGestionnairesDeQuestion(busDeQuestions)
+  m.ajouterLesGestionnairesDeCommande(busDeCommandes)
+  m.ajouterLesGestionnairesDEvenementDuDomaine(busDEvenements)
 })
 
 export default fastify

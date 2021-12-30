@@ -1,4 +1,4 @@
-import Message from '../../ddd/message'
+import Message from '../message'
 
 /**
  * Message déclarant une intention de modification du système.

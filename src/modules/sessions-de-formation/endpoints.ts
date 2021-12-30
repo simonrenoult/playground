@@ -1,25 +1,25 @@
-import { FastifyInstance } from 'fastify'
+import {FastifyInstance} from 'fastify'
 import Liens from '../../building-blocks/hateoas/liens'
 import associationMessageEtHttp from './configuration/association-message-et-http'
 import boundedContext from './bounded-context'
-import BusDeQuestion from '../../building-blocks/cqrs/read/bus-de-question'
+import BusDeQuestions from '../../building-blocks/cqrs/read/bus-de-questions'
 import BusDeCommandes from '../../building-blocks/cqrs/write/bus-de-commandes'
 import QuellesSontLesSessionsDeFormationAVenir from './read/application/quelles-sont-les-sessions-de-formation-a-venir'
 import CreerUneSessionDeFormation from './write/application/creer-une-session-de-formation'
-import { ulid } from 'ulid'
+import {ulid} from 'ulid'
 import AjouterUnFormateurAUneSessionDeFormation
   from './write/application/ajouter-un-formateur-a-une-session-de-formation'
-import { Static, Type } from '@sinclair/typebox'
+import {Static, Type} from '@sinclair/typebox'
 import InscrireUnParticipantAUneSessionDeFormation
   from './write/application/inscrire-un-participant-a-une-session-de-formation'
-import { ListeDeEndpoints } from '../../building-blocks/liste-de-endpoints'
+import {ListeDeEndpoints} from '../../building-blocks/liste-de-endpoints'
 
 export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
 
   private readonly constructeurDeLiens: Liens
 
   constructor(
-    private readonly busDeQuestions: BusDeQuestion,
+    private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes,
   ) {
     this.constructeurDeLiens = new Liens(

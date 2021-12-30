@@ -1,11 +1,11 @@
 import Commande from '../../../../../building-blocks/cqrs/write/commande'
-import GestionnaireDeCommande from '../../../../../building-blocks/cqrs/write/gestionnaire-de-commande'
 import { CodeDeFormation, DureeDeFormation, Formation } from '../../domain/entite/formation'
 import FormationCreee from '../../domain/evenement/formation-creee'
 import CatalogueDeFormations from '../../domain/repository/catalogue-de-formations'
 import CreerUneFormation from '../creer-une-formation'
+import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
 
-export class GestionnaireDeCreerUneFormation implements GestionnaireDeCommande<CreerUneFormation, FormationCreee> {
+export class GestionnaireDeCreerUneFormation implements GestionnaireDeMessage<CreerUneFormation, FormationCreee> {
   constructor(
     private readonly formations: CatalogueDeFormations
   ) {

@@ -1,4 +1,3 @@
-import GestionnaireDeCommande from '../../../../../building-blocks/cqrs/write/gestionnaire-de-commande'
 import { FormateurAjouteALaSessionDeFormation } from '../../domain/evenement/formateur-ajoute-a-la-session-de-formation'
 import { SessionsDeFormation } from '../../domain/repository/sessions-de-formation'
 import { IdSessionDeFormation } from '../../domain/entite/session-de-formation'
@@ -6,9 +5,10 @@ import { Formateur } from '../../domain/entite/formateur'
 import Email from '../../../../shared-kernel/email'
 import Commande from '../../../../../building-blocks/cqrs/write/commande'
 import AjouterUnFormateurAUneSessionDeFormation from '../ajouter-un-formateur-a-une-session-de-formation'
+import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
 
 export default class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
-  implements GestionnaireDeCommande<AjouterUnFormateurAUneSessionDeFormation, FormateurAjouteALaSessionDeFormation> {
+  implements GestionnaireDeMessage<AjouterUnFormateurAUneSessionDeFormation, FormateurAjouteALaSessionDeFormation> {
 
   constructor(
     private readonly sessionsDeFormation: SessionsDeFormation

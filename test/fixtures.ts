@@ -1,10 +1,17 @@
-import { CodeDeFormation, DureeDeFormation, Formation } from '../src/modules/catalogue-de-formations/write/domain/entite/formation'
-import CreerUneSessionDeFormation from '../src/modules/sessions-de-formation/write/application/creer-une-session-de-formation'
+import {
+  CodeDeFormation,
+  DureeDeFormation,
+  Formation
+} from '../src/modules/catalogue-de-formations/write/domain/entite/formation'
+import CreerUneSessionDeFormation
+  from '../src/modules/sessions-de-formation/write/application/creer-une-session-de-formation'
 import {
   IdSessionDeFormation,
   SessionDeFormation
 } from '../src/modules/sessions-de-formation/write/domain/entite/session-de-formation'
-import { SessionDeFormationCreee } from '../src/modules/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
+import {
+  SessionDeFormationCreee
+} from '../src/modules/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 import CreerUneFormation from '../src/modules/catalogue-de-formations/write/application/creer-une-formation'
 
 export const DEFAUT = {
@@ -12,7 +19,8 @@ export const DEFAUT = {
   DUREE_FORMATION: 14,
   DATE_SESSION: '2021-02-01',
   MAINTENANT: '2021-01-01',
-  ID_SESSION_FORMATION: 'DDD01_1234'
+  ID_SESSION_FORMATION: 'DDD01_1234',
+  FORMATEUR: { email: "tom@example.com" }
 }
 
 export class Fixtures {
