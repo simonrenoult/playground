@@ -8,7 +8,7 @@ Accepté
 
 ## Contexte
 
-Ce projet permet de gérer différents éléments associés aux formations chez OCTO Academy.
+Ce projet permet de gérer différents éléments associés aux formations.
 On sait que ce métier est complexe et ne fera que se complexifier dans le futur.
 Au regard de cette complexité croissante, il convient de faire des choix permettant
 d'accueillir cette complexité de sorte qu'elle reste gérable malgré son accroissement.
