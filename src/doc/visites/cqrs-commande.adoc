@@ -1,0 +1,58 @@
+= CQRS - Commande
+
+> Visite de la manière dont fonctionnent les commandes.
+
+Une `Commande` exprime l'intention de modifier l'état du système.
+C'est une simple structure de données, créée à partir de l'interface suivante :
+
+[source,javascript]
+....
+include::../../building-blocks/cqrs/write/commande.ts[]
+....
+
+.Exemple
+[%collapsible]
+====
+[source,javascript]
+....
+include::../../modules/catalogue-de-formations/write/application/creer-une-formation.ts[]
+....
+====
+
+À chaque `Commande` correspond un unique `GestionnaireDeCommande`.
+Ce composant porte la responsabilité d'implémenter la logique associée à la `Commande` et émet un `EvenementDuDomaine` en sortie.
+Elle est créée à partir de l'interface suivante :
+
+[source,javascript]
+....
+include::../../building-blocks/cqrs/write/gestionnaire-de-commande.ts[]
+....
+
+.Exemple
+[%collapsible]
+====
+[source,javascript]
+....
+include::../../modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation.ts[]
+....
+====
+
+
+Ces `GestionnaireDeCommande` ne sont pas immédiatement invocables.
+Un `BusDeCommande` encapsule leur invocation afin de s'assurer que certains traitements sont appliqués systématiquement : log, transaction, etc.
+
+Un `BusDeCommande` respecte l'interface suivante :
+
+[source,javascript]
+....
+include::../../building-blocks/cqrs/bus.ts[]
+....
+
+.Exemple
+[%collapsible]
+====
+[source,javascript]
+....
+include::../../building-blocks/cqrs/write/bus-de-commandes.ts[]
+....
+====

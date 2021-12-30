@@ -45,9 +45,9 @@ $ npm test
 
 - [x] Générer la documentation du bounded context
 - [x] Faire des liens dans le summary vers la doc des patterns
+- [x] Générer des `visites`
 - Générer le C4 context
 - Générer un site statique de documentation
-- Générer un `sightseeing` path
 - Générer un BC Canva
 - Associer les commandes aux évènements émis
 - Associer les questions aux modèles de lecture
