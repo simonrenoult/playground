@@ -22,6 +22,7 @@ $ npm test
 - [x] HATEOAS
 - [x] Swagger
 - Implémenter la persistence
+- Implémenter un injecteur de dépendances
 - Générer la ci/cd
 - Chemin absolus plutôt que relatif
 
