@@ -1,0 +1,29 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+LAYOUT_WITH_LEGEND()
+
+title Système de gestion des formations
+
+Person(formateur, Formateur)
+Person(formateur_potentiel, "Formateur Potentiel")
+Person(administrateur, "Administrateur")
+Person_Ext(participant, "Participant")
+Person_Ext(client, "Client")
+
+Enterprise_Boundary(formations, "Formations") {
+    System(catalogue_de_formations, "Catalogue de formations", $link=google.com)
+    System(sessions_de_formation, "Calendrier des sessions")
+    System_Ext(mail, "Système de mails")
+}
+
+Rel(client, administrateur, contacte)
+Rel(client, catalogue_de_formations, "achète")
+Rel(formateur_potentiel, catalogue_de_formations, "s'abonne")
+Rel(formateur, sessions_de_formation, "s'inscrit")
+Rel(administrateur, sessions_de_formation, "planifie")
+Rel(administrateur, catalogue_de_formations, "administre")
+Rel(sessions_de_formation, mail, "notifie")
+Rel(participant, sessions_de_formation, "participe")
+Rel(sessions_de_formation, catalogue_de_formations, "récupère")
+
+@enduml
