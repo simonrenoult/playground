@@ -3,7 +3,7 @@
 > {{ description }}
 
 | [Domain][strategic_classification] | [Business model][strategic_classification] | [Evolution][strategic_classification] | [Rôles][domain_roles] |
-|------------------------------------|--------------------------------------------|---------------------------------------|-----------------------|
+| ---------------------------------- | ------------------------------------------ | ------------------------------------- | --------------------- |
 | {{ domain }}                       | {{ businessModel }}                        | {{ evolution }}                       | {{ rolesDuDomaine }}  |
 
 ## [Questions][cqrs]

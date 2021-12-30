@@ -1,27 +1,28 @@
-import Email from '../../../../shared-kernel/email'
-import { Agregat } from '../../../../../building-blocks/ddd/agregat'
-import { Entite } from '../../../../../building-blocks/ddd/entite'
-import { ValueObject } from '../../../../../building-blocks/ddd/value-objet'
+import Email from "../../../../shared-kernel/email";
+import { Agregat } from "../../../../../building-blocks/ddd/agregat";
+import { Entite } from "../../../../../building-blocks/ddd/entite";
+import { ValueObject } from "../../../../../building-blocks/ddd/value-objet";
 
 export class Formation implements Agregat, Entite<CodeDeFormation> {
-  public readonly formateursPotentiels: FormateurPotentiel[] = []
+  public readonly formateursPotentiels: FormateurPotentiel[] = [];
 
   constructor(
     private readonly _code: CodeDeFormation,
-    private readonly _dureeEnHeures: DureeDeFormation,
-  ) {
-  }
+    private readonly _dureeEnHeures: DureeDeFormation
+  ) {}
 
   get id(): CodeDeFormation {
-    return this._code
+    return this._code;
   }
 
   get dureeEnHeures(): number {
-    return this._dureeEnHeures.valeur
+    return this._dureeEnHeures.valeur;
   }
 
-  public ajouterFormateurPotentiel(formateurPotentiel: FormateurPotentiel): void {
-    this.formateursPotentiels.push(formateurPotentiel)
+  public ajouterFormateurPotentiel(
+    formateurPotentiel: FormateurPotentiel
+  ): void {
+    this.formateursPotentiels.push(formateurPotentiel);
   }
 
   equals(e: Entite<CodeDeFormation>): boolean {
@@ -30,11 +31,12 @@ export class Formation implements Agregat, Entite<CodeDeFormation> {
 }
 
 export class DureeDeFormation implements ValueObject {
-  public readonly valeur: number
+  public readonly valeur: number;
 
   constructor(dureeEnHeure: number) {
-    if (dureeEnHeure < 0) throw new Error('La durée de la formation ne peut être négative')
-    this.valeur = dureeEnHeure
+    if (dureeEnHeure < 0)
+      throw new Error("La durée de la formation ne peut être négative");
+    this.valeur = dureeEnHeure;
   }
 
   equals(vo: ValueObject): boolean {
@@ -43,27 +45,28 @@ export class DureeDeFormation implements ValueObject {
 }
 
 export class CodeDeFormation implements ValueObject {
-  public readonly valeur: string
+  public readonly valeur: string;
 
   constructor(code: string) {
-    if (code.length < 3) throw new Error('Le code de la formation doit faire plus de 3 caractères')
-    this.valeur = code
+    if (code.length < 3)
+      throw new Error(
+        "Le code de la formation doit faire plus de 3 caractères"
+      );
+    this.valeur = code;
   }
 
   equals(vo: ValueObject): boolean {
-    return vo instanceof CodeDeFormation && this.valeur === vo.valeur
+    return vo instanceof CodeDeFormation && this.valeur === vo.valeur;
   }
 }
 
 export class FormateurPotentiel implements ValueObject {
-  public readonly id: string
-  constructor(
-    public readonly email: Email
-  ) {
-    this.id = email.valeur
+  public readonly id: string;
+  constructor(public readonly email: Email) {
+    this.id = email.valeur;
   }
 
   equals(vo: ValueObject): boolean {
-    return vo instanceof FormateurPotentiel && this.id === vo.id
+    return vo instanceof FormateurPotentiel && this.id === vo.id;
   }
 }

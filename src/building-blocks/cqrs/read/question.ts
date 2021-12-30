@@ -1,4 +1,3 @@
-import Message from '../message'
+import Message from "../message";
 
-export default interface Question extends Message {
-}
+export default interface Question extends Message {}

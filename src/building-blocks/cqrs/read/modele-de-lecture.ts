@@ -1,2 +1,1 @@
-export default interface ModeleDeLecture {
-}
+export default interface ModeleDeLecture {}

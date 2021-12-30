@@ -3,22 +3,19 @@
 > Liste de toutes les formations proposées.
 
 | [Domain][strategic_classification] | [Business model][strategic_classification] | [Evolution][strategic_classification] | [Rôles][domain_roles] |
-|------------------------------------|--------------------------------------------|---------------------------------------|-----------------------|
-| SUPPORTING                       | COST_REDUCTION                        | PRODUCT                       | DRAFT  |
+| ---------------------------------- | ------------------------------------------ | ------------------------------------- | --------------------- |
+| SUPPORTING                         | COST_REDUCTION                             | PRODUCT                               | DRAFT                 |
 
 ## [Questions][cqrs]
 
 <details>
 <summary>QuellesSontLesFormationsAuCatalogue</summary>
 
-
 ```ts
 export default class QuellesSontLesFormationsAuCatalogue implements Question {
-  public readonly nom = 'QUELLES_SONT_LES_FORMATIONS_AU_CATALOGUE'
+  public readonly nom = "QUELLES_SONT_LES_FORMATIONS_AU_CATALOGUE";
 }
 ```
-
-
 
 </details>
 
@@ -27,13 +24,11 @@ export default class QuellesSontLesFormationsAuCatalogue implements Question {
 <details>
 <summary>FormationsAuCatalogue</summary>
 
-
 ```ts
-export default interface FormationsAuCatalogue extends ModeleDeLecture, Array<string> {
-}
+export default interface FormationsAuCatalogue
+  extends ModeleDeLecture,
+    Array<string> {}
 ```
-
-
 
 </details>
 
@@ -42,39 +37,33 @@ export default interface FormationsAuCatalogue extends ModeleDeLecture, Array<st
 <details>
 <summary>AjouterUnFormateurPotentielALaFormation</summary>
 
-
 ```ts
-export default class AjouterUnFormateurPotentielALaFormation implements Commande {
-  public readonly nom = 'AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION'
+export default class AjouterUnFormateurPotentielALaFormation
+  implements Commande
+{
+  public readonly nom = "AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION";
 
   constructor(
     public readonly emailFormateurPotentiel: string,
     public readonly codeFormation: string
-  ) {
-  }
+  ) {}
 }
 ```
-
-
 
 </details>
 <details>
 <summary>CreerUneFormation</summary>
 
-
 ```ts
 export default class CreerUneFormation implements Commande {
-  public readonly nom: string = 'CREER_UNE_FORMATION'
+  public readonly nom: string = "CREER_UNE_FORMATION";
 
   constructor(
     public readonly code: string,
     public readonly dureeEnHeures: number
-  ) {
-  }
+  ) {}
 }
 ```
-
-
 
 </details>
 
@@ -83,39 +72,33 @@ export default class CreerUneFormation implements Commande {
 <details>
 <summary>FormateurPotentielAjouteALaFormation</summary>
 
-
 ```ts
-export class FormateurPotentielAjouteALaFormation implements EvenementDuDomaine {
-  public readonly nom = 'FORMATEUR_POTENTIEL_AJOUTE_A_LA_FORMATION'
+export class FormateurPotentielAjouteALaFormation
+  implements EvenementDuDomaine
+{
+  public readonly nom = "FORMATEUR_POTENTIEL_AJOUTE_A_LA_FORMATION";
 
   constructor(
     public readonly idFormateurPotentiel: string,
     public readonly codeFormation: string
-  ) {
-  }
+  ) {}
 }
 ```
-
-
 
 </details>
 <details>
 <summary>FormationCreee</summary>
 
-
 ```ts
 export default class FormationCreee implements EvenementDuDomaine {
-  public readonly nom = 'FORMATION_CREEE'
+  public readonly nom = "FORMATION_CREEE";
 
   constructor(
     public readonly codeFormation: string,
     public readonly dureeEnHeures: number
-  ) {
-  }
+  ) {}
 }
 ```
-
-
 
 </details>
 

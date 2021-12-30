@@ -1,4 +1,4 @@
-import { Agregat } from './agregat'
+import { Agregat } from "./agregat";
 
 /**
  * Interface d'accès aux données des agrégats du bounded context.
@@ -6,6 +6,6 @@ import { Agregat } from './agregat'
  * @see https://www.martinfowler.com/bliki/BoundedContext.html
  */
 export interface Repository<IdAgregat, A extends Agregat> {
-  parId(id: IdAgregat): A
-  persister(a: A): void
+  parId(id: IdAgregat): A;
+  persister(a: A): void;
 }

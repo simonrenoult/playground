@@ -1,3 +1,3 @@
 export default interface Message {
-  readonly nom: string
+  readonly nom: string;
 }

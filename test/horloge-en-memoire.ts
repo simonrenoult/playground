@@ -1,13 +1,10 @@
-import { DateTime } from 'luxon'
-import { Horloge } from '../src/modules/shared-kernel/horloge'
+import { DateTime } from "luxon";
+import { Horloge } from "../src/modules/shared-kernel/horloge";
 
 export class HorlogeEnMemoire implements Horloge {
-  constructor(
-    private readonly _maintenant: string
-  ) {
-  }
+  constructor(private readonly _maintenant: string) {}
 
   public maintenant(): DateTime {
-    return DateTime.fromISO(this._maintenant)
+    return DateTime.fromISO(this._maintenant);
   }
 }

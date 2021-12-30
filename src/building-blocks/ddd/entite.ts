@@ -1,4 +1,4 @@
 export interface Entite<T> {
-  id: T
-  equals(e: Entite<T>): boolean
+  id: T;
+  equals(e: Entite<T>): boolean;
 }

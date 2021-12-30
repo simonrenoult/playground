@@ -1,27 +1,26 @@
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint", "prettier"],
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier'
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
   ],
   rules: {
-    '@typescript-eslint/no-var-requires': 0,
-    '@typescript-eslint/no-empty-interface': 0,
-    '@typescript-eslint/no-empty-function': 0,
-    '@typescript-eslint/no-unused-vars': [
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-unused-vars": [
       "warn",
       {
-        "argsIgnorePattern": "^_"
-      }
+        argsIgnorePattern: "^_",
+      },
     ],
-    '@typescript-eslint/ban-ts-comment': 0
+    "@typescript-eslint/ban-ts-comment": 0,
+    "prettier/prettier": "error",
   },
   env: {
-    node: true
-  }
+    node: true,
+  },
 };

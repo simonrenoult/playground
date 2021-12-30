@@ -1,8 +1,8 @@
-import { Constructor } from 'type-fest'
-import Message from '../cqrs/message'
+import { Constructor } from "type-fest";
+import Message from "../cqrs/message";
 
 export type AssociationMessageEtHttp = {
-  message: Constructor<Message>,
-  method: string,
-  href: string,
-}
+  message: Constructor<Message>;
+  method: string;
+  href: string;
+};

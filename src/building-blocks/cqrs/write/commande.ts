@@ -1,8 +1,7 @@
-import Message from '../message'
+import Message from "../message";
 
 /**
  * Message déclarant une intention de modification du système.
  * @see https://martinfowler.com/bliki/CQRS.html
  */
-export default interface Commande extends Message {
-}
+export default interface Commande extends Message {}
