@@ -5,7 +5,7 @@ import BusDeCommandes from '../building-blocks/cqrs/write/bus-de-commandes'
 import {Module} from '../building-blocks/module'
 import BusDEvenementsDuDomaine from "../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import CatalogueDeFormationsModule from "../modules/catalogue-de-formations";
-import SessionsDeFormationModule from '../modules/sessions-de-formation'
+import SessionsDeFormationModule from '../modules/calendrier-des-sessions-de-formation'
 
 const fastify = Fastify({
   logger: {

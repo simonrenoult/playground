@@ -7,7 +7,7 @@ import InscrireUnParticipantAUneSessionDeFormation
   from './write/application/inscrire-un-participant-a-une-session-de-formation'
 
 export default new BoundedContext(
-  "Sessions de formation",
+  "Calendrier des sessions de formation",
   "Création, modification, suppression et consultation des " +
   "sessions de formations planifiées à partir du catalogue.",
   {

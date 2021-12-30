@@ -1,7 +1,7 @@
 import {
   Formation,
   CatalogueDeFormations
-} from '../../src/modules/sessions-de-formation/write/domain/gateway/formation'
+} from '../../src/modules/calendrier-des-sessions-de-formation/write/domain/gateway/formation'
 
 export class PortailVersLeCatalogueDeFormationEnMemoire implements CatalogueDeFormations {
   public chercherFormationParCode(code: string): Formation {

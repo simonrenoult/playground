@@ -1,5 +1,5 @@
 import Email from '../../src/modules/shared-kernel/email'
-import { Notifieur } from '../../src/modules/sessions-de-formation/write/domain/gateway/notifieur'
+import { Notifieur } from '../../src/modules/calendrier-des-sessions-de-formation/write/domain/gateway/notifieur'
 
 export class NotifieurEnMemoire implements Notifieur {
   constructor(

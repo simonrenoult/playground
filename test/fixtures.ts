@@ -4,14 +4,14 @@ import {
   Formation
 } from '../src/modules/catalogue-de-formations/write/domain/entite/formation'
 import CreerUneSessionDeFormation
-  from '../src/modules/sessions-de-formation/write/application/creer-une-session-de-formation'
+  from '../src/modules/calendrier-des-sessions-de-formation/write/application/creer-une-session-de-formation'
 import {
   IdSessionDeFormation,
   SessionDeFormation
-} from '../src/modules/sessions-de-formation/write/domain/entite/session-de-formation'
+} from '../src/modules/calendrier-des-sessions-de-formation/write/domain/entite/session-de-formation'
 import {
   SessionDeFormationCreee
-} from '../src/modules/sessions-de-formation/write/domain/evenement/session-de-formation-creee'
+} from '../src/modules/calendrier-des-sessions-de-formation/write/domain/evenement/session-de-formation-creee'
 import CreerUneFormation from '../src/modules/catalogue-de-formations/write/application/creer-une-formation'
 
 export const DEFAUT = {
