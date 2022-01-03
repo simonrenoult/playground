@@ -17,9 +17,9 @@ export class GestionnaireDeQuellesSontLesSessionsDeFormationAVenir
     private readonly calendrierDesSessionsDeFormation: CalendrierDesSessionsDeFormation
   ) {}
 
-  public executer(
+  public async executer(
     _q: QuellesSontLesSessionsDeFormationAVenir
-  ): SessionsDeFormationsFutures {
+  ): Promise<SessionsDeFormationsFutures> {
     return this.calendrierDesSessionsDeFormation.lister(
       this.horloge.maintenant()
     );

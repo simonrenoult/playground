@@ -15,10 +15,10 @@ import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "./write/a
 import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "./write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
 import CatalogueDeFormationsGatewayEnMemoire from "../../../test/catalogue-de-formations/catalogue-de-formations-gateway-en-memoire";
 import { NotifieurEnMemoire } from "../../../test/sessions-de-formation/notifieur-en-memoire";
-import CalendrierDesSessionsDeFormationEnMemoire from "../../../test/sessions-de-formation/read/calendrier-des-sessions-de-formation-en-memoire";
-import { SessionsDeFormationEnMemoire } from "../../../test/sessions-de-formation/write/sessions-de-formation-en-memoire";
 import { HorlogeEnMemoire } from "../../../test/horloge-en-memoire";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
+import SessionsDeFormationEnMemoire from "./write/infrastructure/sessions-de-formation-en-memoire";
+import CalendrierDesSessionsDeFormationHttp from "./read/infrastructure/calendrier-des-sessions-de-formation-http";
 
 export default class SessionsDeFormationModule implements Module {
   private readonly constructeurDeLiens: Liens;
@@ -41,7 +41,7 @@ export default class SessionsDeFormationModule implements Module {
 
   public ajouterLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
     const calendrierDesSessionsDeFormationFuturesEnMemoire =
-      new CalendrierDesSessionsDeFormationEnMemoire();
+      new CalendrierDesSessionsDeFormationHttp();
     const horloge = new HorlogeEnMemoire(DateTime.now().toISODate());
 
     bus.enregistrerGestionnaire(

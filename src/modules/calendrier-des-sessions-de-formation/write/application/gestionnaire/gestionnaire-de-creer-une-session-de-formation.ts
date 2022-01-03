@@ -15,16 +15,16 @@ export default class GestionnaireDeCreerUneSessionDeFormation
 {
   constructor(private readonly sessionsDeFormation: SessionsDeFormation) {}
 
-  public executer(
+  public async executer(
     sessionDeFormationAPlanifier: CreerUneSessionDeFormation
-  ): SessionDeFormationCreee {
+  ): Promise<SessionDeFormationCreee> {
     const sessionDeFormation = new SessionDeFormation(
       new IdSessionDeFormation(
         sessionDeFormationAPlanifier.idSessionDeFormation
       ),
       new CodeDeFormation(sessionDeFormationAPlanifier.codeFormation)
     );
-    this.sessionsDeFormation.persister(sessionDeFormation);
+    await this.sessionsDeFormation.persister(sessionDeFormation);
 
     return new SessionDeFormationCreee(
       sessionDeFormation.id.valeur,

@@ -13,9 +13,9 @@ export default class GestionnaireDeQuellesSontLesFormationsAuCatalogue
 {
   constructor(private readonly catalogue: CatalogueDeFormations) {}
 
-  public executer(
+  public async executer(
     _q: QuellesSontLesFormationsAuCatalogue
-  ): FormationsAuCatalogue {
+  ): Promise<FormationsAuCatalogue> {
     return this.catalogue.lister();
   }
 

@@ -3,6 +3,7 @@ import Email from "../../../../shared-kernel/email";
 import {
   CodeDeFormation,
   FormateurPotentiel,
+  Formation,
 } from "../../domain/entite/formation";
 import { FormateurPotentielAjouteALaFormation } from "../../domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
@@ -18,17 +19,17 @@ export class GestionnaireDeAjouterUnFormateurPotentielALaFormation
 {
   constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
 
-  public executer(
+  public async executer(
     c: AjouterUnFormateurPotentielALaFormation
-  ): FormateurPotentielAjouteALaFormation {
-    const formation = this.catalogueDeFormations.parId(
+  ): Promise<FormateurPotentielAjouteALaFormation> {
+    const formation: Formation = await this.catalogueDeFormations.parId(
       new CodeDeFormation(c.codeFormation)
     );
     const formateurPotentiel = new FormateurPotentiel(
       new Email(c.emailFormateurPotentiel)
     );
     formation.ajouterFormateurPotentiel(formateurPotentiel);
-    this.catalogueDeFormations.persister(formation);
+    await this.catalogueDeFormations.persister(formation);
     return new FormateurPotentielAjouteALaFormation(
       formateurPotentiel.id,
       formation.id.valeur

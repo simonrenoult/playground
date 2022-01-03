@@ -2,7 +2,7 @@ import { describe, it } from "mocha";
 import { expect } from "chai";
 import { GestionnaireDeCreerUneFormation } from "../../../../src/modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation";
 import { Fixtures } from "../../../fixtures";
-import CatalogueDeFormationsEnMemoire from "../catalogue-de-formations-en-memoire";
+import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de-formations/write/infrastructure/catalogue-de-formations-en-memoire";
 import { CodeDeFormation } from "../../../../src/modules/catalogue-de-formations/write/domain/entite/formation";
 
 describe("CreerUneFormation", () => {

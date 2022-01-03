@@ -14,9 +14,11 @@ export default class InformerLesFormateursPotentielsDUneNouvelleSessionDeFormati
     private readonly notifieur: Notifieur
   ) {}
 
-  public executer(e: SessionDeFormationCreee): SessionDeFormationCreee {
+  public async executer(
+    e: SessionDeFormationCreee
+  ): Promise<SessionDeFormationCreee> {
     const formation =
-      this.portailVersLeCatalogueDeFormations.chercherFormationParCode(
+      await this.portailVersLeCatalogueDeFormations.chercherFormationParCode(
         e.codeFormation
       );
     formation.formateurs.forEach((f) => {

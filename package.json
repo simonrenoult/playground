@@ -7,7 +7,7 @@
     "build": "tsc --build tsconfig.json",
     "lint": "eslint . --ext .ts",
     "start": "npm run watch",
-    "watch": "nodemon src/bin/start.ts",
+    "watch": "nodemon bin/start.ts",
     "test": "mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "coverage": "nyc --all mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "summary": "ts-node src/tools/build-bounded-context-summary.ts"
@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@sinclair/typebox": "^0.23.2",
+    "axios": "^0.24.0",
     "fastify": "^3.25.2",
     "fastify-swagger": "^4.13.0",
+    "ioredis": "^4.28.2",
     "luxon": "^2.1.1",
     "pino-pretty": "^7.3.0",
     "redis": "^4.0.1",

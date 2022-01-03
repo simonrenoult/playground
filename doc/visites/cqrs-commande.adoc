@@ -7,7 +7,7 @@ C'est une simple structure de données, créée à partir de l'interface suivant
 
 [source,javascript]
 ....
-include::../../building-blocks/cqrs/write/commande.ts[]
+include::../../src/building-blocks/cqrs/write/commande.ts[]
 ....
 
 .Exemple
@@ -15,7 +15,7 @@ include::../../building-blocks/cqrs/write/commande.ts[]
 ====
 [source,javascript]
 ....
-include::../../modules/catalogue-de-formations/write/application/creer-une-formation.ts[]
+include::../../src/modules/catalogue-de-formations/write/application/creer-une-formation.ts[]
 ....
 ====
 
@@ -25,7 +25,7 @@ Elle est créée à partir de l'interface suivante :
 
 [source,javascript]
 ....
-include::../../building-blocks/cqrs/gestionnaire-de-message.ts[]
+include::../../src/building-blocks/cqrs/gestionnaire-de-message.ts[]
 ....
 
 .Exemple
@@ -33,10 +33,9 @@ include::../../building-blocks/cqrs/gestionnaire-de-message.ts[]
 ====
 [source,javascript]
 ....
-include::../../modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation.ts[]
+include::../../src/modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation.ts[]
 ....
 ====
-
 
 Ces `GestionnaireDeMessage` ne sont pas immédiatement invocables.
 Un `Bus` encapsule leur invocation afin de s'assurer que certains traitements soient appliqués systématiquement : log, transaction, etc.
@@ -45,7 +44,7 @@ Un `Bus` respecte l'interface suivante :
 
 [source,javascript]
 ....
-include::../../building-blocks/cqrs/bus.ts[]
+include::../../src/building-blocks/cqrs/bus.ts[]
 ....
 
 .Exemple
@@ -53,6 +52,6 @@ include::../../building-blocks/cqrs/bus.ts[]
 ====
 [source,javascript]
 ....
-include::../../building-blocks/cqrs/write/bus-de-commandes.ts[]
+include::../../src/building-blocks/cqrs/write/bus-de-commandes.ts[]
 ....
 ====

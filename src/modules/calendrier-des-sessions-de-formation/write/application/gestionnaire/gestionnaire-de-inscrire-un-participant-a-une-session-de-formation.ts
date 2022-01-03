@@ -1,6 +1,9 @@
 import { ParticipantInscritALaSessionDeFormation } from "../../domain/evenement/participant-inscrit-a-la-session-de-formation";
 import { SessionsDeFormation } from "../../domain/repository/sessions-de-formation";
-import { IdSessionDeFormation } from "../../domain/entite/session-de-formation";
+import {
+  IdSessionDeFormation,
+  SessionDeFormation,
+} from "../../domain/entite/session-de-formation";
 import { Participant } from "../../domain/entite/participant";
 import Email from "../../../../shared-kernel/email";
 import Commande from "../../../../../building-blocks/cqrs/write/commande";
@@ -16,19 +19,20 @@ export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
 {
   constructor(private readonly sessionsDeFormation: SessionsDeFormation) {}
 
-  public executer(
+  public async executer(
     inscriptionALaSessionDeFormation: InscrireUnParticipantAUneSessionDeFormation
-  ): ParticipantInscritALaSessionDeFormation {
-    const sessionDeFormation = this.sessionsDeFormation.parId(
-      new IdSessionDeFormation(
-        inscriptionALaSessionDeFormation.idSessionDeSessionDeFormation
-      )
-    );
+  ): Promise<ParticipantInscritALaSessionDeFormation> {
+    const sessionDeFormation: SessionDeFormation =
+      await this.sessionsDeFormation.parId(
+        new IdSessionDeFormation(
+          inscriptionALaSessionDeFormation.idSessionDeSessionDeFormation
+        )
+      );
     const participant = new Participant(
       new Email(inscriptionALaSessionDeFormation.emailParticipant)
     );
     sessionDeFormation.ajouterParticipant(participant);
-    this.sessionsDeFormation.persister(sessionDeFormation);
+    await this.sessionsDeFormation.persister(sessionDeFormation);
 
     return new ParticipantInscritALaSessionDeFormation(
       sessionDeFormation.codeFormation,

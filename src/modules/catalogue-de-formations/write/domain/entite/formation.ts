@@ -3,6 +3,11 @@ import { Agregat } from "../../../../../building-blocks/ddd/agregat";
 import { Entite } from "../../../../../building-blocks/ddd/entite";
 import { ValueObject } from "../../../../../building-blocks/ddd/value-objet";
 
+export interface FormationState {
+  code: string;
+  dureeEnHeures: number;
+}
+
 export class Formation implements Agregat, Entite<CodeDeFormation> {
   public readonly formateursPotentiels: FormateurPotentiel[] = [];
 
@@ -25,8 +30,22 @@ export class Formation implements Agregat, Entite<CodeDeFormation> {
     this.formateursPotentiels.push(formateurPotentiel);
   }
 
-  equals(e: Entite<CodeDeFormation>): boolean {
+  public equals(e: Entite<CodeDeFormation>): boolean {
     return this._code.valeur === e.id.valeur;
+  }
+
+  public toState(): FormationState {
+    return {
+      code: this._code.valeur,
+      dureeEnHeures: this._dureeEnHeures.valeur,
+    };
+  }
+
+  public static fromState(state: FormationState): Formation {
+    return new Formation(
+      new CodeDeFormation(state.code),
+      new DureeDeFormation(state.dureeEnHeures)
+    );
   }
 }
 
@@ -62,6 +81,7 @@ export class CodeDeFormation implements ValueObject {
 
 export class FormateurPotentiel implements ValueObject {
   public readonly id: string;
+
   constructor(public readonly email: Email) {
     this.id = email.valeur;
   }

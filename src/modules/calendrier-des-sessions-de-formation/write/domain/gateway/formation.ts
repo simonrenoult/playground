@@ -6,5 +6,5 @@ export interface Formation {
 }
 
 export interface CatalogueDeFormations extends Gateway {
-  chercherFormationParCode(code: string): Formation;
+  chercherFormationParCode(code: string): Promise<Formation>;
 }

@@ -14,7 +14,9 @@ export class GestionnaireDeCreerUneFormation
 {
   constructor(private readonly formations: CatalogueDeFormations) {}
 
-  public executer(formationACreer: CreerUneFormation): FormationCreee {
+  public async executer(
+    formationACreer: CreerUneFormation
+  ): Promise<FormationCreee> {
     const formation = new Formation(
       new CodeDeFormation(formationACreer.code),
       new DureeDeFormation(formationACreer.dureeEnHeures)

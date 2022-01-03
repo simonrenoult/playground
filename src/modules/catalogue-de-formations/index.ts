@@ -10,9 +10,9 @@ import CatalogueDeFormationEndpoints from "./endpoints";
 import GestionnaireDeQuellesSontLesFormationsAuCatalogue from "./read/application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue";
 import { GestionnaireDeCreerUneFormation } from "./write/application/gestionnaire/gestionnaire-de-creer-une-formation";
 import { GestionnaireDeAjouterUnFormateurPotentielALaFormation } from "./write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
-import CatalogueDeFormationsDeLectureEnMemoire from "../../../test/catalogue-de-formations/read/catalogue-de-formations-en-memoire";
-import CatalogueDeFormationsDEcritureEnMemoire from "../../../test/catalogue-de-formations/write/catalogue-de-formations-en-memoire";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
+import CatalogueDeFormationsEnLectureEnMemoire from "./read/infrastructure/projection/catalogue-de-formations";
+import CatalogueDeFormationsEnEcritureEnMemoire from "./write/infrastructure/catalogue-de-formations-en-memoire";
 
 export default class CatalogueDeFormationsModule implements Module {
   private readonly constructeurDeLiens: Liens;
@@ -33,19 +33,15 @@ export default class CatalogueDeFormationsModule implements Module {
   }
 
   public ajouterLesGestionnairesDeQuestion(bus: BusDeQuestions) {
-    const catalogueDeFormationsDeLectureEnMemoire =
-      new CatalogueDeFormationsDeLectureEnMemoire();
-
+    const catalogue = new CatalogueDeFormationsEnLectureEnMemoire();
     bus.enregistrerGestionnaire(
-      new GestionnaireDeQuellesSontLesFormationsAuCatalogue(
-        catalogueDeFormationsDeLectureEnMemoire
-      )
+      new GestionnaireDeQuellesSontLesFormationsAuCatalogue(catalogue)
     );
   }
 
   public ajouterLesGestionnairesDeCommande(bus: BusDeCommandes) {
     const catalogueDeFormationsDEcritureEnMemoire =
-      new CatalogueDeFormationsDEcritureEnMemoire();
+      new CatalogueDeFormationsEnEcritureEnMemoire();
 
     bus.enregistrerGestionnaire(
       new GestionnaireDeCreerUneFormation(

@@ -1,19 +1,16 @@
-import { Redis } from "ioredis";
-import GestionnaireDEvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du-domaine/gestionnaire-d-evenement-du-domaine";
 import EvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du-domaine/evenement";
+import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
 import FormationCreee from "../../../write/domain/evenement/formation-creee";
+import CatalogueDeFormations from "../../domain/projection/catalogue-de-formations";
 
 export class AjouterFormationAuCatalogueDeFormations
-  implements GestionnaireDEvenementDuDomaine<FormationCreee>
+  implements GestionnaireDeMessage<FormationCreee, FormationCreee>
 {
-  private readonly CLE_REDIS = "formations";
+  constructor(private readonly catalogue: CatalogueDeFormations) {}
 
-  constructor(private readonly redis: Redis) {}
-
-  public execute(e: FormationCreee): void {
-    // @ts-ignore
-    const formations = (await this.redis.get(this.CLE_REDIS)) || [];
-    this.redis.set(this.CLE_REDIS, [...formations, e.codeFormation]);
+  public async executer(e: FormationCreee): Promise<FormationCreee> {
+    this.catalogue.ajouter(e.codeFormation);
+    return e;
   }
 
   public ecoute(e: EvenementDuDomaine): boolean {

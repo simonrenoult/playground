@@ -11,13 +11,15 @@ export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
     return this.sessionsDeFormation;
   }
 
-  public persister(sessionDeFormation: SessionDeFormation): void {
+  public async persister(
+    sessionDeFormation: SessionDeFormation
+  ): Promise<void> {
     this.sessionsDeFormation.push(sessionDeFormation);
   }
 
-  public parId(
+  public async parId(
     idSessionDeSessionDeFormation: IdSessionDeFormation
-  ): SessionDeFormation {
+  ): Promise<SessionDeFormation> {
     return this.sessionsDeFormation.find((s) =>
       s.id.equals(idSessionDeSessionDeFormation)
     );

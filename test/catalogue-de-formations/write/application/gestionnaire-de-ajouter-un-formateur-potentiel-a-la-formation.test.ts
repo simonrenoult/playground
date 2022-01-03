@@ -5,7 +5,7 @@ import { FormateurPotentiel } from "../../../../src/modules/catalogue-de-formati
 import { FormateurPotentielAjouteALaFormation } from "../../../../src/modules/catalogue-de-formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import Email from "../../../../src/modules/shared-kernel/email";
 import { Fixtures } from "../../../fixtures";
-import CatalogueDeFormationsEnMemoire from "../catalogue-de-formations-en-memoire";
+import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de-formations/write/infrastructure/catalogue-de-formations-en-memoire";
 import AjouterUnFormateurPotentielALaFormation from "../../../../src/modules/catalogue-de-formations/write/application/ajouter-un-formateur-potentiel-a-la-formation";
 
 describe("AjouterUnFormateurPotentielALaFormation", () => {
