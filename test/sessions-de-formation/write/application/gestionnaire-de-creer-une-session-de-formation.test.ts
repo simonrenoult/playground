@@ -8,7 +8,7 @@ import { IdSessionDeFormation } from "../../../../src/modules/calendrier-des-ses
 import GestionnaireDeCreerUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation";
 
 describe("CreerUneSessionDeFormation", () => {
-  it("persiste une nouvelle session de formation", () => {
+  it("persiste une nouvelle session de formation", async () => {
     // Given
     const sessionsDeFormation = new SessionsDeFormationEnMemoire();
     const creerUneSessionDeFormation =
@@ -18,7 +18,7 @@ describe("CreerUneSessionDeFormation", () => {
       Fixtures.uneSessionDeFormationACreer(idSessionDeFormation);
 
     // When
-    creerUneSessionDeFormation.executer(sessionDeFormationAPlanifier);
+    await creerUneSessionDeFormation.executer(sessionDeFormationAPlanifier);
 
     // Then
     const [sessionDeFormation] = sessionsDeFormation.lister();
@@ -28,7 +28,7 @@ describe("CreerUneSessionDeFormation", () => {
     expect(sessionDeFormation.codeFormation).to.equal("DDD01");
   });
 
-  it("retourne un évènement de creation de la session", () => {
+  it("retourne un évènement de creation de la session", async () => {
     // Given
     const sessionsDeFormation = new SessionsDeFormationEnMemoire();
     const planifierUneSessionDeFormation =
@@ -38,7 +38,7 @@ describe("CreerUneSessionDeFormation", () => {
       Fixtures.uneSessionDeFormationACreer(idSessionDeFormation);
 
     // When
-    const evenement = planifierUneSessionDeFormation.executer(
+    const evenement = await planifierUneSessionDeFormation.executer(
       sessionDeFormationAPlanifier
     );
 

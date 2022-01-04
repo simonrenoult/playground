@@ -7,7 +7,7 @@ import { DEFAUT } from "../fixtures";
 export default class CatalogueDeFormationsGatewayEnMemoire
   implements CatalogueDeFormations
 {
-  chercherFormationParCode(_code: string): Formation {
+  async chercherFormationParCode(_code: string): Promise<Formation> {
     return { code: DEFAUT.CODE_FORMATION, formateurs: [DEFAUT.FORMATEUR] };
   }
 }

@@ -5,7 +5,7 @@ import { DateTime } from "luxon";
 export default class CalendrierDesSessionsDeFormationEnMemoire
   implements CalendrierDesSessionsDeFormation
 {
-  public lister(_aPartirDe: DateTime): FormationsAuCatalogue {
+  public async lister(_aPartirDe: DateTime): Promise<FormationsAuCatalogue> {
     return ["DDD01"];
   }
 }

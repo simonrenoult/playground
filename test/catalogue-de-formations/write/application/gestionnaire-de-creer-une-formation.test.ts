@@ -6,14 +6,14 @@ import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de
 import { CodeDeFormation } from "../../../../src/modules/catalogue-de-formations/write/domain/entite/formation";
 
 describe("CreerUneFormation", () => {
-  it("persiste une formation", () => {
+  it("persiste une formation", async () => {
     // Given
     const formationACreer = Fixtures.uneFormationACreer();
     const formations = new CatalogueDeFormationsEnMemoire();
     const creerUneFormation = new GestionnaireDeCreerUneFormation(formations);
 
     // When
-    creerUneFormation.executer(formationACreer);
+    await creerUneFormation.executer(formationACreer);
 
     // Then
     const [formation] = formations.lister();
@@ -21,14 +21,14 @@ describe("CreerUneFormation", () => {
     expect(formation.dureeEnHeures).to.deep.equal(14);
   });
 
-  it("retourne un évènement de création de formation", () => {
+  it("retourne un évènement de création de formation", async () => {
     // Given
     const formationACreer = Fixtures.uneFormationACreer();
     const formations = new CatalogueDeFormationsEnMemoire();
     const creerUneFormation = new GestionnaireDeCreerUneFormation(formations);
 
     // When
-    const evenement = creerUneFormation.executer(formationACreer);
+    const evenement = await creerUneFormation.executer(formationACreer);
 
     // Then
     expect(evenement.codeFormation).to.deep.equal("DDD01");

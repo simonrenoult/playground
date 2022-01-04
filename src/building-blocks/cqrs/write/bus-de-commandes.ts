@@ -14,7 +14,10 @@ export default class BusDeCommandes
   >[] = [];
 
   constructor(
-    private readonly busDEvenementsDuDomaine: Bus<EvenementDuDomaine, void>,
+    private readonly busDEvenementsDuDomaine: Bus<
+      EvenementDuDomaine,
+      EvenementDuDomaine
+    >,
     private readonly logger: any
   ) {}
 
@@ -28,15 +31,19 @@ export default class BusDeCommandes
     this.intercepteurs.push(i);
   }
 
-  public publier<E extends EvenementDuDomaine>(commande: Commande): E {
+  public async publier<E extends EvenementDuDomaine>(
+    commande: Commande
+  ): Promise<E> {
     this.intercepteurs.forEach((i) => i.executer(commande));
-    const evenementDuDomaine = this.executerLeGestionnaireDeCommande(commande);
+    const evenementDuDomaine = await this.executerLeGestionnaireDeCommande(
+      commande
+    );
     return evenementDuDomaine as E;
   }
 
-  private executerLeGestionnaireDeCommande(
+  private async executerLeGestionnaireDeCommande(
     commande: Commande
-  ): EvenementDuDomaine {
+  ): Promise<EvenementDuDomaine> {
     this.logger.info(`${commande.nom} (commande) est en cours d'émission`);
     const gestionnaireDeCommande = this.gestionnaires.find((ch) =>
       ch.ecoute(commande)
@@ -45,7 +52,7 @@ export default class BusDeCommandes
       throw new Error(
         `Aucun gestionnaire trouvé pour la commande ${commande.nom}`
       );
-    const evenementDuDomaine = gestionnaireDeCommande.executer(commande);
+    const evenementDuDomaine = await gestionnaireDeCommande.executer(commande);
     this.busDEvenementsDuDomaine.publier(evenementDuDomaine);
     return evenementDuDomaine;
   }

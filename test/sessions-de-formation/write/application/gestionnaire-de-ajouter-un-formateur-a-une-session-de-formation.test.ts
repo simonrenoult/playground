@@ -8,7 +8,7 @@ import { SessionsDeFormationEnMemoire } from "../sessions-de-formation-en-memoir
 import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation";
 
 describe("AjouterUnFormateurAUneSessionDeFormation", () => {
-  it("ajoute un formateur à la session de formation", () => {
+  it("ajoute un formateur à la session de formation", async () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire();
     const stafferUneSessionDeFormation =
@@ -27,14 +27,14 @@ describe("AjouterUnFormateurAUneSessionDeFormation", () => {
       );
 
     // When
-    stafferUneSessionDeFormation.executer(sessionDeFormationAStaffer);
+    await stafferUneSessionDeFormation.executer(sessionDeFormationAStaffer);
 
     // Then
     const [sessionDeFormation] = sessionsDeFormationEnMemoire.lister();
     expect(sessionDeFormation.formateurs).to.have.length(1);
   });
 
-  it("retourne un évènement de staffing d'un formateur à la session de formation", () => {
+  it("retourne un évènement de staffing d'un formateur à la session de formation", async () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire();
     const stafferUneSessionDeFormation =
@@ -53,7 +53,7 @@ describe("AjouterUnFormateurAUneSessionDeFormation", () => {
       );
 
     // When
-    const evenement = stafferUneSessionDeFormation.executer(
+    const evenement = await stafferUneSessionDeFormation.executer(
       sessionDeFormationAStaffer
     );
 

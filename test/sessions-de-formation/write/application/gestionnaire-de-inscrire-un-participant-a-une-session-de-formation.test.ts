@@ -8,7 +8,7 @@ import { SessionsDeFormationEnMemoire } from "../sessions-de-formation-en-memoir
 import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation";
 
 describe("SInscrireAUneSessionDeFormation", () => {
-  it("ajoute un participant à la session de formation", () => {
+  it("ajoute un participant à la session de formation", async () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire();
     const sInscrireAUneSessionDeFormation =
@@ -27,14 +27,16 @@ describe("SInscrireAUneSessionDeFormation", () => {
       );
 
     // When
-    sInscrireAUneSessionDeFormation.executer(inscriptionALaSessionDeFormation);
+    await sInscrireAUneSessionDeFormation.executer(
+      inscriptionALaSessionDeFormation
+    );
 
     // Then
     const [sessionDeFormation] = sessionsDeFormationEnMemoire.lister();
     expect(sessionDeFormation.participants).to.have.length(1);
   });
 
-  it("retourne un évènement d'inscription à la session", () => {
+  it("retourne un évènement d'inscription à la session", async () => {
     // Given
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire();
     const sInscrireAUneSessionDeFormation =
@@ -53,7 +55,7 @@ describe("SInscrireAUneSessionDeFormation", () => {
       );
 
     // When
-    const evenement = sInscrireAUneSessionDeFormation.executer(
+    const evenement = await sInscrireAUneSessionDeFormation.executer(
       inscriptionALaSessionDeFormation
     );
 

@@ -6,7 +6,7 @@ import { NotifieurEnMemoire } from "../../notifieur-en-memoire";
 import { PortailVersLeCatalogueDeFormationEnMemoire } from "../../portail-vers-le-catalogue-de-formation-en-memoire";
 
 describe("GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeFormation", () => {
-  it("fait le boulot", () => {
+  it("fait le boulot", async () => {
     // Given
     const notifieurEnMemoire = new NotifieurEnMemoire();
     const portailVersLeCatalogueDeFormationEnMemoire =
@@ -18,7 +18,7 @@ describe("GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeForm
       );
 
     // When
-    informerLesFormateursPotentielsDUneNouvelleSessionDeFormation.executer(
+    await informerLesFormateursPotentielsDUneNouvelleSessionDeFormation.executer(
       Fixtures.uneSessionDeFormationCreee()
     );
 

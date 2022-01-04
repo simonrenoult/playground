@@ -5,17 +5,17 @@ import CatalogueDeFormationsEnMemoire from "../catalogue-de-formations-en-memoir
 import GestionnaireDeQuellesSontLesFormationsAuCatalogue from "../../../../src/modules/catalogue-de-formations/read/application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue";
 
 describe("QuellesSontLesFormationsAuCatalogue", () => {
-  it("liste les formations au catalogue", () => {
+  it("liste les formations au catalogue", async () => {
     // Given
     const quellesSontLesFormationsAuCatalogue =
       new QuellesSontLesFormationsAuCatalogue();
-    const catalogueEnMemoire = new CatalogueDeFormationsEnMemoire();
+    const catalogueEnMemoire = new CatalogueDeFormationsEnMemoire(["DDD01"]);
     const gestionnaire = new GestionnaireDeQuellesSontLesFormationsAuCatalogue(
       catalogueEnMemoire
     );
 
     // When
-    const formations = gestionnaire.executer(
+    const formations = await gestionnaire.executer(
       quellesSontLesFormationsAuCatalogue
     );
 

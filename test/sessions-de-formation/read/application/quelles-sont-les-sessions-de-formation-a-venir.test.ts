@@ -6,7 +6,7 @@ import { GestionnaireDeQuellesSontLesSessionsDeFormationAVenir } from "../../../
 import { HorlogeEnMemoire } from "../../../horloge-en-memoire";
 
 describe("QuellesSontLesSessionsDeFormationAVenir", () => {
-  it("liste les sessions de formation futures", () => {
+  it("liste les sessions de formation futures", async () => {
     // Given
     const quellesSontLesSessionsDeFormationAVenir =
       new QuellesSontLesSessionsDeFormationAVenir();
@@ -19,7 +19,7 @@ describe("QuellesSontLesSessionsDeFormationAVenir", () => {
       );
 
     // When
-    const formations = gestionnaire.executer(
+    const formations = await gestionnaire.executer(
       quellesSontLesSessionsDeFormationAVenir
     );
 

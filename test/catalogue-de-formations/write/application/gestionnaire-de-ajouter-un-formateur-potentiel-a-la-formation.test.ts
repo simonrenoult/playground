@@ -9,10 +9,10 @@ import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de
 import AjouterUnFormateurPotentielALaFormation from "../../../../src/modules/catalogue-de-formations/write/application/ajouter-un-formateur-potentiel-a-la-formation";
 
 describe("AjouterUnFormateurPotentielALaFormation", () => {
-  it("persiste la formation avec le formateur potentiel", () => {
+  it("persiste la formation avec le formateur potentiel", async () => {
     // Given
     const formations = new CatalogueDeFormationsEnMemoire();
-    formations.persister(Fixtures.uneFormation());
+    await formations.persister(Fixtures.uneFormation());
     const ajouterUnFormateurPotentielALaFormation =
       new GestionnaireDeAjouterUnFormateurPotentielALaFormation(formations);
     const commande = new AjouterUnFormateurPotentielALaFormation(
@@ -21,7 +21,7 @@ describe("AjouterUnFormateurPotentielALaFormation", () => {
     );
 
     // When
-    ajouterUnFormateurPotentielALaFormation.executer(commande);
+    await ajouterUnFormateurPotentielALaFormation.executer(commande);
 
     // Then
     const [formation] = formations.lister();
@@ -30,7 +30,7 @@ describe("AjouterUnFormateurPotentielALaFormation", () => {
     ]);
   });
 
-  it("retourne un évènement d'ajout d'un formateur principal", () => {
+  it("retourne un évènement d'ajout d'un formateur principal", async () => {
     // Given
     const formations = new CatalogueDeFormationsEnMemoire();
     formations.persister(Fixtures.uneFormation());
@@ -42,8 +42,9 @@ describe("AjouterUnFormateurPotentielALaFormation", () => {
     );
 
     // When
-    const evenement =
-      ajouterUnFormateurPotentielALaFormation.executer(commande);
+    const evenement = await ajouterUnFormateurPotentielALaFormation.executer(
+      commande
+    );
 
     // Then
     expect(evenement).to.deep.equal(

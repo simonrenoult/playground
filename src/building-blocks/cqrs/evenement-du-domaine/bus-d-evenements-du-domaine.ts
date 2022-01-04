@@ -24,7 +24,9 @@ export default class BusDEvenementsDuDomaine
     this.intercepteurs.push(i);
   }
 
-  public publier(evenementDuDomaine: EvenementDuDomaine): EvenementDuDomaine {
+  public async publier(
+    evenementDuDomaine: EvenementDuDomaine
+  ): Promise<EvenementDuDomaine> {
     this.log.info(
       `${evenementDuDomaine} (evenement du domaine) est en cours d'émission`
     );
