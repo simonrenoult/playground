@@ -26,19 +26,21 @@ export default class BusDEvenementsDuDomaine
 
   public async publier(
     evenementDuDomaine: EvenementDuDomaine
-  ): Promise<EvenementDuDomaine> {
+  ): Promise<EvenementDuDomaine | null> {
     this.log.info(
-      `${evenementDuDomaine} (evenement du domaine) est en cours d'émission`
+      `${evenementDuDomaine.nom} (evenement du domaine) est en cours d'émission`
     );
     this.intercepteurs.forEach((i) => i.executer(evenementDuDomaine));
     const gestionnaireDeCommande = this.gestionnaires.find((g) =>
       g.ecoute(evenementDuDomaine)
     );
-    if (!gestionnaireDeCommande)
-      throw new Error(
-        `Aucun gestionnaire trouvé pour l'évènement du domaine ${evenementDuDomaine.nom}`
-      );
-    gestionnaireDeCommande.executer(evenementDuDomaine);
-    return evenementDuDomaine;
+    if (gestionnaireDeCommande) {
+      gestionnaireDeCommande.executer(evenementDuDomaine);
+      return evenementDuDomaine;
+    }
+    this.log.warn(
+      `Aucun gestionnaire trouvé pour l'évènement du domaine ${evenementDuDomaine.nom}`
+    );
+    return null;
   }
 }

@@ -1,0 +1,70 @@
+= HATEOAS
+
+> Visite de l'implémentation de https://en.wikipedia.org/wiki/HATEOAS[HATEOAS].
+
+HATEOAS propose d'utiliser des liens hypermédia afin de guider la consommation de l'API, et ce directement depuis celle-ci, c'est-à-dire sans besoin de documentation.
+
+Exemple :
+
+- Étant donné la requête :
+
+[source,text]
+....
+GET /formations
+....
+
+- On reçoit la réponse :
+
+[source,json]
+....
+{
+  "data": [
+    {
+      "code": "DDD01",
+      "dureeEnHeures": 14
+    }
+  ],
+  "links": [
+    {
+      "rel": "self",
+      "method": "GET",
+      "href": "/formations"
+    },
+    {
+      "rel": "CreerUneFormation",
+      "method": "POST",
+      "href": "/formations"
+    }
+  ]
+}
+....
+
+Afin de produire ce résultat, les étapes suivantes sont nécessaires :
+
+Définir l'orchestration des messages dans chacun des bounded contexts :
+
+[source,javascript]
+....
+include::../../src/modules/catalogue-de-formations/bounded-context.ts[]
+....
+
+. Associer des messages à des routes API :
+
+[source,javascript]
+....
+include::../../src/modules/catalogue-de-formations/configuration/association-message-et-http.ts[]
+....
+
+. Une fois configuré, il suffit de retourner le message et la donnée récupérée via ce message :
+
+[source,javascript]
+....
+include::../../src/modules/catalogue-de-formations/endpoints.ts[]
+....
+
+Un service permet de faire le lien entre message, association message/api et arborescence de messages déclarée dans le bounded context.
+
+[source,javascript]
+....
+include::../../src/building-blocks/hateoas/createur-de-liens.ts[]
+....

@@ -7,7 +7,7 @@ import GestionnaireDeMessage from "../gestionnaire-de-message";
 export default class BusDeCommandes
   implements Bus<Commande, EvenementDuDomaine>
 {
-  private readonly intercepteurs: Intercepteur<Commande>[];
+  private readonly intercepteurs: Intercepteur<Commande>[] = [];
   private readonly gestionnaires: GestionnaireDeMessage<
     Commande,
     EvenementDuDomaine

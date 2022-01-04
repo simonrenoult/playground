@@ -4,7 +4,7 @@ import CatalogueDeFormations from "../../domain/projection/catalogue-de-formatio
 export default class CatalogueDeFormationsEnMemoire
   implements CatalogueDeFormations
 {
-  private readonly formationsAuCatalogue: FormationsAuCatalogue;
+  private readonly formationsAuCatalogue: FormationsAuCatalogue = [];
 
   public async lister(): Promise<FormationsAuCatalogue> {
     return this.formationsAuCatalogue;

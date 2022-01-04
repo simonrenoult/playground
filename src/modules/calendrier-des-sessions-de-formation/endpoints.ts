@@ -1,6 +1,4 @@
 import { FastifyInstance } from "fastify";
-import Liens from "../../building-blocks/hateoas/liens";
-import associationMessageEtHttp from "./configuration/association-message-et-http";
 import boundedContext from "./bounded-context";
 import BusDeQuestions from "../../building-blocks/cqrs/read/bus-de-questions";
 import BusDeCommandes from "../../building-blocks/cqrs/write/bus-de-commandes";
@@ -13,17 +11,10 @@ import InscrireUnParticipantAUneSessionDeFormation from "./write/application/ins
 import { ListeDeEndpoints } from "../../building-blocks/liste-de-endpoints";
 
 export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
-  private readonly constructeurDeLiens: Liens;
-
   constructor(
     private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes
-  ) {
-    this.constructeurDeLiens = new Liens(
-      boundedContext.arborescenceDeMessages,
-      associationMessageEtHttp
-    );
-  }
+  ) {}
 
   enregistrerEndpoints(fastify: FastifyInstance): void {
     fastify.route({
@@ -35,8 +26,8 @@ export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
       },
       handler: async () => {
         const message = new QuellesSontLesSessionsDeFormationAVenir();
-        const data = this.busDeQuestions.publier(message);
-        return { data, liens: this.constructeurDeLiens.creer(message) };
+        const data = await this.busDeQuestions.publier(message);
+        return { data, message };
       },
     });
 
@@ -50,8 +41,8 @@ export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
       },
       handler: async (req) => {
         const message = new CreerUneSessionDeFormation(ulid(), req.body.code);
-        const data = this.busDeCommandes.publier(message);
-        return { data, liens: this.constructeurDeLiens.creer(message) };
+        const data = await this.busDeCommandes.publier(message);
+        return { data, message };
       },
     });
 
@@ -72,8 +63,8 @@ export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
           req.body.emailFormateur,
           req.params.idSession
         );
-        const data = this.busDeCommandes.publier(message);
-        return { data, liens: this.constructeurDeLiens.creer(message) };
+        const data = await this.busDeCommandes.publier(message);
+        return { data, message };
       },
     });
 
@@ -102,8 +93,8 @@ export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
           req.body.emailParticipant,
           req.params.idSession
         );
-        const data = this.busDeCommandes.publier(message);
-        return { data, liens: this.constructeurDeLiens.creer(message) };
+        const data = await this.busDeCommandes.publier(message);
+        return { data, message };
       },
     });
   }

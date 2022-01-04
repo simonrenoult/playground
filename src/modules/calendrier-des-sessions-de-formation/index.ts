@@ -2,12 +2,9 @@ import { FastifyInstance } from "fastify";
 import { DateTime } from "luxon";
 import BusDeQuestions from "../../building-blocks/cqrs/read/bus-de-questions";
 import BusDeCommandes from "../../building-blocks/cqrs/write/bus-de-commandes";
-import Liens from "../../building-blocks/hateoas/liens";
 import { Module } from "../../building-blocks/module";
 import { ListeDeEndpoints } from "../../building-blocks/liste-de-endpoints";
-import boundedContext from "./bounded-context";
 import SessionsDeFormationEndpoints from "./endpoints";
-import associationMessageEtHttp from "./configuration/association-message-et-http";
 import { GestionnaireDeQuellesSontLesSessionsDeFormationAVenir } from "./read/application/gestionnaire/gestionnaire-de-quelles-sont-les-sessions-de-formation-a-venir";
 import GestionnaireDeCreerUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation";
 import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation";
@@ -19,20 +16,16 @@ import { HorlogeEnMemoire } from "../../../test/horloge-en-memoire";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import SessionsDeFormationEnMemoire from "./write/infrastructure/sessions-de-formation-en-memoire";
 import CalendrierDesSessionsDeFormationHttp from "./read/infrastructure/calendrier-des-sessions-de-formation-http";
+import BoundedContext from "./bounded-context";
 
-export default class SessionsDeFormationModule implements Module {
-  private readonly constructeurDeLiens: Liens;
+export default class CalendrierDesSessionsDeFormationModule implements Module {
   private readonly listeDeEndpoints: ListeDeEndpoints;
+  public readonly boundedContext = BoundedContext;
 
   constructor(
     readonly busDeQuestions: BusDeQuestions,
     readonly busDeCommandes: BusDeCommandes
   ) {
-    this.constructeurDeLiens = new Liens(
-      boundedContext.arborescenceDeMessages,
-      associationMessageEtHttp
-    );
-
     this.listeDeEndpoints = new SessionsDeFormationEndpoints(
       busDeQuestions,
       busDeCommandes
