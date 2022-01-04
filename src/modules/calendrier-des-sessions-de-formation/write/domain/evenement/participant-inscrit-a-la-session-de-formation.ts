@@ -3,7 +3,7 @@ import EvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du
 export class ParticipantInscritALaSessionDeFormation
   implements EvenementDuDomaine
 {
-  public readonly nom = "PARTICIPANT_INSCRIT_A_LA_SESSION_DE_FORMATION";
+  public readonly nom = ParticipantInscritALaSessionDeFormation.name;
 
   constructor(
     public readonly codeFormation: string,

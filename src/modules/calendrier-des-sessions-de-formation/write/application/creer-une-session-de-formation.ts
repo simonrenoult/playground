@@ -1,7 +1,7 @@
 import Commande from "../../../../building-blocks/cqrs/write/commande";
 
 export default class CreerUneSessionDeFormation implements Commande {
-  public readonly nom = "CREER_UNE_SESSION_DE_FORMATION";
+  public readonly nom = CreerUneSessionDeFormation.name;
 
   constructor(
     public readonly idSessionDeFormation: string,

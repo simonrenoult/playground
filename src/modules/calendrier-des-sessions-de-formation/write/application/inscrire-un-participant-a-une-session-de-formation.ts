@@ -3,7 +3,7 @@ import Commande from "../../../../building-blocks/cqrs/write/commande";
 export default class InscrireUnParticipantAUneSessionDeFormation
   implements Commande
 {
-  public readonly nom = "INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION";
+  public readonly nom = InscrireUnParticipantAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailParticipant: string,

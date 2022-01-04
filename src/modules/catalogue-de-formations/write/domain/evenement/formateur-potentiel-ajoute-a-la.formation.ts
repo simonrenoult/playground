@@ -3,7 +3,7 @@ import EvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du
 export class FormateurPotentielAjouteALaFormation
   implements EvenementDuDomaine
 {
-  public readonly nom = "FORMATEUR_POTENTIEL_AJOUTE_A_LA_FORMATION";
+  public readonly nom = FormateurPotentielAjouteALaFormation.name;
 
   constructor(
     public readonly idFormateurPotentiel: string,

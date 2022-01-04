@@ -3,7 +3,7 @@ import Commande from "../../../../building-blocks/cqrs/write/commande";
 export default class AjouterUnFormateurAUneSessionDeFormation
   implements Commande
 {
-  public readonly nom = "AJOUTER_UN_FORMATEUR_A_UNE_SESSION_DE_FORMATION";
+  public readonly nom = AjouterUnFormateurAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailFormateur: string,

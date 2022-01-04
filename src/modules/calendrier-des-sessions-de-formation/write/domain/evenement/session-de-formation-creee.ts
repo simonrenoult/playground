@@ -1,7 +1,7 @@
 import EvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du-domaine/evenement";
 
 export class SessionDeFormationCreee implements EvenementDuDomaine {
-  public readonly nom = "SESSION_DE_FORMATION_PLANIFIEE";
+  public readonly nom = SessionDeFormationCreee.name;
 
   constructor(
     public readonly idSessionDeFormation: string,
