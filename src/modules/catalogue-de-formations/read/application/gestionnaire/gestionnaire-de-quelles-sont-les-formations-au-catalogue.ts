@@ -11,12 +11,12 @@ export default class GestionnaireDeQuellesSontLesFormationsAuCatalogue
       FormationsAuCatalogue
     >
 {
-  constructor(private readonly catalogue: CatalogueDeFormations) {}
+  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
 
   public async executer(
     _q: QuellesSontLesFormationsAuCatalogue
   ): Promise<FormationsAuCatalogue> {
-    return this.catalogue.lister();
+    return this.catalogueDeFormations.lister();
   }
 
   ecoute(q: Question): boolean {

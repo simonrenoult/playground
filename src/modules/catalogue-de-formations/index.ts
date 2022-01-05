@@ -1,20 +1,21 @@
 import { FastifyInstance } from "fastify";
+import { AwilixContainer, createContainer } from "awilix";
 import BusDeQuestions from "../../building-blocks/cqrs/read/bus-de-questions";
 import BusDeCommandes from "../../building-blocks/cqrs/write/bus-de-commandes";
 import { Module } from "../../building-blocks/module";
 import { ListeDeEndpoints } from "../../building-blocks/liste-de-endpoints";
-import CatalogueDeFormationEndpoints from "./endpoints";
-import GestionnaireDeQuellesSontLesFormationsAuCatalogue from "./read/application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue";
-import { GestionnaireDeCreerUneFormation } from "./write/application/gestionnaire/gestionnaire-de-creer-une-formation";
-import { GestionnaireDeAjouterUnFormateurPotentielALaFormation } from "./write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
-import CatalogueDeFormationsEnLectureEnMemoire from "./read/infrastructure/projection/catalogue-de-formations";
-import CatalogueDeFormationsEnEcritureEnMemoire from "./write/infrastructure/catalogue-de-formations-en-memoire";
+import CatalogueDeFormationEndpoints from "./endpoints";
 import BoundedContext from "./bounded-context";
+import IOCWrite, { ICradleWrite } from "./write/ioc";
+import IOCRead, { ICradleRead } from "./read/ioc";
 
 export default class CatalogueDeFormationsModule implements Module {
-  private readonly listeDeEndpoints: ListeDeEndpoints;
   public readonly boundedContext = BoundedContext;
+
+  private readonly listeDeEndpoints: ListeDeEndpoints;
+  private readonly iocRead: AwilixContainer<ICradleRead>;
+  private readonly iocWrite: AwilixContainer<ICradleWrite>;
 
   constructor(
     private readonly busDeQuestions: BusDeQuestions,
@@ -24,36 +25,33 @@ export default class CatalogueDeFormationsModule implements Module {
       busDeQuestions,
       busDeCommandes
     );
+    const container = createContainer();
+    this.iocRead =
+      IOCRead.recupererLeConteneurDInjectionDeDependance(container);
+    this.iocWrite =
+      IOCWrite.recupererLeConteneurDInjectionDeDependance(container);
   }
 
-  public ajouterLesGestionnairesDeQuestion(bus: BusDeQuestions) {
-    const catalogue = new CatalogueDeFormationsEnLectureEnMemoire();
+  public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions) {
     bus.enregistrerGestionnaire(
-      new GestionnaireDeQuellesSontLesFormationsAuCatalogue(catalogue)
+      this.iocRead.cradle.gestionnaireDeQuellesSontLesFormationsAuCatalogue
     );
   }
 
-  public ajouterLesGestionnairesDeCommande(bus: BusDeCommandes) {
-    const catalogueDeFormationsDEcritureEnMemoire =
-      new CatalogueDeFormationsEnEcritureEnMemoire();
-
+  public enregistrerLesGestionnairesDeCommande(bus: BusDeCommandes) {
     bus.enregistrerGestionnaire(
-      new GestionnaireDeCreerUneFormation(
-        catalogueDeFormationsDEcritureEnMemoire
-      )
+      this.iocWrite.cradle.gestionnaireDeCreerUneFormation
     );
     bus.enregistrerGestionnaire(
-      new GestionnaireDeAjouterUnFormateurPotentielALaFormation(
-        catalogueDeFormationsDEcritureEnMemoire
-      )
+      this.iocWrite.cradle.gestionnaireDeAjouterUnFormateurPotentielALaFormation
     );
   }
 
-  public ajouterLesGestionnairesDEvenementDuDomaine(
+  public enregistrerLesGestionnairesDEvenementDuDomaine(
     _bus: BusDEvenementsDuDomaine
   ) {}
 
-  public ajouterLesEndpoints(fastify: FastifyInstance) {
+  public enregistrerLesEndpoints(fastify: FastifyInstance) {
     this.listeDeEndpoints.enregistrerEndpoints(fastify);
   }
 }

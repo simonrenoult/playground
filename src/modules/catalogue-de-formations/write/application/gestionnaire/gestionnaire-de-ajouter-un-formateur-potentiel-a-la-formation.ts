@@ -10,7 +10,7 @@ import CatalogueDeFormations from "../../domain/repository/catalogue-de-formatio
 import AjouterUnFormateurPotentielALaFormation from "../ajouter-un-formateur-potentiel-a-la-formation";
 import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
 
-export class GestionnaireDeAjouterUnFormateurPotentielALaFormation
+export default class GestionnaireDeAjouterUnFormateurPotentielALaFormation
   implements
     GestionnaireDeMessage<
       AjouterUnFormateurPotentielALaFormation,

@@ -20,8 +20,8 @@ class CustomWorld extends World {
       this.busDeQuestions,
       this.busDeCommandes
     );
-    module.ajouterLesGestionnairesDeCommande(this.busDeCommandes);
-    module.ajouterLesGestionnairesDeQuestion(this.busDeQuestions);
+    module.enregistrerLesGestionnairesDeCommande(this.busDeCommandes);
+    module.enregistrerLesGestionnairesDeQuestion(this.busDeQuestions);
   }
 
   async listerLesFormations() {

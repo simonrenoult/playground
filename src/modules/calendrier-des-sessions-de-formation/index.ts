@@ -32,7 +32,7 @@ export default class CalendrierDesSessionsDeFormationModule implements Module {
     );
   }
 
-  public ajouterLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
+  public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
     const calendrierDesSessionsDeFormationFuturesEnMemoire =
       new CalendrierDesSessionsDeFormationHttp();
     const horloge = new HorlogeEnMemoire(DateTime.now().toISODate());
@@ -45,7 +45,7 @@ export default class CalendrierDesSessionsDeFormationModule implements Module {
     );
   }
 
-  public ajouterLesGestionnairesDeCommande(bus: BusDeCommandes): void {
+  public enregistrerLesGestionnairesDeCommande(bus: BusDeCommandes): void {
     const sessionsDeFormationEnMemoire = new SessionsDeFormationEnMemoire();
 
     bus.enregistrerGestionnaire(
@@ -63,7 +63,7 @@ export default class CalendrierDesSessionsDeFormationModule implements Module {
     );
   }
 
-  public ajouterLesGestionnairesDEvenementDuDomaine(
+  public enregistrerLesGestionnairesDEvenementDuDomaine(
     bus: BusDEvenementsDuDomaine
   ): void {
     const catalogueDeFormationsGatewayEnMemoire =
@@ -78,7 +78,7 @@ export default class CalendrierDesSessionsDeFormationModule implements Module {
     );
   }
 
-  public ajouterLesEndpoints(fastify: FastifyInstance) {
+  public enregistrerLesEndpoints(fastify: FastifyInstance) {
     this.listeDeEndpoints.enregistrerEndpoints(fastify);
   }
 }

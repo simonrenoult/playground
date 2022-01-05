@@ -37,10 +37,10 @@ const modules: Module[] = [
 ];
 
 modules.forEach((m) => {
-  m.ajouterLesEndpoints(fastify);
-  m.ajouterLesGestionnairesDeQuestion(busDeQuestions);
-  m.ajouterLesGestionnairesDeCommande(busDeCommandes);
-  m.ajouterLesGestionnairesDEvenementDuDomaine(busDEvenements);
+  m.enregistrerLesEndpoints(fastify);
+  m.enregistrerLesGestionnairesDeQuestion(busDeQuestions);
+  m.enregistrerLesGestionnairesDeCommande(busDeCommandes);
+  m.enregistrerLesGestionnairesDEvenementDuDomaine(busDEvenements);
 });
 
 const ajouterLiensAuPayload = new AjouterLiensAuPayload(

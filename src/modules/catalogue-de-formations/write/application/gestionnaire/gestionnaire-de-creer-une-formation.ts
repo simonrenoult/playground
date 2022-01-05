@@ -9,10 +9,10 @@ import CatalogueDeFormations from "../../domain/repository/catalogue-de-formatio
 import CreerUneFormation from "../creer-une-formation";
 import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
 
-export class GestionnaireDeCreerUneFormation
+export default class GestionnaireDeCreerUneFormation
   implements GestionnaireDeMessage<CreerUneFormation, FormationCreee>
 {
-  constructor(private readonly formations: CatalogueDeFormations) {}
+  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
 
   public async executer(
     formationACreer: CreerUneFormation
@@ -21,7 +21,7 @@ export class GestionnaireDeCreerUneFormation
       new CodeDeFormation(formationACreer.code),
       new DureeDeFormation(formationACreer.dureeEnHeures)
     );
-    this.formations.persister(formation);
+    await this.catalogueDeFormations.persister(formation);
     return new FormationCreee(formation.id.valeur, formation.dureeEnHeures);
   }
 

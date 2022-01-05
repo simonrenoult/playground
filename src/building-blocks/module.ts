@@ -5,15 +5,15 @@ import BusDEvenementsDuDomaine from "./cqrs/evenement-du-domaine/bus-d-evenement
 import { IBoundedContext } from "./ddd/bounded-context";
 
 export interface Module {
-  readonly boundedContext: IBoundedContext;
+  readonly boundedContext: Readonly<IBoundedContext>;
 
-  ajouterLesEndpoints(fastify: FastifyInstance): void;
+  enregistrerLesEndpoints(fastify: FastifyInstance): void;
 
-  ajouterLesGestionnairesDeQuestion(busDeQuestions: BusDeQuestions): void;
+  enregistrerLesGestionnairesDeQuestion(busDeQuestions: BusDeQuestions): void;
 
-  ajouterLesGestionnairesDeCommande(busDeCommandes: BusDeCommandes): void;
+  enregistrerLesGestionnairesDeCommande(busDeCommandes: BusDeCommandes): void;
 
-  ajouterLesGestionnairesDEvenementDuDomaine(
+  enregistrerLesGestionnairesDEvenementDuDomaine(
     busDEvenementsDuDomaine: BusDEvenementsDuDomaine
   ): void;
 }

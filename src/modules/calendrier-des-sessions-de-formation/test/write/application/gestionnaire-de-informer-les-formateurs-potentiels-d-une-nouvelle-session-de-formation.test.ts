@@ -24,7 +24,7 @@ describe("GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeForm
 
     // Then
     expect(notifieurEnMemoire.emailsNotifies).to.deep.equal([
-      "foo@example.com",
+      "tom@example.com",
     ]);
   });
 });

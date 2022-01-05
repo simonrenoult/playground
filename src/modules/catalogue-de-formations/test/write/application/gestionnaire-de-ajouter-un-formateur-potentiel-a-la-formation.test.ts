@@ -1,6 +1,6 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { GestionnaireDeAjouterUnFormateurPotentielALaFormation } from "../../../write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
+import GestionnaireDeAjouterUnFormateurPotentielALaFormation from "../../../write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
 import { FormateurPotentiel } from "../../../write/domain/entite/formation";
 import { FormateurPotentielAjouteALaFormation } from "../../../write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import Email from "../../../../shared-kernel/email";

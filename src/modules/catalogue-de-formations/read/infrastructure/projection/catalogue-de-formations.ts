@@ -1,6 +1,8 @@
 import FormationsAuCatalogue from "../../domain/modele-de-lecture/formations-au-catalogue";
 import CatalogueDeFormations from "../../domain/projection/catalogue-de-formations";
+import injectable from "../../../../../building-blocks/ioc/injectable";
 
+@injectable("catalogueDeFormations")
 export default class CatalogueDeFormationsEnMemoire
   implements CatalogueDeFormations
 {
