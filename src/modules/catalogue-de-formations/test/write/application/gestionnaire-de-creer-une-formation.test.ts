@@ -1,9 +1,9 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { GestionnaireDeCreerUneFormation } from "../../../../src/modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-creer-une-formation";
-import { Fixtures } from "../../../fixtures";
-import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de-formations/write/infrastructure/catalogue-de-formations-en-memoire";
-import { CodeDeFormation } from "../../../../src/modules/catalogue-de-formations/write/domain/entite/formation";
+import { GestionnaireDeCreerUneFormation } from "../../../write/application/gestionnaire/gestionnaire-de-creer-une-formation";
+import CatalogueDeFormationsEnMemoire from "../../../write/infrastructure/catalogue-de-formations-en-memoire";
+import { CodeDeFormation } from "../../../write/domain/entite/formation";
+import { Fixtures } from "../../fixtures";
 
 describe("CreerUneFormation", () => {
   it("persiste une formation", async () => {

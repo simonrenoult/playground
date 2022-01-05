@@ -1,15 +1,10 @@
 import {
   CodeDeFormation,
-  DureeDeFormation,
-  Formation,
-} from "../src/modules/catalogue-de-formations/write/domain/entite/formation";
-import CreerUneSessionDeFormation from "../src/modules/calendrier-des-sessions-de-formation/write/application/creer-une-session-de-formation";
-import {
   IdSessionDeFormation,
   SessionDeFormation,
-} from "../src/modules/calendrier-des-sessions-de-formation/write/domain/entite/session-de-formation";
-import { SessionDeFormationCreee } from "../src/modules/calendrier-des-sessions-de-formation/write/domain/evenement/session-de-formation-creee";
-import CreerUneFormation from "../src/modules/catalogue-de-formations/write/application/creer-une-formation";
+} from "../write/domain/entite/session-de-formation";
+import CreerUneSessionDeFormation from "../write/application/creer-une-session-de-formation";
+import { SessionDeFormationCreee } from "../write/domain/evenement/session-de-formation-creee";
 
 export const DEFAUT = {
   CODE_FORMATION: "DDD01",
@@ -21,17 +16,6 @@ export const DEFAUT = {
 };
 
 export class Fixtures {
-  public static uneFormationACreer(): CreerUneFormation {
-    return new CreerUneFormation(DEFAUT.CODE_FORMATION, DEFAUT.DUREE_FORMATION);
-  }
-
-  public static uneFormation(): Formation {
-    return new Formation(
-      new CodeDeFormation(DEFAUT.CODE_FORMATION),
-      new DureeDeFormation(DEFAUT.DUREE_FORMATION)
-    );
-  }
-
   public static uneSessionDeFormationACreer(
     idSessionDeFormation: string
   ): CreerUneSessionDeFormation {

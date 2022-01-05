@@ -1,8 +1,8 @@
-import BusDeCommandes from "../../../src/building-blocks/cqrs/write/bus-de-commandes";
-import BusDeQuestions from "../../../src/building-blocks/cqrs/read/bus-de-questions";
-import BusDEvenementsDuDomaine from "../../../src/building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
-import CatalogueDeFormationsModule from "../../../src/modules/catalogue-de-formations";
-import QuellesSontLesFormationsAuCatalogue from "../../../src/modules/catalogue-de-formations/read/application/quelles-sont-les-formations-au-catalogue";
+import BusDeCommandes from "../../../../building-blocks/cqrs/write/bus-de-commandes";
+import BusDeQuestions from "../../../../building-blocks/cqrs/read/bus-de-questions";
+import BusDEvenementsDuDomaine from "../../../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
+import CatalogueDeFormationsModule from "../../index";
+import QuellesSontLesFormationsAuCatalogue from "../../read/application/quelles-sont-les-formations-au-catalogue";
 import { setWorldConstructor, World } from "@cucumber/cucumber";
 
 class CustomWorld extends World {

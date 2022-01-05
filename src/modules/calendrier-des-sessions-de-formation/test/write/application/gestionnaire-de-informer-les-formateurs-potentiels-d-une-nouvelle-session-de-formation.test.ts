@@ -1,16 +1,16 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
-import { Fixtures } from "../../../fixtures";
+import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "../../../write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
 import { NotifieurEnMemoire } from "../../notifieur-en-memoire";
-import { PortailVersLeCatalogueDeFormationEnMemoire } from "../../portail-vers-le-catalogue-de-formation-en-memoire";
+import { CatalogueDeFormationsGatewayEnMemoire } from "../../catalogue-de-formations-gateway-en-memoire";
+import { Fixtures } from "../../fixtures";
 
 describe("GestionnaireDeInformerLesFormateursPotentielsDUneNouvelleSessionDeFormation", () => {
   it("fait le boulot", async () => {
     // Given
     const notifieurEnMemoire = new NotifieurEnMemoire();
     const portailVersLeCatalogueDeFormationEnMemoire =
-      new PortailVersLeCatalogueDeFormationEnMemoire();
+      new CatalogueDeFormationsGatewayEnMemoire();
     const informerLesFormateursPotentielsDUneNouvelleSessionDeFormation =
       new InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation(
         portailVersLeCatalogueDeFormationEnMemoire,

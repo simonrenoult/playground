@@ -1,11 +1,11 @@
 import { ulid } from "ulid";
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import InscrireUnParticipantAUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/inscrire-un-participant-a-une-session-de-formation";
-import { ParticipantInscritALaSessionDeFormation } from "../../../../src/modules/calendrier-des-sessions-de-formation/write/domain/evenement/participant-inscrit-a-la-session-de-formation";
-import { Fixtures } from "../../../fixtures";
+import InscrireUnParticipantAUneSessionDeFormation from "../../../write/application/inscrire-un-participant-a-une-session-de-formation";
+import { ParticipantInscritALaSessionDeFormation } from "../../../write/domain/evenement/participant-inscrit-a-la-session-de-formation";
 import { SessionsDeFormationEnMemoire } from "../sessions-de-formation-en-memoire";
-import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation";
+import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "../../../write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation";
+import { Fixtures } from "../../fixtures";
 
 describe("SInscrireAUneSessionDeFormation", () => {
   it("ajoute un participant à la session de formation", async () => {
@@ -17,7 +17,7 @@ describe("SInscrireAUneSessionDeFormation", () => {
       );
     const emailParticipant = "foo@bar.com";
     const idSessionDeSessionDeFormation = ulid();
-    sessionsDeFormationEnMemoire.persister(
+    await sessionsDeFormationEnMemoire.persister(
       Fixtures.uneSessionDeFormation(idSessionDeSessionDeFormation)
     );
     const inscriptionALaSessionDeFormation =

@@ -1,5 +1,5 @@
-import CatalogueDeFormations from "../../../src/modules/catalogue-de-formations/read/domain/projection/catalogue-de-formations";
-import FormationsAuCatalogue from "../../../src/modules/catalogue-de-formations/read/domain/modele-de-lecture/formations-au-catalogue";
+import CatalogueDeFormations from "../../read/domain/projection/catalogue-de-formations";
+import FormationsAuCatalogue from "../../read/domain/modele-de-lecture/formations-au-catalogue";
 
 export default class CatalogueDeFormationsEnMemoire
   implements CatalogueDeFormations

@@ -10,13 +10,13 @@ import GestionnaireDeCreerUneSessionDeFormation from "./write/application/gestio
 import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation";
 import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation";
 import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "./write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
-import CatalogueDeFormationsGatewayEnMemoire from "../../../test/catalogue-de-formations/catalogue-de-formations-gateway-en-memoire";
 import { NotifieurEnMemoire } from "../../../test/sessions-de-formation/notifieur-en-memoire";
-import { HorlogeEnMemoire } from "../../../test/horloge-en-memoire";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import SessionsDeFormationEnMemoire from "./write/infrastructure/sessions-de-formation-en-memoire";
 import CalendrierDesSessionsDeFormationHttp from "./read/infrastructure/calendrier-des-sessions-de-formation-http";
 import BoundedContext from "./bounded-context";
+import { HorlogeEnMemoire } from "./test/horloge-en-memoire";
+import { CatalogueDeFormationsGatewayEnMemoire } from "./test/catalogue-de-formations-gateway-en-memoire";
 
 export default class CalendrierDesSessionsDeFormationModule implements Module {
   private readonly listeDeEndpoints: ListeDeEndpoints;

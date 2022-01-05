@@ -1,12 +1,12 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { GestionnaireDeAjouterUnFormateurPotentielALaFormation } from "../../../../src/modules/catalogue-de-formations/write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
-import { FormateurPotentiel } from "../../../../src/modules/catalogue-de-formations/write/domain/entite/formation";
-import { FormateurPotentielAjouteALaFormation } from "../../../../src/modules/catalogue-de-formations/write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
-import Email from "../../../../src/modules/shared-kernel/email";
-import { Fixtures } from "../../../fixtures";
-import CatalogueDeFormationsEnMemoire from "../../../../src/modules/catalogue-de-formations/write/infrastructure/catalogue-de-formations-en-memoire";
-import AjouterUnFormateurPotentielALaFormation from "../../../../src/modules/catalogue-de-formations/write/application/ajouter-un-formateur-potentiel-a-la-formation";
+import { GestionnaireDeAjouterUnFormateurPotentielALaFormation } from "../../../write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
+import { FormateurPotentiel } from "../../../write/domain/entite/formation";
+import { FormateurPotentielAjouteALaFormation } from "../../../write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
+import Email from "../../../../shared-kernel/email";
+import CatalogueDeFormationsEnMemoire from "../../../write/infrastructure/catalogue-de-formations-en-memoire";
+import AjouterUnFormateurPotentielALaFormation from "../../../write/application/ajouter-un-formateur-potentiel-a-la-formation";
+import { Fixtures } from "../../fixtures";
 
 describe("AjouterUnFormateurPotentielALaFormation", () => {
   it("persiste la formation avec le formateur potentiel", async () => {
@@ -33,7 +33,7 @@ describe("AjouterUnFormateurPotentielALaFormation", () => {
   it("retourne un évènement d'ajout d'un formateur principal", async () => {
     // Given
     const formations = new CatalogueDeFormationsEnMemoire();
-    formations.persister(Fixtures.uneFormation());
+    await formations.persister(Fixtures.uneFormation());
     const ajouterUnFormateurPotentielALaFormation =
       new GestionnaireDeAjouterUnFormateurPotentielALaFormation(formations);
     const commande = new AjouterUnFormateurPotentielALaFormation(

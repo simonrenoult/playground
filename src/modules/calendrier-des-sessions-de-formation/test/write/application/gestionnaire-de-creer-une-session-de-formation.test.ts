@@ -1,11 +1,11 @@
 import { ulid } from "ulid";
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import { SessionDeFormationCreee } from "../../../../src/modules/calendrier-des-sessions-de-formation/write/domain/evenement/session-de-formation-creee";
-import { Fixtures } from "../../../fixtures";
+import { SessionDeFormationCreee } from "../../../write/domain/evenement/session-de-formation-creee";
 import { SessionsDeFormationEnMemoire } from "../sessions-de-formation-en-memoire";
-import { IdSessionDeFormation } from "../../../../src/modules/calendrier-des-sessions-de-formation/write/domain/entite/session-de-formation";
-import GestionnaireDeCreerUneSessionDeFormation from "../../../../src/modules/calendrier-des-sessions-de-formation/write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation";
+import { IdSessionDeFormation } from "../../../write/domain/entite/session-de-formation";
+import GestionnaireDeCreerUneSessionDeFormation from "../../../write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation";
+import { Fixtures } from "../../fixtures";
 
 describe("CreerUneSessionDeFormation", () => {
   it("persiste une nouvelle session de formation", async () => {
