@@ -7,14 +7,23 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "target": "ES6",
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "outDir": "dist",
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "types": ["node"],
-    "skipLibCheck": true
+    "types": [
+      "node"
+    ],
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -55,3 +55,7 @@ $ npm test
 - Associer les questions aux modèles de lecture
 - Identifier les communications entrantes et sortantes inbound/outbound (
   voir : https://github.com/ddd-crew/bounded-context-canvas#inbound-communication)
+
+### Tests
+
+- [x] Gherkin

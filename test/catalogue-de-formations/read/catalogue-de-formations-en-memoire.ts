@@ -4,7 +4,13 @@ import FormationsAuCatalogue from "../../../src/modules/catalogue-de-formations/
 export default class CatalogueDeFormationsEnMemoire
   implements CatalogueDeFormations
 {
-  public lister(): FormationsAuCatalogue {
-    return ["DDD01"];
+  constructor(private readonly formations: FormationsAuCatalogue = []) {}
+
+  ajouter(code: string) {
+    this.formations.push(code);
+  }
+
+  public async lister(): Promise<FormationsAuCatalogue> {
+    return this.formations;
   }
 }

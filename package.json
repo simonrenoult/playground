@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .ts",
     "start": "npm run watch",
     "watch": "nodemon bin/start.ts",
+    "cucumber": "cucumber-js -r features/**/world.ts -r features/**/steps.ts -require-module ts-node/register --publish-quiet",
     "test": "mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "coverage": "nyc --all mocha --require ts-node/register --extension .ts --spec test/**/*.test.ts",
     "summary": "ts-node src/tools/build-bounded-context-summary.ts"
@@ -27,6 +28,7 @@
     "ulid": "^2.3.0"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^8.0.0-rc.1",
     "@types/chai": "^4.3.0",
     "@types/ioredis": "^4.28.4",
     "@types/luxon": "^2.0.7",
