@@ -41,7 +41,8 @@ $ npm test
 
 ### Pattern
 
-- Implémenter le pattern memento
+- [x] Implémenter le pattern memento
+- Implémenter le pattern factory
 
 ### Living documentation
 

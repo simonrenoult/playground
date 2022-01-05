@@ -31,7 +31,7 @@ describe("AjouterUnFormateurAUneSessionDeFormation", () => {
 
     // Then
     const [sessionDeFormation] = sessionsDeFormationEnMemoire.lister();
-    expect(sessionDeFormation.formateurs).to.have.length(1);
+    expect(sessionDeFormation.toState().formateurs).to.have.length(1);
   });
 
   it("retourne un évènement de staffing d'un formateur à la session de formation", async () => {

@@ -25,7 +25,7 @@ describe("CreerUneSessionDeFormation", () => {
     expect(sessionDeFormation.id).to.deep.equal(
       new IdSessionDeFormation(idSessionDeFormation)
     );
-    expect(sessionDeFormation.codeFormation).to.equal("DDD01");
+    expect(sessionDeFormation.toState().codeFormation).to.equal("DDD01");
   });
 
   it("retourne un évènement de creation de la session", async () => {

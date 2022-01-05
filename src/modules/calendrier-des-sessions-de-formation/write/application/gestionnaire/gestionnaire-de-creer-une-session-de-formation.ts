@@ -28,7 +28,7 @@ export default class GestionnaireDeCreerUneSessionDeFormation
 
     return new SessionDeFormationCreee(
       sessionDeFormation.id.valeur,
-      sessionDeFormation.codeFormation
+      sessionDeFormation.toState().codeFormation
     );
   }
 

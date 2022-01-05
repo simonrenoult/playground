@@ -35,7 +35,7 @@ export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
     await this.sessionsDeFormation.persister(sessionDeFormation);
 
     return new ParticipantInscritALaSessionDeFormation(
-      sessionDeFormation.codeFormation,
+      sessionDeFormation.toState().codeFormation,
       sessionDeFormation.id.valeur,
       participant.id.valeur
     );

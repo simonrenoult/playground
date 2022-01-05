@@ -36,7 +36,7 @@ export default class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
 
     return new FormateurAjouteALaSessionDeFormation(
       formateur.id.valeur,
-      sessionDeFormation.codeFormation,
+      sessionDeFormation.toState().codeFormation,
       sessionDeFormation.id.valeur
     );
   }

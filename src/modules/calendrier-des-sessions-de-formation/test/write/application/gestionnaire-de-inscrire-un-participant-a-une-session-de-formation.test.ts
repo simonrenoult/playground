@@ -33,7 +33,7 @@ describe("SInscrireAUneSessionDeFormation", () => {
 
     // Then
     const [sessionDeFormation] = sessionsDeFormationEnMemoire.lister();
-    expect(sessionDeFormation.participants).to.have.length(1);
+    expect(sessionDeFormation.toState().participants).to.have.length(1);
   });
 
   it("retourne un évènement d'inscription à la session", async () => {
