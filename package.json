@@ -9,7 +9,8 @@
     "start": "npm run watch",
     "watch": "nodemon bin/start.ts",
     "cucumber": "cucumber-js -r src/**/features/support/world.ts -r src/**/features/support/steps.ts --require-module ts-node/register --publish-quiet",
-    "test": "mocha -r ts-node/register --extension .ts --spec src/**/*.test.ts",
+    "test": "mocha -r ts-node/register --extension ts --spec src/**/*.test.ts",
+    "test:watch": "mocha -r ts-node/register --extension ts --spec src/**/*.test.ts --watch --watch-extensions ts",
     "coverage": "nyc --all mocha -r ts-node/register --extension .ts --spec src/**/*.test.ts",
     "summary": "ts-node src/tools/build-bounded-context-summary.ts"
   },
