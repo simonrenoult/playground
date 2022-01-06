@@ -27,13 +27,16 @@ export class SessionDeFormation
   private readonly participants: Participant[] = [];
   private readonly formateurs: Formateur[] = [];
 
-  constructor(
+  private constructor(
     private readonly _idSessionDeFormation: IdSessionDeFormation,
     private readonly _codeFormation: CodeDeFormation
   ) {}
 
-  get id(): IdSessionDeFormation {
-    return this._idSessionDeFormation;
+  public static vide(
+    id: IdSessionDeFormation,
+    codeDeFormation: CodeDeFormation
+  ): SessionDeFormation {
+    return new SessionDeFormation(id, codeDeFormation);
   }
 
   public static fromState(state: SessionDeFormationState): SessionDeFormation {
@@ -41,11 +44,12 @@ export class SessionDeFormation
       new IdSessionDeFormation(state.id),
       new CodeDeFormation(state.codeFormation)
     );
-    state.formateurs.forEach((f) =>
-      sessionDeFormation.ajouterFormateur(new Formateur(new Email(f)))
+    sessionDeFormation.formateurs.push(
+      ...state.formateurs.map((f) => new Formateur(new Email(f)))
     );
-    state.participants.forEach((p) =>
-      sessionDeFormation.ajouterParticipant(new Participant(new Email(p)))
+
+    sessionDeFormation.participants.push(
+      ...state.participants.map((p) => new Formateur(new Email(p)))
     );
     return sessionDeFormation;
   }
@@ -65,6 +69,10 @@ export class SessionDeFormation
 
   public ajouterFormateur(formateur: Formateur): void {
     this.formateurs.push(formateur);
+  }
+
+  get id(): IdSessionDeFormation {
+    return this._idSessionDeFormation;
   }
 
   equals(e: Entite<IdSessionDeFormation>): boolean {

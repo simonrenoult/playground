@@ -28,7 +28,7 @@ export class Fixtures {
   public static uneSessionDeFormation(
     idSessionDeSessionDeFormation: string
   ): SessionDeFormation {
-    return new SessionDeFormation(
+    return SessionDeFormation.vide(
       new IdSessionDeFormation(idSessionDeSessionDeFormation),
       new CodeDeFormation(DEFAUT.CODE_FORMATION)
     );
