@@ -21,9 +21,9 @@ $ npm test
 - [x] Exposer sur une API
 - [x] HATEOAS
 - [x] Swagger
-- Implémenter la persistence
+- [x] Implémenter la persistence
 - [x] Implémenter un injecteur de dépendances
-- Générer la ci/cd
+- Définir la ci/cd
 - Chemin absolus plutôt que relatif
 
 ### Architecture
@@ -43,6 +43,7 @@ $ npm test
 
 - [x] Implémenter le pattern memento
 - [x] Implémenter le pattern factory
+- Implémenter le pattern Result
 
 ### Living documentation
 

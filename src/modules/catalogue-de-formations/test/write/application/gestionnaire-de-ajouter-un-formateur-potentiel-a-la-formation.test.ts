@@ -4,7 +4,7 @@ import GestionnaireDeAjouterUnFormateurPotentielALaFormation from "../../../writ
 import { FormateurPotentiel } from "../../../write/domain/entite/formation";
 import { FormateurPotentielAjouteALaFormation } from "../../../write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import Email from "../../../../shared-kernel/email";
-import CatalogueDeFormationsEnMemoire from "../../../write/infrastructure/catalogue-de-formations-en-memoire";
+import CatalogueDeFormationsEnMemoire from "../../../write/infrastructure/repository/catalogue-de-formations-en-memoire";
 import AjouterUnFormateurPotentielALaFormation from "../../../write/application/ajouter-un-formateur-potentiel-a-la-formation";
 import { Fixtures } from "../../fixtures";
 
