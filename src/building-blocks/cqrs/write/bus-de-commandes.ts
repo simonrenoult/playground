@@ -50,7 +50,7 @@ export default class BusDeCommandes
     );
     if (!gestionnaireDeCommande)
       throw new Error(
-        `Aucun gestionnaire trouvé pour la commande ${commande.nom}`
+        `Aucun gestionnaire de commande trouvé pour la commande ${commande.nom}`
       );
     const evenementDuDomaine = await gestionnaireDeCommande.executer(commande);
     this.busDEvenementsDuDomaine.publier(evenementDuDomaine);

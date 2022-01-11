@@ -31,15 +31,17 @@ export default class BusDEvenementsDuDomaine
       `${evenementDuDomaine.nom} (evenement du domaine) est en cours d'émission`
     );
     this.intercepteurs.forEach((i) => i.executer(evenementDuDomaine));
-    const gestionnaireDeCommande = this.gestionnaires.find((g) =>
+    const gestionnairesDEvenement = this.gestionnaires.filter((g) =>
       g.ecoute(evenementDuDomaine)
     );
-    if (gestionnaireDeCommande) {
-      gestionnaireDeCommande.executer(evenementDuDomaine);
+    if (gestionnairesDEvenement.length !== 0) {
+      for (const gestionnaire of gestionnairesDEvenement) {
+        gestionnaire.executer(evenementDuDomaine);
+      }
       return evenementDuDomaine;
     }
     this.log.warn(
-      `Aucun gestionnaire trouvé pour l'évènement du domaine ${evenementDuDomaine.nom}`
+      `Aucun gestionnaire d'évènement trouvé pour l'évènement du domaine ${evenementDuDomaine.nom}`
     );
     return null;
   }
