@@ -1,9 +1,9 @@
 import { SessionsDeFormationsFutures } from "../domain/modele-de-lecture/sessions-de-formations-futures";
-import { CalendrierDesSessionsDeFormation } from "../domain/projection/calendrier-des-sessions-de-formation";
+import { AgendaDesSessionsDeFormation } from "../domain/projection/agenda-des-sessions-de-formation";
 import axios from "axios";
 
-export default class CalendrierDesSessionsDeFormationHttp
-  implements CalendrierDesSessionsDeFormation
+export default class AgendaDesSessionsDeFormationHttp
+  implements AgendaDesSessionsDeFormation
 {
   constructor() {}
 

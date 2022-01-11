@@ -1,4 +1,4 @@
-# Calendrier des sessions de formation
+# Agenda des sessions de formation
 
 > Création, modification, suppression et consultation des sessions de formations planifiées à partir du catalogue.
 
@@ -11,16 +11,12 @@
 <details>
 <summary>QuellesSontLesSessionsDeFormationAVenir</summary>
 
-
 ```ts
 export default class QuellesSontLesSessionsDeFormationAVenir
-  implements Question
-{
+  implements Question {
   public readonly nom = QuellesSontLesSessionsDeFormationAVenir.name;
 }
 ```
-
-
 
 </details>
 
@@ -29,14 +25,12 @@ export default class QuellesSontLesSessionsDeFormationAVenir
 <details>
 <summary>SessionsDeFormationsFutures</summary>
 
-
 ```ts
 export interface SessionsDeFormationsFutures
   extends ModeleDeLecture,
-    Array<string> {}
+    Array<string> {
+}
 ```
-
-
 
 </details>
 
@@ -45,26 +39,22 @@ export interface SessionsDeFormationsFutures
 <details>
 <summary>AjouterUnFormateurAUneSessionDeFormation</summary>
 
-
 ```ts
 export default class AjouterUnFormateurAUneSessionDeFormation
-  implements Commande
-{
+  implements Commande {
   public readonly nom = AjouterUnFormateurAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailFormateur: string,
     public readonly idSessionDeSessionDeFormation: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 <details>
 <summary>CreerUneSessionDeFormation</summary>
-
 
 ```ts
 export default class CreerUneSessionDeFormation implements Commande {
@@ -73,31 +63,27 @@ export default class CreerUneSessionDeFormation implements Commande {
   constructor(
     public readonly idSessionDeFormation: string,
     public readonly codeFormation: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 <details>
 <summary>InscrireUnParticipantAUneSessionDeFormation</summary>
 
-
 ```ts
 export default class InscrireUnParticipantAUneSessionDeFormation
-  implements Commande
-{
+  implements Commande {
   public readonly nom = InscrireUnParticipantAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailParticipant: string,
     public readonly idSessionDeSessionDeFormation: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 
@@ -106,48 +92,41 @@ export default class InscrireUnParticipantAUneSessionDeFormation
 <details>
 <summary>FormateurAjouteALaSessionDeFormation</summary>
 
-
 ```ts
 export class FormateurAjouteALaSessionDeFormation
-  implements EvenementDuDomaine
-{
+  implements EvenementDuDomaine {
   public readonly nom = FormateurAjouteALaSessionDeFormation.name;
 
   constructor(
     public readonly idFormateur: string,
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 <details>
 <summary>ParticipantInscritALaSessionDeFormation</summary>
 
-
 ```ts
 export class ParticipantInscritALaSessionDeFormation
-  implements EvenementDuDomaine
-{
+  implements EvenementDuDomaine {
   public readonly nom = ParticipantInscritALaSessionDeFormation.name;
 
   constructor(
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string,
     public readonly idParticipant: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 <details>
 <summary>SessionDeFormationCreee</summary>
-
 
 ```ts
 export class SessionDeFormationCreee implements EvenementDuDomaine {
@@ -156,11 +135,10 @@ export class SessionDeFormationCreee implements EvenementDuDomaine {
   constructor(
     public readonly idSessionDeFormation: string,
     public readonly codeFormation: string
-  ) {}
+  ) {
+  }
 }
 ```
-
-
 
 </details>
 
@@ -174,9 +152,15 @@ export class SessionDeFormationCreee implements EvenementDuDomaine {
 - SessionsDeFormation
 
 [strategic_classification]: https://github.com/ddd-crew/bounded-context-canvas#strategic-classification
+
 [cqrs]: https://www.martinfowler.com/bliki/CQRS.html
+
 [read_model]: https://matthiasnoback.nl/2018/01/simple-cqrs-reduce-coupling-allow-the-model-to-evolve/
+
 [domain_roles]: https://github.com/ddd-crew/bounded-context-canvas#domain-roles
+
 [command]: https://refactoring.guru/design-patterns/command
+
 [domain_event]: https://www.martinfowler.com/eaaDev/DomainEvent.html
+
 [ubiquitous_language]: https://github.com/ddd-crew/bounded-context-canvas#ubiquitous-language

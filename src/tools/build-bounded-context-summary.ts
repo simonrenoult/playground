@@ -9,7 +9,7 @@ import { EOL } from "os";
 // TODO: dynamiser la récupération des bounded contexts
 const NOM_DES_BOUNDED_CONTEXTS = [
   "catalogue-de-formations",
-  "calendrier-des-sessions-de-formation",
+  "agenda-des-sessions-de-formation",
 ];
 const CHEMIN_VERS_LA_RACINE = resolve(__dirname, "..");
 const NOM_DU_TEMPLATE = "bounded-context-summary.template.md";

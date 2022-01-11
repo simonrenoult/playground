@@ -12,18 +12,18 @@ Person_Ext(client, "Client")
 
 Enterprise_Boundary(formations, "Formations") {
     System(catalogue_de_formations, "Catalogue de formations", $link=google.com)
-    System(calendrier_des_sessions_de_formation, "Calendrier des sessions")
+    System(agenda_des_sessions_de_formation, "Agenda des sessions")
     System_Ext(mail, "Système de mails")
 }
 
 Rel(client, administrateur, contacte)
 Rel(client, catalogue_de_formations, "achète")
 Rel(formateur_potentiel, catalogue_de_formations, "s'abonne")
-Rel(formateur, calendrier_des_sessions_de_formation, "s'inscrit")
-Rel(administrateur, calendrier_des_sessions_de_formation, "planifie")
+Rel(formateur, agenda_des_sessions_de_formation, "s'inscrit")
+Rel(administrateur, agenda_des_sessions_de_formation, "planifie")
 Rel(administrateur, catalogue_de_formations, "administre")
-Rel(calendrier_des_sessions_de_formation, mail, "notifie")
-Rel(participant, calendrier_des_sessions_de_formation, "participe")
-Rel(calendrier_des_sessions_de_formation, catalogue_de_formations, "récupère")
+Rel(agenda_des_sessions_de_formation, mail, "notifie")
+Rel(participant, agenda_des_sessions_de_formation, "participe")
+Rel(agenda_des_sessions_de_formation, catalogue_de_formations, "récupère")
 
 @enduml

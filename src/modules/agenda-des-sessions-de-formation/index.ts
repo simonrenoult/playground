@@ -12,13 +12,13 @@ import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "./write/a
 import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "./write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de-formation";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import SessionsDeFormationEnMemoire from "./write/infrastructure/sessions-de-formation-en-memoire";
-import CalendrierDesSessionsDeFormationHttp from "./read/infrastructure/calendrier-des-sessions-de-formation-http";
+import AgendaDesSessionsDeFormationHttp from "./read/infrastructure/agenda-des-sessions-de-formation-http";
 import BoundedContext from "./bounded-context";
 import { HorlogeEnMemoire } from "./test/horloge-en-memoire";
 import { CatalogueDeFormationsGatewayEnMemoire } from "./test/catalogue-de-formations-gateway-en-memoire";
 import { NotifieurEnMemoire } from "./test/notifieur-en-memoire";
 
-export default class CalendrierDesSessionsDeFormationModule implements Module {
+export default class AgendaDesSessionsDeFormationModule implements Module {
   private readonly listeDeEndpoints: ListeDeEndpoints;
   public readonly boundedContext = BoundedContext;
 
@@ -33,14 +33,14 @@ export default class CalendrierDesSessionsDeFormationModule implements Module {
   }
 
   public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
-    const calendrierDesSessionsDeFormationFuturesEnMemoire =
-      new CalendrierDesSessionsDeFormationHttp();
+    const agendaDesSessionsDeFormationFuturesEnMemoire =
+      new AgendaDesSessionsDeFormationHttp();
     const horloge = new HorlogeEnMemoire(DateTime.now().toISODate());
 
     bus.enregistrerGestionnaire(
       new GestionnaireDeQuellesSontLesSessionsDeFormationAVenir(
         horloge,
-        calendrierDesSessionsDeFormationFuturesEnMemoire
+        agendaDesSessionsDeFormationFuturesEnMemoire
       )
     );
   }

@@ -5,10 +5,10 @@ import BusDeCommandes from "../building-blocks/cqrs/write/bus-de-commandes";
 import { Module } from "../building-blocks/module";
 import BusDEvenementsDuDomaine from "../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import CatalogueDeFormationsModule from "../modules/catalogue-de-formations";
-import CalendrierDesSessionsDeFormationModule from "../modules/calendrier-des-sessions-de-formation";
+import AgendaDesSessionsDeFormationModule from "../modules/agenda-des-sessions-de-formation";
 import AjouterLiensAuPayload from "../building-blocks/hateoas/ajouter-liens-au-payload";
 import associationMessageEtHttpCatalogueDeFormations from "../modules/catalogue-de-formations/configuration/association-message-et-http";
-import associationMessageEtHttpCalendierDeFormations from "../modules/calendrier-des-sessions-de-formation/configuration/association-message-et-http";
+import associationMessageEtHttpAgendaDeFormations from "../modules/agenda-des-sessions-de-formation/configuration/association-message-et-http";
 
 const fastify = Fastify({
   logger: {
@@ -29,11 +29,11 @@ const catalogueDeFormationsModule = new CatalogueDeFormationsModule(
   busDeQuestions,
   busDeCommandes
 );
-const calendrierDesSessionsDeFormationModule =
-  new CalendrierDesSessionsDeFormationModule(busDeQuestions, busDeCommandes);
+const agendaDesSessionsDeFormationModule =
+  new AgendaDesSessionsDeFormationModule(busDeQuestions, busDeCommandes);
 const modules: Module[] = [
   catalogueDeFormationsModule,
-  calendrierDesSessionsDeFormationModule,
+  agendaDesSessionsDeFormationModule,
 ];
 
 modules.forEach((m) => {
@@ -47,12 +47,11 @@ const ajouterLiensAuPayload = new AjouterLiensAuPayload(
   fastify,
   [
     associationMessageEtHttpCatalogueDeFormations,
-    associationMessageEtHttpCalendierDeFormations,
+    associationMessageEtHttpAgendaDeFormations,
   ],
   [
     catalogueDeFormationsModule.boundedContext.arborescenceDeMessages,
-    calendrierDesSessionsDeFormationModule.boundedContext
-      .arborescenceDeMessages,
+    agendaDesSessionsDeFormationModule.boundedContext.arborescenceDeMessages,
   ]
 );
 
