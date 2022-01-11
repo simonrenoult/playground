@@ -33,11 +33,13 @@ async function genererLeBoundedContextSummary(
 ): Promise<void> {
   const cheminVersLeBoundedContext = resolve(
     CHEMIN_VERS_LA_RACINE,
+    "modules",
     nomDuBoundedContext
   );
   const boundedContext: IBoundedContext = await recupererBoundedContext(
     cheminVersLeBoundedContext
   );
+
   const boundedContextSummary: string =
     creerLeBoundedContextSummary(boundedContext);
   ecrireBoundedContextSummarySurLeSystemeDeFichier(
@@ -49,7 +51,9 @@ async function genererLeBoundedContextSummary(
 async function recupererBoundedContext(
   cheminVersLeBoundedContext: string
 ): Promise<IBoundedContext> {
-  return (await import(cheminVersLeBoundedContext)).default;
+  return (
+    await import(resolve(cheminVersLeBoundedContext, "bounded-context.ts"))
+  ).default;
 }
 
 function creerLeBoundedContextSummary(boundedContext: IBoundedContext): string {

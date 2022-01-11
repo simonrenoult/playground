@@ -4,18 +4,21 @@
 
 | [Domain][strategic_classification] | [Business model][strategic_classification] | [Evolution][strategic_classification] | [Rôles][domain_roles] |
 | ---------------------------------- | ------------------------------------------ | ------------------------------------- | --------------------- |
-| SUPPORTING                         | COST_REDUCTION                             | PRODUCT                               | DRAFT                 |
+| SUPPORTING                       | COST_REDUCTION                        | PRODUCT                       | DRAFT  |
 
 ## [Questions][cqrs]
 
 <details>
 <summary>QuellesSontLesFormationsAuCatalogue</summary>
 
+
 ```ts
 export default class QuellesSontLesFormationsAuCatalogue implements Question {
-  public readonly nom = "QUELLES_SONT_LES_FORMATIONS_AU_CATALOGUE";
+  public readonly nom = QuellesSontLesFormationsAuCatalogue.name;
 }
 ```
+
+
 
 </details>
 
@@ -24,11 +27,14 @@ export default class QuellesSontLesFormationsAuCatalogue implements Question {
 <details>
 <summary>FormationsAuCatalogue</summary>
 
+
 ```ts
 export default interface FormationsAuCatalogue
   extends ModeleDeLecture,
     Array<string> {}
 ```
+
+
 
 </details>
 
@@ -37,11 +43,12 @@ export default interface FormationsAuCatalogue
 <details>
 <summary>AjouterUnFormateurPotentielALaFormation</summary>
 
+
 ```ts
 export default class AjouterUnFormateurPotentielALaFormation
   implements Commande
 {
-  public readonly nom = "AJOUTER_UN_FORMATEUR_POTENTIEL_A_LA_FORMATION";
+  public readonly nom = AjouterUnFormateurPotentielALaFormation.name;
 
   constructor(
     public readonly emailFormateurPotentiel: string,
@@ -50,13 +57,16 @@ export default class AjouterUnFormateurPotentielALaFormation
 }
 ```
 
+
+
 </details>
 <details>
 <summary>CreerUneFormation</summary>
 
+
 ```ts
 export default class CreerUneFormation implements Commande {
-  public readonly nom: string = "CREER_UNE_FORMATION";
+  public readonly nom: string = CreerUneFormation.name;
 
   constructor(
     public readonly code: string,
@@ -65,6 +75,8 @@ export default class CreerUneFormation implements Commande {
 }
 ```
 
+
+
 </details>
 
 ## [Évènements du domaine][domain_event]
@@ -72,11 +84,12 @@ export default class CreerUneFormation implements Commande {
 <details>
 <summary>FormateurPotentielAjouteALaFormation</summary>
 
+
 ```ts
 export class FormateurPotentielAjouteALaFormation
   implements EvenementDuDomaine
 {
-  public readonly nom = "FORMATEUR_POTENTIEL_AJOUTE_A_LA_FORMATION";
+  public readonly nom = FormateurPotentielAjouteALaFormation.name;
 
   constructor(
     public readonly idFormateurPotentiel: string,
@@ -85,13 +98,16 @@ export class FormateurPotentielAjouteALaFormation
 }
 ```
 
+
+
 </details>
 <details>
 <summary>FormationCreee</summary>
 
+
 ```ts
 export default class FormationCreee implements EvenementDuDomaine {
-  public readonly nom = "FORMATION_CREEE";
+  public readonly nom = FormationCreee.name;
 
   constructor(
     public readonly codeFormation: string,
@@ -99,6 +115,8 @@ export default class FormationCreee implements EvenementDuDomaine {
   ) {}
 }
 ```
+
+
 
 </details>
 

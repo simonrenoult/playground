@@ -1,23 +1,26 @@
-# Sessions de formation
+# Calendrier des sessions de formation
 
 > Création, modification, suppression et consultation des sessions de formations planifiées à partir du catalogue.
 
 | [Domain][strategic_classification] | [Business model][strategic_classification] | [Evolution][strategic_classification] | [Rôles][domain_roles] |
 | ---------------------------------- | ------------------------------------------ | ------------------------------------- | --------------------- |
-| CORE                               | COST_REDUCTION                             | PRODUCT                               | EXECUTION             |
+| CORE                       | COST_REDUCTION                        | PRODUCT                       | EXECUTION  |
 
 ## [Questions][cqrs]
 
 <details>
 <summary>QuellesSontLesSessionsDeFormationAVenir</summary>
 
+
 ```ts
 export default class QuellesSontLesSessionsDeFormationAVenir
   implements Question
 {
-  public readonly nom = "QUELLES_SONT_LES_SESSIONS_DE_FORMATION_A_VENIR";
+  public readonly nom = QuellesSontLesSessionsDeFormationAVenir.name;
 }
 ```
+
+
 
 </details>
 
@@ -26,11 +29,14 @@ export default class QuellesSontLesSessionsDeFormationAVenir
 <details>
 <summary>SessionsDeFormationsFutures</summary>
 
+
 ```ts
 export interface SessionsDeFormationsFutures
   extends ModeleDeLecture,
     Array<string> {}
 ```
+
+
 
 </details>
 
@@ -39,11 +45,12 @@ export interface SessionsDeFormationsFutures
 <details>
 <summary>AjouterUnFormateurAUneSessionDeFormation</summary>
 
+
 ```ts
 export default class AjouterUnFormateurAUneSessionDeFormation
   implements Commande
 {
-  public readonly nom = "AJOUTER_UN_FORMATEUR_A_UNE_SESSION_DE_FORMATION";
+  public readonly nom = AjouterUnFormateurAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailFormateur: string,
@@ -52,13 +59,16 @@ export default class AjouterUnFormateurAUneSessionDeFormation
 }
 ```
 
+
+
 </details>
 <details>
 <summary>CreerUneSessionDeFormation</summary>
 
+
 ```ts
 export default class CreerUneSessionDeFormation implements Commande {
-  public readonly nom = "CREER_UNE_SESSION_DE_FORMATION";
+  public readonly nom = CreerUneSessionDeFormation.name;
 
   constructor(
     public readonly idSessionDeFormation: string,
@@ -67,15 +77,18 @@ export default class CreerUneSessionDeFormation implements Commande {
 }
 ```
 
+
+
 </details>
 <details>
 <summary>InscrireUnParticipantAUneSessionDeFormation</summary>
+
 
 ```ts
 export default class InscrireUnParticipantAUneSessionDeFormation
   implements Commande
 {
-  public readonly nom = "INSCRIRE_UN_PARTICIPANT_A_UNE_SESSION_DE_FORMATION";
+  public readonly nom = InscrireUnParticipantAUneSessionDeFormation.name;
 
   constructor(
     public readonly emailParticipant: string,
@@ -84,6 +97,8 @@ export default class InscrireUnParticipantAUneSessionDeFormation
 }
 ```
 
+
+
 </details>
 
 ## [Évènements du domaine][domain_event]
@@ -91,11 +106,12 @@ export default class InscrireUnParticipantAUneSessionDeFormation
 <details>
 <summary>FormateurAjouteALaSessionDeFormation</summary>
 
+
 ```ts
 export class FormateurAjouteALaSessionDeFormation
   implements EvenementDuDomaine
 {
-  public readonly nom = "FORMATEUR_AJOUTE_A_LA_SESSION_DE_FORMATION";
+  public readonly nom = FormateurAjouteALaSessionDeFormation.name;
 
   constructor(
     public readonly idFormateur: string,
@@ -105,15 +121,18 @@ export class FormateurAjouteALaSessionDeFormation
 }
 ```
 
+
+
 </details>
 <details>
 <summary>ParticipantInscritALaSessionDeFormation</summary>
+
 
 ```ts
 export class ParticipantInscritALaSessionDeFormation
   implements EvenementDuDomaine
 {
-  public readonly nom = "PARTICIPANT_INSCRIT_A_LA_SESSION_DE_FORMATION";
+  public readonly nom = ParticipantInscritALaSessionDeFormation.name;
 
   constructor(
     public readonly codeFormation: string,
@@ -123,13 +142,16 @@ export class ParticipantInscritALaSessionDeFormation
 }
 ```
 
+
+
 </details>
 <details>
 <summary>SessionDeFormationCreee</summary>
 
+
 ```ts
 export class SessionDeFormationCreee implements EvenementDuDomaine {
-  public readonly nom = "SESSION_DE_FORMATION_PLANIFIEE";
+  public readonly nom = SessionDeFormationCreee.name;
 
   constructor(
     public readonly idSessionDeFormation: string,
@@ -137,6 +159,8 @@ export class SessionDeFormationCreee implements EvenementDuDomaine {
   ) {}
 }
 ```
+
+
 
 </details>
 
