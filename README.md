@@ -9,6 +9,10 @@ $ npm test
 
 ## TODO
 
+### Domaines
+
+- Un domaine d'analytics/statistiques
+
 ### DDD
 
 - [x] Appliquer les patterns tactiques (agrégats, entités, value-objects, repositories)
@@ -24,7 +28,11 @@ $ npm test
 - [x] Implémenter la persistence
 - [x] Implémenter un injecteur de dépendances
 - Définir la ci/cd
-- Chemin absolus plutôt que relatif
+- Chemins absolus plutôt que relatifs pour les imports
+- Correlation-id
+- RabbitsMQ pour le messaging entre composants
+- Log
+- Configuration/Environnement
 
 ### Architecture
 
@@ -33,6 +41,7 @@ $ npm test
 - [x] Modulariser le monolithe en s'appuyant sur les bounded contexts
 - [x] Déléguer aux modules/bounded-context l'enregistrement des apis, gestionnaires, etc.
 - Implémenter de l'event sourcing
+- Persistence des messages/piste de log
 - Optimistic concurrency
 - Versionner les agrégats
 - Script vérifiant la clean archi
