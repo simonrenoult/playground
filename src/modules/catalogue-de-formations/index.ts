@@ -48,8 +48,12 @@ export default class CatalogueDeFormationsModule implements Module {
   }
 
   public enregistrerLesGestionnairesDEvenementDuDomaine(
-    _bus: BusDEvenementsDuDomaine
-  ) {}
+    bus: BusDEvenementsDuDomaine
+  ) {
+    bus.enregistrerGestionnaire(
+      this.iocRead.cradle.gestionnaireDeAjouterFormationAuCatalogueDeFormations
+    );
+  }
 
   public enregistrerLesEndpoints(fastify: FastifyInstance) {
     this.listeDeEndpoints.enregistrerEndpoints(fastify);

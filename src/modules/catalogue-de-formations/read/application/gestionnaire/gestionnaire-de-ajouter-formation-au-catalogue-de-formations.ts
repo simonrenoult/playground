@@ -3,13 +3,13 @@ import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionna
 import FormationCreee from "../../../write/domain/evenement/formation-creee";
 import CatalogueDeFormations from "../../domain/projection/catalogue-de-formations";
 
-export class AjouterFormationAuCatalogueDeFormations
+export default class GestionnaireDeAjouterFormationAuCatalogueDeFormations
   implements GestionnaireDeMessage<FormationCreee, FormationCreee>
 {
-  constructor(private readonly catalogue: CatalogueDeFormations) {}
+  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
 
   public async executer(e: FormationCreee): Promise<FormationCreee> {
-    this.catalogue.ajouter(e.codeFormation);
+    this.catalogueDeFormations.ajouter(e.codeFormation);
     return e;
   }
 

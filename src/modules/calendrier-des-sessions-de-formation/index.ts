@@ -9,7 +9,7 @@ import { GestionnaireDeQuellesSontLesSessionsDeFormationAVenir } from "./read/ap
 import GestionnaireDeCreerUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-creer-une-session-de-formation";
 import GestionnaireDeAjouterUnFormateurAUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-a-une-session-de-formation";
 import GestionnaireDeInscrireUnParticipantAUneSessionDeFormation from "./write/application/gestionnaire/gestionnaire-de-inscrire-un-participant-a-une-session-de-formation";
-import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "./write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
+import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "./write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de-formation";
 import BusDEvenementsDuDomaine from "../../building-blocks/cqrs/evenement-du-domaine/bus-d-evenements-du-domaine";
 import SessionsDeFormationEnMemoire from "./write/infrastructure/sessions-de-formation-en-memoire";
 import CalendrierDesSessionsDeFormationHttp from "./read/infrastructure/calendrier-des-sessions-de-formation-http";

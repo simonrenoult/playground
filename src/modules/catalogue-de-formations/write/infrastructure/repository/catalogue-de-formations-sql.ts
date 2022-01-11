@@ -1,5 +1,4 @@
 import { Client } from "pg";
-import injectable from "../../../../../building-blocks/ioc/injectable";
 import {
   CodeDeFormation,
   Formation,
@@ -13,7 +12,7 @@ class AucuneFormationTrouvee extends Error {
   }
 }
 
-@injectable("catalogueDeFormations")
+// @injectable("catalogueDeFormations")
 export default class CatalogueDeFormationsSql implements CatalogueDeFormations {
   constructor(private readonly sqlClient: Client) {}
 

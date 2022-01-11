@@ -1,9 +1,11 @@
 import * as Path from "path";
 import { AwilixContainer, InjectionMode } from "awilix";
 import GestionnaireDeQuellesSontLesFormationsAuCatalogue from "./application/gestionnaire/gestionnaire-de-quelles-sont-les-formations-au-catalogue";
+import GestionnaireDeAjouterFormationAuCatalogueDeFormations from "./application/gestionnaire/gestionnaire-de-ajouter-formation-au-catalogue-de-formations";
 
 export interface ICradleRead {
   gestionnaireDeQuellesSontLesFormationsAuCatalogue: GestionnaireDeQuellesSontLesFormationsAuCatalogue;
+  gestionnaireDeAjouterFormationAuCatalogueDeFormations: GestionnaireDeAjouterFormationAuCatalogueDeFormations;
 }
 
 export default class IOCRead {

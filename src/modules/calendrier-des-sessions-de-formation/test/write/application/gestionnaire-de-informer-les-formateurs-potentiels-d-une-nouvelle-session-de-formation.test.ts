@@ -1,6 +1,6 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
-import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "../../../write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de.formation";
+import InformerLesFormateursPotentielsDUneNouvelleSessionDeFormation from "../../../write/application/informer-les-formateurs-potentiels-d-une-nouvelle-session-de-formation";
 import { NotifieurEnMemoire } from "../../notifieur-en-memoire";
 import { CatalogueDeFormationsGatewayEnMemoire } from "../../catalogue-de-formations-gateway-en-memoire";
 import { Fixtures } from "../../fixtures";
