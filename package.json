@@ -5,14 +5,14 @@
   "author": "Simon Renoult <simon.renoult@octo.com>",
   "scripts": {
     "build": "tsc --build tsconfig.json",
+    "start": "node dist/bin/start.js",
+    "start:watch": "nodemon src/bin/start.ts",
     "lint": "eslint . --ext .ts",
-    "start": "npm run watch",
-    "watch": "nodemon bin/start.ts",
-    "cucumber": "cucumber-js -r src/**/features/support/world.ts -r src/**/features/support/steps.ts --require-module ts-node/register --publish-quiet",
     "test": "mocha --exit -r ts-node/register --extension ts --spec src/**/*.test.ts",
     "test:watch": "mocha -r ts-node/register --extension ts --spec src/**/*.test.ts --watch --watch-extensions ts",
-    "coverage": "nyc --all mocha -r ts-node/register --extension .ts --spec src/**/*.test.ts",
-    "summary": "ts-node src/tools/build-bounded-context-summary.ts"
+    "test:cucumber": "cucumber-js -r src/**/features/support/world.ts -r src/**/features/support/steps.ts --require-module ts-node/register --publish-quiet",
+    "test:coverage": "nyc --all mocha -r ts-node/register --extension .ts --spec src/**/*.test.ts",
+    "doc:bounded-contexts": "ts-node src/tools/build-bounded-context-summary.ts"
   },
   "engines": {
     "node": "^16.0.0"
