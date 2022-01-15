@@ -28,6 +28,8 @@ $ npm test
 - [x] Implémenter la persistence
 - [x] Implémenter un injecteur de dépendances
 - Définir la ci/cd
+- Dockeriser l'application
+- Déployer quelque part
 - Chemins absolus plutôt que relatifs pour les imports
 - Correlation-id
 - RabbitsMQ pour le messaging entre composants
