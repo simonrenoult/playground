@@ -17,7 +17,9 @@ export default class GestionnaireDeAjouterUnFormateurPotentielALaFormation
       FormateurPotentielAjouteALaFormation
     >
 {
-  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
+  public constructor(
+    private readonly catalogueDeFormations: CatalogueDeFormations
+  ) {}
 
   public async executer(
     c: AjouterUnFormateurPotentielALaFormation

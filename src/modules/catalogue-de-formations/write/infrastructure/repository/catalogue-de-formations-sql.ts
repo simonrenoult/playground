@@ -7,14 +7,14 @@ import {
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
 
 class AucuneFormationTrouvee extends Error {
-  constructor(public readonly code: CodeDeFormation) {
+  public constructor(public readonly code: CodeDeFormation) {
     super(`Aucun agrégat trouvé avec l'id ${code.valeur}`);
   }
 }
 
 // @injectable("catalogueDeFormations")
 export default class CatalogueDeFormationsSql implements CatalogueDeFormations {
-  constructor(private readonly sqlClient: Client) {}
+  public constructor(private readonly sqlClient: Client) {}
 
   public async parId(code: CodeDeFormation): Promise<Formation> {
     const { rowCount, rows } = await this.sqlClient.query<{

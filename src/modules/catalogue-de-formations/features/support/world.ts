@@ -11,7 +11,7 @@ class CustomWorld extends World {
   private busDEvenements: BusDEvenementsDuDomaine;
   private result: any;
 
-  constructor(options: any) {
+  public constructor(options: any) {
     super(options);
     this.busDeQuestions = new BusDeQuestions(console);
     this.busDEvenements = new BusDEvenementsDuDomaine(console);
@@ -24,13 +24,13 @@ class CustomWorld extends World {
     module.enregistrerLesGestionnairesDeQuestion(this.busDeQuestions);
   }
 
-  async listerLesFormations() {
+  public async listerLesFormations(): Promise<void> {
     this.result = await this.busDeQuestions.publier(
       new QuellesSontLesFormationsAuCatalogue()
     );
   }
 
-  ajouterXFormations(x: number) {
+  public ajouterXFormations(x: number): void {
     if (x !== 0) throw new Error("À implémenter");
   }
 }

@@ -12,7 +12,9 @@ import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionna
 export default class GestionnaireDeCreerUneFormation
   implements GestionnaireDeMessage<CreerUneFormation, FormationCreee>
 {
-  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
+  public constructor(
+    private readonly catalogueDeFormations: CatalogueDeFormations
+  ) {}
 
   public async executer(
     formationACreer: CreerUneFormation

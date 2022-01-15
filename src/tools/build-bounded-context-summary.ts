@@ -118,7 +118,7 @@ function creerLeBoundedContextSummary(boundedContext: IBoundedContext): string {
 function ecrireBoundedContextSummarySurLeSystemeDeFichier(
   cheminVersLeBoundedContext: string,
   boundedContextSummary: string
-) {
+): void {
   const cheminVersLeBoundedContextSummary = resolve(
     cheminVersLeBoundedContext,
     LOCALISATION_DU_RESUME_DANS_LE_BOUNDED_CONTEXT

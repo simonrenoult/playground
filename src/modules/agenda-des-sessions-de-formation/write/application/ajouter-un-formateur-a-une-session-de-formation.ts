@@ -5,7 +5,7 @@ export default class AjouterUnFormateurAUneSessionDeFormation
 {
   public readonly nom = AjouterUnFormateurAUneSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailFormateur: string,
     public readonly idSessionDeSessionDeFormation: string
   ) {}

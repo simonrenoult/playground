@@ -3,6 +3,7 @@ import ModeleDeLecture from "./modele-de-lecture";
 import Bus from "../bus";
 import Intercepteur from "../intercepteur";
 import GestionnaireDeMessage from "../gestionnaire-de-message";
+import Logger from "../../logger/logger";
 
 export default class BusDeQuestions implements Bus<Question, ModeleDeLecture> {
   private readonly intercepteurs: Intercepteur<Question>[] = [];
@@ -11,7 +12,7 @@ export default class BusDeQuestions implements Bus<Question, ModeleDeLecture> {
     ModeleDeLecture
   >[] = [];
 
-  constructor(private readonly logger: any) {}
+  public constructor(private readonly logger: Logger) {}
 
   public enregistrerIntercepteur(i: Intercepteur<Question>): void {
     this.intercepteurs.push(i);

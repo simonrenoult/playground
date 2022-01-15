@@ -5,7 +5,7 @@ import {
 import { SessionsDeFormation } from "../../write/domain/repository/sessions-de-formation";
 
 export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
-  constructor(private sessionsDeFormation: SessionDeFormation[] = []) {}
+  public constructor(private sessionsDeFormation: SessionDeFormation[] = []) {}
 
   public lister(): SessionDeFormation[] {
     return this.sessionsDeFormation;

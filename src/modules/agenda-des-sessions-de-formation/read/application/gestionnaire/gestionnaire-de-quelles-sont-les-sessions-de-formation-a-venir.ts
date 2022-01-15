@@ -12,7 +12,7 @@ export class GestionnaireDeQuellesSontLesSessionsDeFormationAVenir
       SessionsDeFormationsFutures
     >
 {
-  constructor(
+  public constructor(
     private readonly horloge: Horloge,
     private readonly agendaDesSessionsDeFormation: AgendaDesSessionsDeFormation
   ) {}

@@ -11,12 +11,12 @@ import InscrireUnParticipantAUneSessionDeFormation from "./write/application/ins
 import { ListeDeEndpoints } from "../../building-blocks/liste-de-endpoints";
 
 export default class SessionsDeFormationEndpoints implements ListeDeEndpoints {
-  constructor(
+  public constructor(
     private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes
   ) {}
 
-  enregistrerEndpoints(fastify: FastifyInstance): void {
+  public enregistrerEndpoints(fastify: FastifyInstance): void {
     fastify.route({
       method: "GET",
       url: "/sessions-de-formation",

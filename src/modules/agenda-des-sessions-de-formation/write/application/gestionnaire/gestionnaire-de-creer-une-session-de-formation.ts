@@ -13,7 +13,9 @@ export default class GestionnaireDeCreerUneSessionDeFormation
   implements
     GestionnaireDeMessage<CreerUneSessionDeFormation, SessionDeFormationCreee>
 {
-  constructor(private readonly sessionsDeFormation: SessionsDeFormation) {}
+  public constructor(
+    private readonly sessionsDeFormation: SessionsDeFormation
+  ) {}
 
   public async executer(
     sessionDeFormationAPlanifier: CreerUneSessionDeFormation

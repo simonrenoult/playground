@@ -5,7 +5,7 @@ export default class AjouterUnFormateurPotentielALaFormation
 {
   public readonly nom = AjouterUnFormateurPotentielALaFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailFormateurPotentiel: string,
     public readonly codeFormation: string
   ) {}

@@ -5,7 +5,7 @@ export class ParticipantInscritALaSessionDeFormation
 {
   public readonly nom = ParticipantInscritALaSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string,
     public readonly idParticipant: string

@@ -5,8 +5,6 @@ import axios from "axios";
 export default class AgendaDesSessionsDeFormationHttp
   implements AgendaDesSessionsDeFormation
 {
-  constructor() {}
-
   public async lister(): Promise<SessionsDeFormationsFutures> {
     const sessions = await axios.get<SessionsDeFormationsFutures>(
       "http://localhost:3000/sessions-de-formation"

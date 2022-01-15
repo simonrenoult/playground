@@ -2,7 +2,7 @@ import serveur from "../infrastructure/serveur";
 
 const PORT = process.env.PORT || 3000;
 
-async function start() {
+async function start(): Promise<void> {
   try {
     await serveur.listen(PORT);
   } catch (err) {

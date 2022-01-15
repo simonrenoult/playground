@@ -6,7 +6,9 @@ import CatalogueDeFormations from "../../domain/projection/catalogue-de-formatio
 export default class GestionnaireDeAjouterFormationAuCatalogueDeFormations
   implements GestionnaireDeMessage<FormationCreee, FormationCreee>
 {
-  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
+  public constructor(
+    private readonly catalogueDeFormations: CatalogueDeFormations
+  ) {}
 
   public async executer(e: FormationCreee): Promise<FormationCreee> {
     this.catalogueDeFormations.ajouter(e.codeFormation);

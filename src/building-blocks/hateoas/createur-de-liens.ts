@@ -9,7 +9,7 @@ export type Lien = { rel: Rel; method: string; href: string };
 const AUCUN_LIEN: Lien[] = [];
 
 export default class CreateurDeLiens {
-  constructor(
+  public constructor(
     private readonly arborescencesDeMessages: ArborescenceDeMessages[],
     private readonly mappingHttpDesMessages: AssociationMessageEtHttp[]
   ) {}
@@ -31,7 +31,7 @@ export default class CreateurDeLiens {
   }
 
   private versLien() {
-    return (message: Constructor<Message>) => {
+    return (message: Constructor<Message>): Lien | null => {
       const mappingHttpDuMessage = this.mappingHttpDuTypeDeMessage(message);
       return mappingHttpDuMessage
         ? CreateurDeLiens.versLien(mappingHttpDuMessage)
@@ -39,21 +39,25 @@ export default class CreateurDeLiens {
     };
   }
 
-  private mappingHttpDuTypeDeMessage(message: Constructor<Message>) {
+  private mappingHttpDuTypeDeMessage(
+    message: Constructor<Message>
+  ): AssociationMessageEtHttp {
     return this.mappingHttpDesMessages.find(
       (mappingHttpDUnMessage) =>
         mappingHttpDUnMessage.message.name === message.name
     );
   }
 
-  private arborescenceDe(messageInitial: Message) {
+  private arborescenceDe(messageInitial: Message): ArborescenceDeMessages {
     return this.arborescencesDeMessages.find(
       (arborescenceDeMessages: ArborescenceDeMessages) =>
         arborescenceDeMessages.messageInitial.name === messageInitial.nom
     );
   }
 
-  private mappingHttpDuMessage(messageInitial: Message) {
+  private mappingHttpDuMessage(
+    messageInitial: Message
+  ): AssociationMessageEtHttp {
     return this.mappingHttpDesMessages.find(
       (mappingHttpDUnMessage: AssociationMessageEtHttp) =>
         mappingHttpDUnMessage.message.name === messageInitial.nom

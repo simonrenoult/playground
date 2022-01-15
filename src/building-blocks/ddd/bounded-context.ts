@@ -102,7 +102,7 @@ export default class BoundedContext implements IBoundedContext {
 
   private static recupererLesModelesDeLecture(
     elements: Array<ClassDeclaration | InterfaceDeclaration>
-  ) {
+  ): DetailsDeLaClasse[] {
     return recupererLeDetailDeLElementPourLeType(elements, "ModeleDeLecture");
   }
 

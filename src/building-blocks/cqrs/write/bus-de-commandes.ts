@@ -3,6 +3,7 @@ import Commande from "./commande";
 import Intercepteur from "../intercepteur";
 import EvenementDuDomaine from "../evenement-du-domaine/evenement";
 import GestionnaireDeMessage from "../gestionnaire-de-message";
+import Logger from "../../logger/logger";
 
 export default class BusDeCommandes
   implements Bus<Commande, EvenementDuDomaine>
@@ -13,21 +14,21 @@ export default class BusDeCommandes
     EvenementDuDomaine
   >[] = [];
 
-  constructor(
+  public constructor(
     private readonly busDEvenementsDuDomaine: Bus<
       EvenementDuDomaine,
       EvenementDuDomaine
     >,
-    private readonly logger: any
+    private readonly logger: Logger
   ) {}
 
   public enregistrerGestionnaire(
     g: GestionnaireDeMessage<Commande, EvenementDuDomaine>
-  ) {
+  ): void {
     this.gestionnaires.push(g);
   }
 
-  public enregistrerIntercepteur(i: Intercepteur<Commande>) {
+  public enregistrerIntercepteur(i: Intercepteur<Commande>): void {
     this.intercepteurs.push(i);
   }
 

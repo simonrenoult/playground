@@ -11,7 +11,9 @@ export default class GestionnaireDeQuellesSontLesFormationsAuCatalogue
       FormationsAuCatalogue
     >
 {
-  constructor(private readonly catalogueDeFormations: CatalogueDeFormations) {}
+  public constructor(
+    private readonly catalogueDeFormations: CatalogueDeFormations
+  ) {}
 
   public async executer(
     _q: QuellesSontLesFormationsAuCatalogue
@@ -19,7 +21,7 @@ export default class GestionnaireDeQuellesSontLesFormationsAuCatalogue
     return this.catalogueDeFormations.lister();
   }
 
-  ecoute(q: Question): boolean {
+  public ecoute(q: Question): boolean {
     return q instanceof QuellesSontLesFormationsAuCatalogue;
   }
 }

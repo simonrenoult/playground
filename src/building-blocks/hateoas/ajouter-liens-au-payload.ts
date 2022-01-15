@@ -7,7 +7,7 @@ import Message from "../cqrs/message";
 export default class AjouterLiensAuPayload {
   private createurDeLiens: CreateurDeLiens;
 
-  constructor(
+  public constructor(
     private readonly fastify: FastifyInstance,
     mappingHttpDesMessages: AssociationMessageEtHttp[][],
     arborescencesDeMessages: ArborescenceDeMessages[][]
@@ -21,7 +21,7 @@ export default class AjouterLiensAuPayload {
   public associer(): void {
     this.fastify.addHook(
       "preSerialization",
-      async (request, reply, payload: { data: any; message: Message }) => {
+      async (request, reply, payload: { data: unknown; message: Message }) => {
         if (request.url.startsWith("/documentation")) return payload;
         return {
           data: payload.data,

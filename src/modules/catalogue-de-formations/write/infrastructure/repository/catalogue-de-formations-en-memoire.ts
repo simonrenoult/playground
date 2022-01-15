@@ -8,8 +8,6 @@ export default class CatalogueDeFormationsEnMemoire
 {
   private readonly formations: Formation[] = [];
 
-  constructor() {}
-
   public async parId(code: CodeDeFormation): Promise<Formation> {
     return this.formations.find((f) => f.id.equals(code));
   }

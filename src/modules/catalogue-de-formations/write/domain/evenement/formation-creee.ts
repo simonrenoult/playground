@@ -3,7 +3,7 @@ import EvenementDuDomaine from "../../../../../building-blocks/cqrs/evenement-du
 export default class FormationCreee implements EvenementDuDomaine {
   public readonly nom = FormationCreee.name;
 
-  constructor(
+  public constructor(
     public readonly codeFormation: string,
     public readonly dureeEnHeures: number
   ) {}

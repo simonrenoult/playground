@@ -17,7 +17,9 @@ export default class GestionnaireDeAjouterUnFormateurAUneSessionDeFormation
       FormateurAjouteALaSessionDeFormation
     >
 {
-  constructor(private readonly sessionsDeFormation: SessionsDeFormation) {}
+  public constructor(
+    private readonly sessionsDeFormation: SessionsDeFormation
+  ) {}
 
   public async executer(
     sessionDeFormationAStaffer: AjouterUnFormateurAUneSessionDeFormation

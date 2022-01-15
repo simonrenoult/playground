@@ -2,6 +2,7 @@ import Bus from "../bus";
 import EvenementDuDomaine from "./evenement";
 import GestionnaireDeMessage from "../gestionnaire-de-message";
 import Intercepteur from "../intercepteur";
+import Logger from "../../logger/logger";
 
 export default class BusDEvenementsDuDomaine
   implements Bus<EvenementDuDomaine, EvenementDuDomaine>
@@ -12,7 +13,7 @@ export default class BusDEvenementsDuDomaine
   >[] = [];
   private intercepteurs: Intercepteur<EvenementDuDomaine>[] = [];
 
-  constructor(private readonly log: any) {}
+  public constructor(private readonly log: Logger) {}
 
   public enregistrerGestionnaire(
     g: GestionnaireDeMessage<EvenementDuDomaine, EvenementDuDomaine>

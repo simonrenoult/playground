@@ -17,7 +17,7 @@ export default class CatalogueDeFormationsModule implements Module {
   private readonly iocRead: AwilixContainer<ICradleRead>;
   private readonly iocWrite: AwilixContainer<ICradleWrite>;
 
-  constructor(
+  public constructor(
     private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes
   ) {
@@ -32,13 +32,13 @@ export default class CatalogueDeFormationsModule implements Module {
       IOCWrite.recupererLeConteneurDInjectionDeDependance(container);
   }
 
-  public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions) {
+  public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
     bus.enregistrerGestionnaire(
       this.iocRead.cradle.gestionnaireDeQuellesSontLesFormationsAuCatalogue
     );
   }
 
-  public enregistrerLesGestionnairesDeCommande(bus: BusDeCommandes) {
+  public enregistrerLesGestionnairesDeCommande(bus: BusDeCommandes): void {
     bus.enregistrerGestionnaire(
       this.iocWrite.cradle.gestionnaireDeCreerUneFormation
     );
@@ -49,13 +49,13 @@ export default class CatalogueDeFormationsModule implements Module {
 
   public enregistrerLesGestionnairesDEvenementDuDomaine(
     bus: BusDEvenementsDuDomaine
-  ) {
+  ): void {
     bus.enregistrerGestionnaire(
       this.iocRead.cradle.gestionnaireDeAjouterFormationAuCatalogueDeFormations
     );
   }
 
-  public enregistrerLesEndpoints(fastify: FastifyInstance) {
+  public enregistrerLesEndpoints(fastify: FastifyInstance): void {
     this.listeDeEndpoints.enregistrerEndpoints(fastify);
   }
 }

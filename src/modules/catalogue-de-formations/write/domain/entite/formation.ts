@@ -11,16 +11,16 @@ export interface FormationState {
 export class Formation implements Agregat, Entite<CodeDeFormation> {
   public readonly formateursPotentiels: FormateurPotentiel[] = [];
 
-  constructor(
+  public constructor(
     private readonly _code: CodeDeFormation,
     private readonly _dureeEnHeures: DureeDeFormation
   ) {}
 
-  get id(): CodeDeFormation {
+  public get id(): CodeDeFormation {
     return this._code;
   }
 
-  get dureeEnHeures(): number {
+  public get dureeEnHeures(): number {
     return this._dureeEnHeures.valeur;
   }
 
@@ -52,13 +52,13 @@ export class Formation implements Agregat, Entite<CodeDeFormation> {
 export class DureeDeFormation implements ValueObject {
   public readonly valeur: number;
 
-  constructor(dureeEnHeure: number) {
+  public constructor(dureeEnHeure: number) {
     if (dureeEnHeure < 0)
       throw new Error("La durée de la formation ne peut être négative");
     this.valeur = dureeEnHeure;
   }
 
-  equals(vo: ValueObject): boolean {
+  public equals(vo: ValueObject): boolean {
     return vo instanceof DureeDeFormation && this.valeur === vo.valeur;
   }
 }
@@ -66,7 +66,7 @@ export class DureeDeFormation implements ValueObject {
 export class CodeDeFormation implements ValueObject {
   public readonly valeur: string;
 
-  constructor(code: string) {
+  public constructor(code: string) {
     if (code.length < 3)
       throw new Error(
         "Le code de la formation doit faire plus de 3 caractères"
@@ -74,7 +74,7 @@ export class CodeDeFormation implements ValueObject {
     this.valeur = code;
   }
 
-  equals(vo: ValueObject): boolean {
+  public equals(vo: ValueObject): boolean {
     return vo instanceof CodeDeFormation && this.valeur === vo.valeur;
   }
 }
@@ -82,11 +82,11 @@ export class CodeDeFormation implements ValueObject {
 export class FormateurPotentiel implements ValueObject {
   public readonly id: string;
 
-  constructor(public readonly email: Email) {
+  public constructor(public readonly email: Email) {
     this.id = email.valeur;
   }
 
-  equals(vo: ValueObject): boolean {
+  public equals(vo: ValueObject): boolean {
     return vo instanceof FormateurPotentiel && this.id === vo.id;
   }
 }

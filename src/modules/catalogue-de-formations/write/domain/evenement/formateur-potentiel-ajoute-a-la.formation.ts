@@ -5,7 +5,7 @@ export class FormateurPotentielAjouteALaFormation
 {
   public readonly nom = FormateurPotentielAjouteALaFormation.name;
 
-  constructor(
+  public constructor(
     public readonly idFormateurPotentiel: string,
     public readonly codeFormation: string
   ) {}

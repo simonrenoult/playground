@@ -71,19 +71,19 @@ export class SessionDeFormation
     this.formateurs.push(formateur);
   }
 
-  get id(): IdSessionDeFormation {
+  public get id(): IdSessionDeFormation {
     return this._idSessionDeFormation;
   }
 
-  equals(e: Entite<IdSessionDeFormation>): boolean {
+  public equals(e: Entite<IdSessionDeFormation>): boolean {
     return this.id.valeur === e.id.valeur;
   }
 }
 
 export class CodeDeFormation implements ValueObject {
-  constructor(public readonly valeur: string) {}
+  public constructor(public readonly valeur: string) {}
 
-  equals(vo: ValueObject): boolean {
+  public equals(vo: ValueObject): boolean {
     return vo instanceof CodeDeFormation && this.valeur === vo.valeur;
   }
 }
@@ -91,11 +91,11 @@ export class CodeDeFormation implements ValueObject {
 export class IdSessionDeFormation implements ValueObject {
   public readonly valeur: string;
 
-  constructor(private readonly _idSessionDeFormation: string) {
+  public constructor(private readonly _idSessionDeFormation: string) {
     this.valeur = _idSessionDeFormation;
   }
 
-  equals(vo: ValueObject): boolean {
+  public equals(vo: ValueObject): boolean {
     return vo instanceof IdSessionDeFormation && this.valeur === vo.valeur;
   }
 }

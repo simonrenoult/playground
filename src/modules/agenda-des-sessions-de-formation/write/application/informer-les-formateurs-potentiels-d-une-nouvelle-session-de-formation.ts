@@ -9,7 +9,7 @@ export default class InformerLesFormateursPotentielsDUneNouvelleSessionDeFormati
   implements
     GestionnaireDeMessage<SessionDeFormationCreee, SessionDeFormationCreee>
 {
-  constructor(
+  public constructor(
     private readonly portailVersLeCatalogueDeFormations: CatalogueDeFormations,
     private readonly notifieur: Notifieur
   ) {}

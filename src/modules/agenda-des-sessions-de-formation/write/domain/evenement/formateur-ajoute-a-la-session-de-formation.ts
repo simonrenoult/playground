@@ -5,7 +5,7 @@ export class FormateurAjouteALaSessionDeFormation
 {
   public readonly nom = FormateurAjouteALaSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly idFormateur: string,
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string

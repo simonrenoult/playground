@@ -5,7 +5,7 @@ export default class InscrireUnParticipantAUneSessionDeFormation
 {
   public readonly nom = InscrireUnParticipantAUneSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailParticipant: string,
     public readonly idSessionDeSessionDeFormation: string
   ) {}

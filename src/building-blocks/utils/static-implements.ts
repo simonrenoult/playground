@@ -3,7 +3,7 @@
  * @see https://github.com/microsoft/TypeScript/issues/34516
  */
 export function StaticImplements<T>() {
-  return (constructor: T) => {
+  return (_constructor: T): any => {
     /* nop */
   };
 }

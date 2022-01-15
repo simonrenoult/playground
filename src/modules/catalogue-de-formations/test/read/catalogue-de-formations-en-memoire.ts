@@ -4,9 +4,9 @@ import FormationsAuCatalogue from "../../read/domain/modele-de-lecture/formation
 export default class CatalogueDeFormationsEnMemoire
   implements CatalogueDeFormations
 {
-  constructor(private readonly formations: FormationsAuCatalogue = []) {}
+  public constructor(private readonly formations: FormationsAuCatalogue = []) {}
 
-  ajouter(code: string) {
+  public ajouter(code: string): void {
     this.formations.push(code);
   }
 

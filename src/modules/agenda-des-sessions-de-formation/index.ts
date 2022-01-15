@@ -22,9 +22,9 @@ export default class AgendaDesSessionsDeFormationModule implements Module {
   private readonly listeDeEndpoints: ListeDeEndpoints;
   public readonly boundedContext = BoundedContext;
 
-  constructor(
-    readonly busDeQuestions: BusDeQuestions,
-    readonly busDeCommandes: BusDeCommandes
+  public constructor(
+    private readonly busDeQuestions: BusDeQuestions,
+    private readonly busDeCommandes: BusDeCommandes
   ) {
     this.listeDeEndpoints = new SessionsDeFormationEndpoints(
       busDeQuestions,
@@ -78,7 +78,7 @@ export default class AgendaDesSessionsDeFormationModule implements Module {
     );
   }
 
-  public enregistrerLesEndpoints(fastify: FastifyInstance) {
+  public enregistrerLesEndpoints(fastify: FastifyInstance): void {
     this.listeDeEndpoints.enregistrerEndpoints(fastify);
   }
 }

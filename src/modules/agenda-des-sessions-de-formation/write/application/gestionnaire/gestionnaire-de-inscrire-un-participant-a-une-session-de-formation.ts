@@ -17,7 +17,9 @@ export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
       ParticipantInscritALaSessionDeFormation
     >
 {
-  constructor(private readonly sessionsDeFormation: SessionsDeFormation) {}
+  public constructor(
+    private readonly sessionsDeFormation: SessionsDeFormation
+  ) {}
 
   public async executer(
     inscriptionALaSessionDeFormation: InscrireUnParticipantAUneSessionDeFormation
