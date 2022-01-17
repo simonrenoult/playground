@@ -35,6 +35,7 @@ $ npm test
 - RabbitsMQ pour le messaging entre composants
 - Log
 - Configuration/Environnement
+- Feature flags
 
 ### Architecture
 
