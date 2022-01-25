@@ -9,5 +9,5 @@ export interface Deserializable<State> {
 }
 
 export interface Serializable<State, SerializedState> {
-  fromState(state: State): SerializedState;
+  FromState(state: State): SerializedState;
 }

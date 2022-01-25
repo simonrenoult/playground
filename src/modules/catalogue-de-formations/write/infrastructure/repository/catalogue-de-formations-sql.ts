@@ -25,7 +25,7 @@ export default class CatalogueDeFormationsSql implements CatalogueDeFormations {
 
     if (rowCount === 0) throw new AucuneFormationTrouvee(code);
 
-    return Formation.fromState(rows[0].contenu);
+    return Formation.FromState(rows[0].contenu);
   }
 
   public async persister(formation: Formation): Promise<void> {

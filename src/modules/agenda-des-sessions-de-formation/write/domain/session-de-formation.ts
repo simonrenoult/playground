@@ -33,14 +33,14 @@ export class SessionDeFormation
     private readonly _codeFormation: CodeDeFormation
   ) {}
 
-  public static vide(
+  public static Vide(
     id: IdSessionDeFormation,
     codeDeFormation: CodeDeFormation
   ): SessionDeFormation {
     return new SessionDeFormation(id, codeDeFormation);
   }
 
-  public static fromState(state: SessionDeFormationState): SessionDeFormation {
+  public static FromState(state: SessionDeFormationState): SessionDeFormation {
     const sessionDeFormation = new SessionDeFormation(
       new IdSessionDeFormation(state.id),
       new CodeDeFormation(state.codeFormation)

@@ -53,7 +53,7 @@ export class Formation
     };
   }
 
-  public static fromState(state: FormationState): Formation {
+  public static FromState(state: FormationState): Formation {
     return new Formation(
       new CodeDeFormation(state.code),
       new DureeDeFormation(state.dureeEnHeures)

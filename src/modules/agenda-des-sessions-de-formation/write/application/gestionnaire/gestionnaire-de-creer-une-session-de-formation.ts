@@ -18,7 +18,7 @@ export default class GestionnaireDeCreerUneSessionDeFormation
   public async executer(
     sessionDeFormationAPlanifier: CreerUneSessionDeFormation
   ): Promise<SessionDeFormationCreee> {
-    const sessionDeFormation = SessionDeFormation.vide(
+    const sessionDeFormation = SessionDeFormation.Vide(
       new IdSessionDeFormation(
         sessionDeFormationAPlanifier.idSessionDeFormation
       ),
