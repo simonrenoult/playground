@@ -57,6 +57,7 @@ $ npm test
 - [x] Implémenter le pattern memento
 - [x] Implémenter le pattern factory
 - Implémenter le pattern Result
+- Meilleure gestion des erreurs
 
 ### Living documentation
 
