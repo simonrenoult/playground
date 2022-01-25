@@ -26,10 +26,8 @@ export default class CatalogueDeFormationsModule implements Module {
       busDeCommandes
     );
     const container = createContainer();
-    this.iocRead =
-      IOCRead.recupererLeConteneurDInjectionDeDependance(container);
-    this.iocWrite =
-      IOCWrite.recupererLeConteneurDInjectionDeDependance(container);
+    this.iocRead = IOCRead.recuperer(container);
+    this.iocWrite = IOCWrite.recuperer(container);
   }
 
   public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions): void {

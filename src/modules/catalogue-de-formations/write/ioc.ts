@@ -9,9 +9,7 @@ export interface ICradleWrite {
 }
 
 export default class IOCWrite {
-  public static recupererLeConteneurDInjectionDeDependance(
-    conteneurParent: AwilixContainer
-  ): AwilixContainer {
+  public static recuperer(conteneurParent: AwilixContainer): AwilixContainer {
     return conteneurParent
       .createScope<ICradleWrite>()
       .loadModules(

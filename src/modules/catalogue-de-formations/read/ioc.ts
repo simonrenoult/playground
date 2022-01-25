@@ -9,9 +9,7 @@ export interface ICradleRead {
 }
 
 export default class IOCRead {
-  public static recupererLeConteneurDInjectionDeDependance(
-    conteneurParent: AwilixContainer
-  ): AwilixContainer {
+  public static recuperer(conteneurParent: AwilixContainer): AwilixContainer {
     return conteneurParent
       .createScope<ICradleRead>()
       .loadModules(
