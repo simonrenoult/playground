@@ -3,13 +3,24 @@ import { Entity } from "../../../../building-blocks/ddd/entity";
 import { DureeDeFormation } from "./duree-de-formation";
 import { CodeDeFormation } from "./code-de-formation";
 import { FormateurPotentiel } from "./formateur-potentiel";
+import {
+  Deserializable,
+  Serializable,
+} from "../../../../building-blocks/patterns/memento";
+import { StaticImplements } from "../../../../building-blocks/utils/static-implements";
 
 export interface FormationState {
   code: string;
   dureeEnHeures: number;
 }
 
-export class Formation implements AggregateRoot, Entity<CodeDeFormation> {
+@StaticImplements<Serializable<FormationState, Formation>>()
+export class Formation
+  implements
+    AggregateRoot,
+    Entity<CodeDeFormation>,
+    Deserializable<FormationState>
+{
   public readonly formateursPotentiels: FormateurPotentiel[] = [];
 
   public constructor(
