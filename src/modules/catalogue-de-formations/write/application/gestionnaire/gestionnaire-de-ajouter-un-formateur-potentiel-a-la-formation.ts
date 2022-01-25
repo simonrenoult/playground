@@ -1,14 +1,12 @@
 import Commande from "../../../../../building-blocks/cqrs/write/commande";
 import Email from "../../../../shared-kernel/email";
-import {
-  CodeDeFormation,
-  FormateurPotentiel,
-  Formation,
-} from "../../domain/entite/formation";
+import { Formation } from "../../domain/formation";
 import { FormateurPotentielAjouteALaFormation } from "../../domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
 import AjouterUnFormateurPotentielALaFormation from "../ajouter-un-formateur-potentiel-a-la-formation";
 import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
+import { CodeDeFormation } from "../../domain/code-de-formation";
+import { FormateurPotentiel } from "../../domain/formateur-potentiel";
 
 export default class GestionnaireDeAjouterUnFormateurPotentielALaFormation
   implements

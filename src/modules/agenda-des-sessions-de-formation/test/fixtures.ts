@@ -1,10 +1,8 @@
-import {
-  CodeDeFormation,
-  IdSessionDeFormation,
-  SessionDeFormation,
-} from "../write/domain/entite/session-de-formation";
+import { SessionDeFormation } from "../write/domain/session-de-formation";
 import CreerUneSessionDeFormation from "../write/application/creer-une-session-de-formation";
 import { SessionDeFormationCreee } from "../write/domain/evenement/session-de-formation-creee";
+import { CodeDeFormation } from "../write/domain/code-de-formation";
+import { IdSessionDeFormation } from "../write/domain/id-session-de-formation";
 
 export const DEFAUT = {
   CODE_FORMATION: "DDD01",

@@ -1,6 +1,7 @@
 import injectable from "../../../../../building-blocks/ioc/injectable";
-import { CodeDeFormation, Formation } from "../../domain/entite/formation";
+import { Formation } from "../../domain/formation";
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
+import { CodeDeFormation } from "../../domain/code-de-formation";
 
 @injectable("catalogueDeFormations")
 export default class CatalogueDeFormationsEnMemoire

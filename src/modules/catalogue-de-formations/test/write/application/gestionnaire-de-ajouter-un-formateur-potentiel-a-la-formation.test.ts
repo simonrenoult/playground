@@ -1,12 +1,12 @@
 import { describe, it } from "mocha";
 import { expect } from "chai";
 import GestionnaireDeAjouterUnFormateurPotentielALaFormation from "../../../write/application/gestionnaire/gestionnaire-de-ajouter-un-formateur-potentiel-a-la-formation";
-import { FormateurPotentiel } from "../../../write/domain/entite/formation";
 import { FormateurPotentielAjouteALaFormation } from "../../../write/domain/evenement/formateur-potentiel-ajoute-a-la.formation";
 import Email from "../../../../shared-kernel/email";
 import CatalogueDeFormationsEnMemoire from "../../../write/infrastructure/repository/catalogue-de-formations-en-memoire";
 import AjouterUnFormateurPotentielALaFormation from "../../../write/application/ajouter-un-formateur-potentiel-a-la-formation";
 import { Fixtures } from "../../fixtures";
+import { FormateurPotentiel } from "../../../write/domain/formateur-potentiel";
 
 describe("AjouterUnFormateurPotentielALaFormation", () => {
   it("persiste la formation avec le formateur potentiel", async () => {

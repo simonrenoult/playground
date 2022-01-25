@@ -1,13 +1,11 @@
 import Commande from "../../../../../building-blocks/cqrs/write/commande";
-import {
-  CodeDeFormation,
-  DureeDeFormation,
-  Formation,
-} from "../../domain/entite/formation";
+import { Formation } from "../../domain/formation";
 import FormationCreee from "../../domain/evenement/formation-creee";
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
 import CreerUneFormation from "../creer-une-formation";
 import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
+import { DureeDeFormation } from "../../domain/duree-de-formation";
+import { CodeDeFormation } from "../../domain/code-de-formation";
 
 export default class GestionnaireDeCreerUneFormation
   implements GestionnaireDeMessage<CreerUneFormation, FormationCreee>

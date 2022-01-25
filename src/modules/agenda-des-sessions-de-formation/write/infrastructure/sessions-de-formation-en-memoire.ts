@@ -1,8 +1,6 @@
-import {
-  IdSessionDeFormation,
-  SessionDeFormation,
-} from "../domain/entite/session-de-formation";
+import { SessionDeFormation } from "../domain/session-de-formation";
 import { SessionsDeFormation } from "../domain/repository/sessions-de-formation";
+import { IdSessionDeFormation } from "../domain/id-session-de-formation";
 
 export default class SessionsDeFormationEnMemoire
   implements SessionsDeFormation

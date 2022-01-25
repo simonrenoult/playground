@@ -1,8 +1,6 @@
-import {
-  IdSessionDeFormation,
-  SessionDeFormation,
-} from "../../write/domain/entite/session-de-formation";
+import { SessionDeFormation } from "../../write/domain/session-de-formation";
 import { SessionsDeFormation } from "../../write/domain/repository/sessions-de-formation";
+import { IdSessionDeFormation } from "../../write/domain/id-session-de-formation";
 
 export class SessionsDeFormationEnMemoire implements SessionsDeFormation {
   public constructor(private sessionsDeFormation: SessionDeFormation[] = []) {}

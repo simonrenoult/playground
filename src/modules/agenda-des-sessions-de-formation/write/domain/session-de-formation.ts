@@ -1,14 +1,15 @@
-import { Agregat } from "../../../../../building-blocks/ddd/agregat";
-import { Entite } from "../../../../../building-blocks/ddd/entite";
-import { ValueObject } from "../../../../../building-blocks/ddd/value-objet";
+import { AggregateRoot } from "../../../../building-blocks/ddd/aggregate-root";
+import { Entity } from "../../../../building-blocks/ddd/entity";
 import {
   Deserializable,
   Serializable,
-} from "../../../../../building-blocks/patterns/memento";
-import { StaticImplements } from "../../../../../building-blocks/utils/static-implements";
+} from "../../../../building-blocks/patterns/memento";
+import { StaticImplements } from "../../../../building-blocks/utils/static-implements";
 import { Formateur } from "./formateur";
 import { Participant } from "./participant";
-import Email from "../../../../shared-kernel/email";
+import Email from "../../../shared-kernel/email";
+import { CodeDeFormation } from "./code-de-formation";
+import { IdSessionDeFormation } from "./id-session-de-formation";
 
 export interface SessionDeFormationState {
   readonly id: string;
@@ -20,8 +21,8 @@ export interface SessionDeFormationState {
 @StaticImplements<Serializable<SessionDeFormationState, SessionDeFormation>>()
 export class SessionDeFormation
   implements
-    Agregat,
-    Entite<IdSessionDeFormation>,
+    AggregateRoot,
+    Entity<IdSessionDeFormation>,
     Deserializable<SessionDeFormationState>
 {
   private readonly participants: Participant[] = [];
@@ -75,27 +76,7 @@ export class SessionDeFormation
     return this._idSessionDeFormation;
   }
 
-  public equals(e: Entite<IdSessionDeFormation>): boolean {
+  public equals(e: Entity<IdSessionDeFormation>): boolean {
     return this.id.valeur === e.id.valeur;
-  }
-}
-
-export class CodeDeFormation implements ValueObject {
-  public constructor(public readonly valeur: string) {}
-
-  public equals(vo: ValueObject): boolean {
-    return vo instanceof CodeDeFormation && this.valeur === vo.valeur;
-  }
-}
-
-export class IdSessionDeFormation implements ValueObject {
-  public readonly valeur: string;
-
-  public constructor(private readonly _idSessionDeFormation: string) {
-    this.valeur = _idSessionDeFormation;
-  }
-
-  public equals(vo: ValueObject): boolean {
-    return vo instanceof IdSessionDeFormation && this.valeur === vo.valeur;
   }
 }

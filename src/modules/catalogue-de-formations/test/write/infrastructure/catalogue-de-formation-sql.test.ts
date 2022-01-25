@@ -1,9 +1,9 @@
 import CatalogueDeFormationsSql from "../../../write/infrastructure/repository/catalogue-de-formations-sql";
-import { CodeDeFormation } from "../../../write/domain/entite/formation";
 import { describe, it } from "mocha";
 import { expect } from "chai";
 import { Fixtures } from "../../fixtures";
 import { initialiserLaBaseDeDonneesDeTest } from "../../utils";
+import { CodeDeFormation } from "../../../write/domain/code-de-formation";
 
 describe(CatalogueDeFormationsSql.name, () => {
   it("permet de lire un agrégat après avoir été persisté", async () => {

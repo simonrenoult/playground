@@ -1,14 +1,12 @@
 import { ParticipantInscritALaSessionDeFormation } from "../../domain/evenement/participant-inscrit-a-la-session-de-formation";
 import { SessionsDeFormation } from "../../domain/repository/sessions-de-formation";
-import {
-  IdSessionDeFormation,
-  SessionDeFormation,
-} from "../../domain/entite/session-de-formation";
-import { Participant } from "../../domain/entite/participant";
+import { SessionDeFormation } from "../../domain/session-de-formation";
+import { Participant } from "../../domain/participant";
 import Email from "../../../../shared-kernel/email";
 import Commande from "../../../../../building-blocks/cqrs/write/commande";
 import InscrireUnParticipantAUneSessionDeFormation from "../inscrire-un-participant-a-une-session-de-formation";
 import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionnaire-de-message";
+import { IdSessionDeFormation } from "../../domain/id-session-de-formation";
 
 export default class GestionnaireDeInscrireUnParticipantAUneSessionDeFormation
   implements

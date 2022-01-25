@@ -1,9 +1,7 @@
-import {
-  CodeDeFormation,
-  DureeDeFormation,
-  Formation,
-} from "../write/domain/entite/formation";
+import { Formation } from "../write/domain/formation";
 import CreerUneFormation from "../write/application/creer-une-formation";
+import { DureeDeFormation } from "../write/domain/duree-de-formation";
+import { CodeDeFormation } from "../write/domain/code-de-formation";
 
 export const DEFAUT = {
   CODE_FORMATION: "DDD01",

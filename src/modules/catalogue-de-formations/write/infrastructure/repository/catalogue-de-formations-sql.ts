@@ -1,10 +1,7 @@
 import { Client } from "pg";
-import {
-  CodeDeFormation,
-  Formation,
-  FormationState,
-} from "../../domain/entite/formation";
+import { Formation, FormationState } from "../../domain/formation";
 import CatalogueDeFormations from "../../domain/repository/catalogue-de-formations";
+import { CodeDeFormation } from "../../domain/code-de-formation";
 
 class AucuneFormationTrouvee extends Error {
   public constructor(public readonly code: CodeDeFormation) {
