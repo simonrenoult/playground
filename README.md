@@ -43,6 +43,7 @@ $ npm test
 - [x] Faire de la clean architecture
 - [x] Modulariser le monolithe en s'appuyant sur les bounded contexts
 - [x] Déléguer aux modules/bounded-context l'enregistrement des apis, gestionnaires, etc.
+- Implémenter un frontend
 - Implémenter de l'event sourcing
 - Persistence des messages/piste de log
 - Optimistic concurrency
@@ -62,6 +63,7 @@ $ npm test
 - [x] Générer la documentation du bounded context
 - [x] Faire des liens dans le summary vers la doc des patterns
 - [x] Générer des `visites`
+- Documenter les bonnes pratiques
 - Générer le C4 context
 - Générer un site statique de documentation
 - Générer un BC Canva
