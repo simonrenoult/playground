@@ -8,6 +8,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: formations-test
-      POSTGRES_PASSWORD: formations-test
-      POSTGRES_DB: formations-test
+      POSTGRES_USER: playground
+      POSTGRES_PASSWORD: playground
+      POSTGRES_DB: playground

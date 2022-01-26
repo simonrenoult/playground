@@ -5,7 +5,7 @@ import { Fixtures } from "../../fixtures";
 import { initialiserLaBaseDeDonneesDeTest } from "../../utils";
 import { CodeDeFormation } from "../../../write/domain/code-de-formation";
 
-describe(CatalogueDeFormationsSql.name, () => {
+describe.only(CatalogueDeFormationsSql.name, () => {
   it("permet de lire un agrégat après avoir été persisté", async () => {
     // Given
     const client = await initialiserLaBaseDeDonneesDeTest();

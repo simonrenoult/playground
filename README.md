@@ -36,6 +36,7 @@ $ npm test
 - Log
 - Configuration/Environnement
 - Feature flags
+- Utiliser un système de build universel pour faciliter le monorepo (bazel, nx, etc.)
 
 ### Architecture
 

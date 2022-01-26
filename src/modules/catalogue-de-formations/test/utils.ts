@@ -2,9 +2,11 @@ import { Client } from "pg";
 import BaseDeDonnees from "../../../infrastructure/base-de-donnees";
 import Schema from "../configuration/schema";
 import Tables from "../write/infrastructure/tables";
+import * as dotenv from "dotenv";
 
-const POSTGRES_URL =
-  "postgres://formations-test:formations-test@localhost:5432/formations-test";
+dotenv.config();
+
+const POSTGRES_URL = process.env.DATABASE_URL;
 
 export async function initialiserLaBaseDeDonneesDeTest(): Promise<Client> {
   const { client } = await BaseDeDonnees.initialiser(POSTGRES_URL);
