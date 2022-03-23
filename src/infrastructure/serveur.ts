@@ -21,6 +21,10 @@ fastify.register(FastifySwagger, {
   exposeRoute: true,
 });
 
+fastify.get("/", (request, reply) => {
+  reply.send("hello world 👋");
+});
+
 const busDeQuestions = new BusDeQuestions(fastify.log);
 const busDEvenements = new BusDEvenementsDuDomaine(fastify.log);
 const busDeCommandes = new BusDeCommandes(busDEvenements, fastify.log);

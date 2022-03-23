@@ -23,6 +23,7 @@ export default class AjouterLiensAuPayload {
       "preSerialization",
       async (request, reply, payload: { data: unknown; message: Message }) => {
         if (request.url.startsWith("/documentation")) return payload;
+        if (request.url === "/") return payload;
         return {
           data: payload.data,
           liens: this.createurDeLiens.creer(payload.message),
