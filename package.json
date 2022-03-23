@@ -5,6 +5,7 @@
   "author": "Simon Renoult <simon.renoult@octo.com>",
   "scripts": {
     "build": "tsc --build tsconfig.json",
+    "prestart": "npm run build",
     "start": "node dist/bin/start.js",
     "start:watch": "nodemon src/bin/start.ts",
     "lint": "eslint . --ext .ts",
