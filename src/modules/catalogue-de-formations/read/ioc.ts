@@ -15,7 +15,9 @@ export default class IOCRead {
       .loadModules(
         [
           Path.resolve(__dirname, "./application/**/*.ts"),
+          Path.resolve(__dirname, "./application/**/*.js"),
           Path.resolve(__dirname, "./infrastructure/**/*.ts"),
+          Path.resolve(__dirname, "./infrastructure/**/*.js"),
         ],
         {
           resolverOptions: {
