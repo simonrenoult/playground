@@ -52,7 +52,7 @@ export default class AjouterUnFormateurAUneSessionDeFormation
 {
   public readonly nom = AjouterUnFormateurAUneSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailFormateur: string,
     public readonly idSessionDeSessionDeFormation: string
   ) {}
@@ -70,7 +70,7 @@ export default class AjouterUnFormateurAUneSessionDeFormation
 export default class CreerUneSessionDeFormation implements Commande {
   public readonly nom = CreerUneSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly idSessionDeFormation: string,
     public readonly codeFormation: string
   ) {}
@@ -90,7 +90,7 @@ export default class InscrireUnParticipantAUneSessionDeFormation
 {
   public readonly nom = InscrireUnParticipantAUneSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailParticipant: string,
     public readonly idSessionDeSessionDeFormation: string
   ) {}
@@ -113,7 +113,7 @@ export class FormateurAjouteALaSessionDeFormation
 {
   public readonly nom = FormateurAjouteALaSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly idFormateur: string,
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string
@@ -134,7 +134,7 @@ export class ParticipantInscritALaSessionDeFormation
 {
   public readonly nom = ParticipantInscritALaSessionDeFormation.name;
 
-  constructor(
+  public constructor(
     public readonly codeFormation: string,
     public readonly idSessionDeFormation: string,
     public readonly idParticipant: string
@@ -153,7 +153,7 @@ export class ParticipantInscritALaSessionDeFormation
 export class SessionDeFormationCreee implements EvenementDuDomaine {
   public readonly nom = SessionDeFormationCreee.name;
 
-  constructor(
+  public constructor(
     public readonly idSessionDeFormation: string,
     public readonly codeFormation: string
   ) {}
@@ -167,10 +167,7 @@ export class SessionDeFormationCreee implements EvenementDuDomaine {
 ## [Ubiquitous Language][ubiquitous_language]
 
 - CodeDeFormation
-- Formateur
 - IdSessionDeFormation
-- Participant
-- SessionDeFormation
 - SessionsDeFormation
 
 [strategic_classification]: https://github.com/ddd-crew/bounded-context-canvas#strategic-classification

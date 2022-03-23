@@ -50,7 +50,7 @@ export default class AjouterUnFormateurPotentielALaFormation
 {
   public readonly nom = AjouterUnFormateurPotentielALaFormation.name;
 
-  constructor(
+  public constructor(
     public readonly emailFormateurPotentiel: string,
     public readonly codeFormation: string
   ) {}
@@ -68,7 +68,7 @@ export default class AjouterUnFormateurPotentielALaFormation
 export default class CreerUneFormation implements Commande {
   public readonly nom: string = CreerUneFormation.name;
 
-  constructor(
+  public constructor(
     public readonly code: string,
     public readonly dureeEnHeures: number
   ) {}
@@ -91,7 +91,7 @@ export class FormateurPotentielAjouteALaFormation
 {
   public readonly nom = FormateurPotentielAjouteALaFormation.name;
 
-  constructor(
+  public constructor(
     public readonly idFormateurPotentiel: string,
     public readonly codeFormation: string
   ) {}
@@ -109,7 +109,7 @@ export class FormateurPotentielAjouteALaFormation
 export default class FormationCreee implements EvenementDuDomaine {
   public readonly nom = FormationCreee.name;
 
-  constructor(
+  public constructor(
     public readonly codeFormation: string,
     public readonly dureeEnHeures: number
   ) {}
@@ -126,7 +126,6 @@ export default class FormationCreee implements EvenementDuDomaine {
 - CodeDeFormation
 - DureeDeFormation
 - FormateurPotentiel
-- Formation
 
 [strategic_classification]: https://github.com/ddd-crew/bounded-context-canvas#strategic-classification
 [cqrs]: https://www.martinfowler.com/bliki/CQRS.html
