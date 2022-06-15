@@ -12,7 +12,7 @@
     "test:all": "npm run test && npm run test:cucumber",
     "test": "mocha --exit -r ts-node/register --extension ts --spec src/**/*.test.ts",
     "test:watch": "mocha -r ts-node/register --extension ts --spec src/**/*.test.ts --watch --watch-extensions ts",
-    "test:cucumber": "cucumber-js src/modules/**/features/*.feature  -r src/**/features/**/world.ts -r src/**/features/**/steps.ts --require-module ts-node/register --publish-quiet",
+    "test:cucumber": "cucumber-js features/*.feature  -r features/**/world.ts -r features/**/steps.ts --require-module ts-node/register --publish-quiet",
     "test:coverage": "nyc --all mocha -r ts-node/register --extension .ts --spec src/**/*.test.ts",
     "doc:bounded-contexts": "ts-node src/tools/build-bounded-context-summary.ts"
   },

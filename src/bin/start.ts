@@ -1,10 +1,11 @@
-import serveur from "../infrastructure/serveur";
 import { Configuration } from "../infrastructure/configuration";
+import nouveauServeur from "../infrastructure/serveur";
 
 async function start(): Promise<void> {
   // @ts-ignore
   const configuration: Configuration = serveur.configuration;
 
+  const serveur = nouveauServeur();
   try {
     await serveur.listen({
       port: configuration.port,

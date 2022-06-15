@@ -1,4 +1,4 @@
-import Fastify from "fastify";
+import Fastify, { FastifyInstance } from "fastify";
 import FastifySwagger from "fastify-swagger";
 import BusDeQuestions from "../building-blocks/cqrs/read/bus-de-questions";
 import BusDeCommandes from "../building-blocks/cqrs/write/bus-de-commandes";
@@ -11,61 +11,66 @@ import associationMessageEtHttpCatalogueDeFormations from "../modules/catalogue-
 import associationMessageEtHttpAgendaDeFormations from "../modules/agenda-des-sessions-de-formation/configuration/association-message-et-http";
 import configuration from "./configuration";
 
-const fastify = Fastify({
-  logger: {
-    prettyPrint: true,
-  },
-});
+function nouveauServeur(): FastifyInstance {
+  const fastify = Fastify({
+    logger: {
+      prettyPrint: true,
+      level: process.env.LOG_LEVEL,
+    },
+  });
 
-fastify.decorate("configuration", configuration);
+  fastify.decorate("configuration", configuration);
 
-fastify.register(FastifySwagger, {
-  routePrefix: "/documentation",
-  exposeRoute: true,
-});
+  fastify.register(FastifySwagger, {
+    routePrefix: "/documentation",
+    exposeRoute: true,
+  });
 
-fastify.get("/", (request, reply) => {
-  reply.send("hello world 👋");
-});
+  fastify.get("/", (request, reply) => {
+    reply.send("hello world 👋");
+  });
 
-const busDeQuestions = new BusDeQuestions(fastify.log);
-const busDEvenements = new BusDEvenementsDuDomaine(fastify.log);
-const busDeCommandes = new BusDeCommandes(busDEvenements, fastify.log);
+  const busDeQuestions = new BusDeQuestions(fastify.log);
+  const busDEvenements = new BusDEvenementsDuDomaine(fastify.log);
+  const busDeCommandes = new BusDeCommandes(busDEvenements, fastify.log);
 
-const catalogueDeFormationsModule = new CatalogueDeFormationsModule(
-  busDeQuestions,
-  busDeCommandes
-);
-const agendaDesSessionsDeFormationModule =
-  new AgendaDesSessionsDeFormationModule(
-    configuration,
+  const catalogueDeFormationsModule = new CatalogueDeFormationsModule(
     busDeQuestions,
     busDeCommandes
   );
-const modules: Module[] = [
-  catalogueDeFormationsModule,
-  agendaDesSessionsDeFormationModule,
-];
+  const agendaDesSessionsDeFormationModule =
+    new AgendaDesSessionsDeFormationModule(
+      configuration,
+      busDeQuestions,
+      busDeCommandes
+    );
+  const modules: Module[] = [
+    catalogueDeFormationsModule,
+    agendaDesSessionsDeFormationModule,
+  ];
 
-modules.forEach((m) => {
-  m.enregistrerLesEndpoints(fastify);
-  m.enregistrerLesGestionnairesDeQuestion(busDeQuestions);
-  m.enregistrerLesGestionnairesDeCommande(busDeCommandes);
-  m.enregistrerLesGestionnairesDEvenementDuDomaine(busDEvenements);
-});
+  modules.forEach((m) => {
+    m.enregistrerLesEndpoints(fastify);
+    m.enregistrerLesGestionnairesDeQuestion(busDeQuestions);
+    m.enregistrerLesGestionnairesDeCommande(busDeCommandes);
+    m.enregistrerLesGestionnairesDEvenementDuDomaine(busDEvenements);
+  });
 
-const ajouterLiensAuPayload = new AjouterLiensAuPayload(
-  fastify,
-  [
-    associationMessageEtHttpCatalogueDeFormations,
-    associationMessageEtHttpAgendaDeFormations,
-  ],
-  [
-    catalogueDeFormationsModule.boundedContext.arborescenceDeMessages,
-    agendaDesSessionsDeFormationModule.boundedContext.arborescenceDeMessages,
-  ]
-);
+  const ajouterLiensAuPayload = new AjouterLiensAuPayload(
+    fastify,
+    [
+      associationMessageEtHttpCatalogueDeFormations,
+      associationMessageEtHttpAgendaDeFormations,
+    ],
+    [
+      catalogueDeFormationsModule.boundedContext.arborescenceDeMessages,
+      agendaDesSessionsDeFormationModule.boundedContext.arborescenceDeMessages,
+    ]
+  );
 
-ajouterLiensAuPayload.associer();
+  ajouterLiensAuPayload.associer();
 
-export default fastify;
+  return fastify;
+}
+
+export default nouveauServeur;

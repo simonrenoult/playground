@@ -24,23 +24,29 @@ export default class BusDeQuestions implements Bus<Question, ModeleDeLecture> {
     this.gestionnaires.push(g);
   }
 
-  public publier<M extends ModeleDeLecture>(question: Question): M {
+  public async publier<M extends ModeleDeLecture>(
+    question: Question
+  ): Promise<M> {
     this.intercepteurs.forEach((i) => i.executer(question));
-    const modeleDeLecture = this.executerLeGestionnaireDeQuestion(question);
+    const modeleDeLecture = await this.executerLeGestionnaireDeQuestion(
+      question
+    );
     return modeleDeLecture as M;
   }
 
-  private executerLeGestionnaireDeQuestion(
+  private async executerLeGestionnaireDeQuestion(
     question: Question
-  ): ModeleDeLecture {
+  ): Promise<ModeleDeLecture> {
     this.logger.info(`${question.nom} (question) est en cours d'émission`);
     const gestionnaireDeQuestion = this.gestionnaires.find((g) =>
       g.ecoute(question)
     );
-    if (!gestionnaireDeQuestion)
+    if (!gestionnaireDeQuestion) {
       throw new Error(
         `Aucun gestionnaire de question trouvé pour la question ${question.nom}`
       );
+    }
+
     return gestionnaireDeQuestion.executer(question);
   }
 }
