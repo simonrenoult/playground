@@ -1,8 +1,8 @@
 import { Client } from "pg";
+import * as dotenv from "dotenv";
 import BaseDeDonnees from "../../../infrastructure/base-de-donnees";
 import Schema from "../configuration/schema";
 import Tables from "../write/infrastructure/tables";
-import * as dotenv from "dotenv";
 
 dotenv.config();
 

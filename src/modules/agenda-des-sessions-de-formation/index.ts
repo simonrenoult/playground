@@ -17,12 +17,14 @@ import BoundedContext from "./bounded-context";
 import { HorlogeEnMemoire } from "./test/horloge-en-memoire";
 import { CatalogueDeFormationsGatewayEnMemoire } from "./test/catalogue-de-formations-gateway-en-memoire";
 import { NotifieurEnMemoire } from "./test/notifieur-en-memoire";
+import { Configuration } from "../../infrastructure/configuration";
 
 export default class AgendaDesSessionsDeFormationModule implements Module {
   private readonly listeDeEndpoints: ListeDeEndpoints;
   public readonly boundedContext = BoundedContext;
 
   public constructor(
+    private readonly configuration: Configuration,
     private readonly busDeQuestions: BusDeQuestions,
     private readonly busDeCommandes: BusDeCommandes
   ) {
@@ -34,7 +36,7 @@ export default class AgendaDesSessionsDeFormationModule implements Module {
 
   public enregistrerLesGestionnairesDeQuestion(bus: BusDeQuestions): void {
     const agendaDesSessionsDeFormationFuturesEnMemoire =
-      new AgendaDesSessionsDeFormationHttp();
+      new AgendaDesSessionsDeFormationHttp(this.configuration);
     const horloge = new HorlogeEnMemoire(DateTime.now().toISODate());
 
     bus.enregistrerGestionnaire(

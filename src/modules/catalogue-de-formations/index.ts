@@ -48,9 +48,7 @@ export default class CatalogueDeFormationsModule implements Module {
   public enregistrerLesGestionnairesDEvenementDuDomaine(
     bus: BusDEvenementsDuDomaine
   ): void {
-    bus.enregistrerGestionnaire(
-      this.iocRead.cradle.gestionnaireDeAjouterFormationAuCatalogueDeFormations
-    );
+    bus.enregistrerGestionnaire(this.iocRead.cradle.ecouteurDeFormationCreee);
   }
 
   public enregistrerLesEndpoints(fastify: FastifyInstance): void {

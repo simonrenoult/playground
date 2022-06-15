@@ -33,6 +33,6 @@ export default class GestionnaireDeCreerUneSessionDeFormation
   }
 
   public ecoute(c: Commande): boolean {
-    return c instanceof SessionDeFormationCreee;
+    return c instanceof CreerUneSessionDeFormation;
   }
 }

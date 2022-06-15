@@ -9,12 +9,15 @@ import AgendaDesSessionsDeFormationModule from "../modules/agenda-des-sessions-d
 import AjouterLiensAuPayload from "../building-blocks/hateoas/ajouter-liens-au-payload";
 import associationMessageEtHttpCatalogueDeFormations from "../modules/catalogue-de-formations/configuration/association-message-et-http";
 import associationMessageEtHttpAgendaDeFormations from "../modules/agenda-des-sessions-de-formation/configuration/association-message-et-http";
+import configuration from "./configuration";
 
 const fastify = Fastify({
   logger: {
     prettyPrint: true,
   },
 });
+
+fastify.decorate("configuration", configuration);
 
 fastify.register(FastifySwagger, {
   routePrefix: "/documentation",
@@ -34,7 +37,11 @@ const catalogueDeFormationsModule = new CatalogueDeFormationsModule(
   busDeCommandes
 );
 const agendaDesSessionsDeFormationModule =
-  new AgendaDesSessionsDeFormationModule(busDeQuestions, busDeCommandes);
+  new AgendaDesSessionsDeFormationModule(
+    configuration,
+    busDeQuestions,
+    busDeCommandes
+  );
 const modules: Module[] = [
   catalogueDeFormationsModule,
   agendaDesSessionsDeFormationModule,

@@ -1,3 +1,4 @@
+import assert = require("node:assert");
 import { Client } from "pg";
 import injectable from "../building-blocks/ioc/injectable";
 
@@ -10,8 +11,9 @@ export default class BaseDeDonnees {
   }
 
   public static async initialiser(
-    postgresqlUrl: string
+    postgresqlUrl: string | undefined
   ): Promise<BaseDeDonnees> {
+    assert(postgresqlUrl !== undefined, "PostgreSQL url must be defined");
     const bdd = new BaseDeDonnees(postgresqlUrl);
     await bdd.client.connect();
     return bdd;

@@ -3,7 +3,7 @@ import GestionnaireDeMessage from "../../../../../building-blocks/cqrs/gestionna
 import FormationCreee from "../../../write/domain/evenement/formation-creee";
 import CatalogueDeFormations from "../../domain/projection/catalogue-de-formations";
 
-export default class GestionnaireDeAjouterFormationAuCatalogueDeFormations
+export default class EcouteurDeFormationCreee
   implements GestionnaireDeMessage<FormationCreee, FormationCreee>
 {
   public constructor(
